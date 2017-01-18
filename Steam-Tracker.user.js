@@ -32,8 +32,8 @@
 // @grant        GM_getValue
 // @grant        GM_setValue
 // @grant        GM_deleteValue
-// @updateURL    https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/Steam-Tracker.user.js
-// @downloadURL  https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/Steam-Tracker.user.js
+// @updateURL https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/Steam-Tracker.user.js
+// @downloadURL https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/Steam-Tracker.user.js
 // ==/UserScript==
 
 //settings page stuff--------------------------------------------------------------------------------------------------------------------------------------------------------------------
