@@ -19,9 +19,9 @@ https://steamcommunity.com/id/MalikQayum/edit/settings/steamtracker
 
 2. Get more information about the userscript by clicking on the named link. Or install it directly or from the GreasyFork site:
 
-	| Userscript Wiki                        | Direct Install     |
-	|----------------------------------------|:------------------:|
-	| [GitHub code colors][ccs-wiki]         | [install][st-raw] |
+	| Userscript                | Direct Install     |
+	|---------------------------|:------------------:|
+	| [SteamTracker]            | [install][st-raw]  |
 
 
 [st-raw]: https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/Steam-Tracker.user.js
