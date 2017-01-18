@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         Steam-Tracker
 // @namespace    https://steam-tracker.com/ + http://removed.timekillerz.eu/
-// @version      0.1
+// @version      0.0.2
 // @description  add stats to the steam profile page from http://removed.timekillerz.eu/ and https://steam-tracker.com/user/*/ + adds a button to steam-tracker <appid> to the app hub page and store page.
 // @author       MalikQayum
-// @include      /^https?://steamcommunity\.com/(id|profiles)/*/edit/settings/(steamtracker|testtracker)/*
+// @include      /^https?://steamcommunity\.com/(id|profiles)/*/edit/settings/steamtracker/
 // @include      /^https?://steamcommunity\.com/(id|profiles)/*/
 // @include      /^https?://steamcommunity\.com/app/*
 // @include      /^https?://store.steampowered.com/app/*/
@@ -32,6 +32,8 @@
 // @grant        GM_getValue
 // @grant        GM_setValue
 // @grant        GM_deleteValue
+// @updateURL    https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/Steam-Tracker.user.js
+// @downloadURL  https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/Steam-Tracker.user.js
 // ==/UserScript==
 
 //settings page stuff--------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -127,6 +129,7 @@ if(document.URL.match(re_settings_page))
     document.body.appendChild(hr);
     console.log("[HubTracker:] = " + GM_getValue("HubTracker_Value"));
 }
+//settings page stuff--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 //store app stuff
 var re_appstore = new RegExp(/^https?:\/\/store\.steampowered\.com\/app\/*/);
