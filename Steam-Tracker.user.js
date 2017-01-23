@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Steam-Tracker
 // @namespace    https://githubsss.com/MalikAQayum/SteamTracker
-// @version      1.3.1
+// @version      1.4
 // @description  add stats to the steam profile page from http://removed.timekillerz.eu/ and https://steam-tracker.com/user/*/ + adds a button to steam-tracker <appid> to the app hub page and store page.
 // @author       MalikQayum
 // @include      /^https?://steamcommunity\.com/(id|profiles)/*/edit/settings/steamtracker/
