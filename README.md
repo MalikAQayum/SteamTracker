@@ -6,7 +6,7 @@ SteamTracker Userscript, adds features to the steam profile / community app hub 
 Default Settings:
 - adds a https://Steam-Tracker.com profile link + settings button next to it.
 - adds a http://timekillerz.eu/ profile link.
-- adds a C7K profile link.
+- adds a https://c7k.jfietkau.me/ profile link.
 
 There are 4 Settings:
 - enable StoreTracker = adds a Steam-Tracker button on the store page that directs to the app page on Steam-Tracker. 
