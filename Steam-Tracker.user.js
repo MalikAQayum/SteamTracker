@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name         Steam-Tracker
-// @namespace    https://github.com/MalikAQayum/SteamTracker
-// @version      1.3
+// @namespace    https://githubsss.com/MalikAQayum/SteamTracker
+// @version      1.3.1
 // @description  add stats to the steam profile page from http://removed.timekillerz.eu/ and https://steam-tracker.com/user/*/ + adds a button to steam-tracker <appid> to the app hub page and store page.
 // @author       MalikQayum
 // @include      /^https?://steamcommunity\.com/(id|profiles)/*/edit/settings/steamtracker/
 // @include      /^https?://steamcommunity\.com/(id|profiles)/*/
-// @include      /^https?://steamcommunity\.com/app/*
+// @include      /^https?://steamcommunity\.com/app/*/
 // @include      /^https?://store.steampowered.com/app/*/
 // @exclude      *://steamcommunity.com/*/*/badge*
 // @exclude      *://steamcommunity.com/*/*/games*
@@ -28,6 +28,14 @@
 // @exclude      *://steamcommunity.com/*/*/blotteredit*
 // @exclude      *://steamcommunity.com/*/*/myactivity*
 // @exclude      *://steamcommunity.com/*/*/inventoryhistory
+// @exclude      *://steamcommunity.com/app/*/discussions*
+// @exclude      *://steamcommunity.com/app/*/screenshots*
+// @exclude      *://steamcommunity.com/app/*/images*
+// @exclude      *://steamcommunity.com/app/*/broadcasts*
+// @exclude      *://steamcommunity.com/app/*/videos*
+// @exclude      *://steamcommunity.com/app/*/allnews*
+// @exclude      *://steamcommunity.com/app/*/guides*
+// @exclude      *://steamcommunity.com/app/*/reviews*
 // @grant        GM_xmlhttpRequest
 // @grant        GM_getValue
 // @grant        GM_setValue
@@ -35,8 +43,7 @@
 // ==/UserScript==
 
 //settings page stuff--------------------------------------------------------------------------------------------------------------------------------------------------------------------
-var StoreTracker_Value;
-var HubTracker_Value;
+var StoreTracker_Value, Showcase_Default_Value, Showcase_RA_Value, HubTracker_Value;
 
 var re_settings_page = new RegExp(/settings\/steamtracker/);
 if(document.URL.match(re_settings_page))
@@ -72,7 +79,7 @@ if(document.URL.match(re_settings_page))
     StoreTracker_I.type="number";
     StoreTracker_I.id="StoreTrackerid";
     StoreTracker_I.name="StoreTrackerid";
-    StoreTracker_I.value=0;
+    StoreTracker_I.value=GM_getValue("StoreTracker_Value");
     StoreTracker_I.min="0";
     StoreTracker_I.max="1";
     StoreTracker_I.style.width = "33px";
@@ -85,6 +92,82 @@ if(document.URL.match(re_settings_page))
     document.body.appendChild(StoreTracker_Text);
 
     console.log("[StoreTracker:] = " + GM_getValue("StoreTracker_Value"));
+    
+    var hr = document.createElement('hr');
+    hr.innerHTML = ' ';
+    document.body.appendChild(hr);
+
+        //Showcase Default.
+    var Showcase_Default_F = function() {
+        var Showcase_Default_V = document.getElementById('Showcase_Default_id').value;
+        GM_setValue("Showcase_Default_Value", Showcase_Default_V);
+        console.log("[Showcase_Default:] = " + GM_getValue("Showcase_Default_Value"));
+    };
+
+    var Showcase_Default_B = document.createElement("input");
+    Showcase_Default_B.type="button";
+    Showcase_Default_B.value="Showcase_Default";
+    Showcase_Default_B.className="btnv6_blue_hoverfade";
+    Showcase_Default_B.style.width = "150px";
+    Showcase_Default_B.style.height = "30px";
+    Showcase_Default_B.onclick = Showcase_Default_F;
+    document.body.appendChild(Showcase_Default_B);
+
+    var Showcase_Default_I = document.createElement("input");
+    Showcase_Default_I.type="number";
+    Showcase_Default_I.id="Showcase_Default_id";
+    Showcase_Default_I.name="Showcase_Default_id";
+    Showcase_Default_I.value=GM_getValue("Showcase_Default_Value");
+    Showcase_Default_I.min="0";
+    Showcase_Default_I.max="1";
+    Showcase_Default_I.style.width = "33px";
+    Showcase_Default_I.style.height = "25px";
+    Showcase_Default_I.onclick = Showcase_Default_F;
+    document.body.appendChild(Showcase_Default_I);
+
+    var P_Showcase_Default = document.createElement("p");
+    var Showcase_Default_Text = document.createTextNode(" : 0 = off / 1 = on  - adds Showcase Default to the steam profile page.");
+    document.body.appendChild(Showcase_Default_Text);
+
+    console.log("[Showcase_Default:] = " + GM_getValue("Showcase_Default_Value"));
+    
+    var hr = document.createElement('hr');
+    hr.innerHTML = ' ';
+    document.body.appendChild(hr);
+
+    //Showcase Recent Activity.
+    var Showcase_RA_F = function() {
+        var Showcase_RA_V = document.getElementById('Showcase_RA_id').value;
+        GM_setValue("Showcase_RA_Value", Showcase_RA_V);
+        console.log("[Showcase_RA:] = " + GM_getValue("Showcase_RA_Value"));
+    };
+
+    var Showcase_RA_B = document.createElement("input");
+    Showcase_RA_B.type="button";
+    Showcase_RA_B.value="Showcase_RA";
+    Showcase_RA_B.className="btnv6_blue_hoverfade";
+    Showcase_RA_B.style.width = "150px";
+    Showcase_RA_B.style.height = "30px";
+    Showcase_RA_B.onclick = Showcase_RA_F;
+    document.body.appendChild(Showcase_RA_B);
+
+    var Showcase_RA_I = document.createElement("input");
+    Showcase_RA_I.type="number";
+    Showcase_RA_I.id="Showcase_RA_id";
+    Showcase_RA_I.name="Showcase_RA_id";
+    Showcase_RA_I.value=GM_getValue("Showcase_RA_Value");
+    Showcase_RA_I.min="0";
+    Showcase_RA_I.max="1";
+    Showcase_RA_I.style.width = "33px";
+    Showcase_RA_I.style.height = "25px";
+    Showcase_RA_I.onclick = Showcase_RA_F;
+    document.body.appendChild(Showcase_RA_I);
+
+    var P_Showcase_RA = document.createElement("p");
+    var Showcase_RA_Text = document.createTextNode(" : 0 = off / 1 = on  - adds Showcase Recent Activity to the steam profile page.");
+    document.body.appendChild(Showcase_RA_Text);
+
+    console.log("[Showcase_RA:] = " + GM_getValue("Showcase_RA_Value"));
     
     var hr = document.createElement('hr');
     hr.innerHTML = ' ';
@@ -110,7 +193,7 @@ if(document.URL.match(re_settings_page))
     HubTracker_I.type="number";
     HubTracker_I.id="HubTrackerid";
     HubTracker_I.name="HubTrackerid";
-    HubTracker_I.value=0;
+    HubTracker_I.value=GM_getValue("HubTracker_Value");
     HubTracker_I.min="0";
     HubTracker_I.max="1";
     HubTracker_I.style.width = "33px";
@@ -126,6 +209,23 @@ if(document.URL.match(re_settings_page))
     hr.innerHTML = ' ';
     document.body.appendChild(hr);
     console.log("[HubTracker:] = " + GM_getValue("HubTracker_Value"));
+    
+    var Save_F = function() {
+        StoreTracker_F();
+        HubTracker_F();
+        Showcase_Default_F();
+        Showcase_RA_F();
+        
+        location.href="http://steamcommunity.com/my";
+    };
+    var Save_Button = document.createElement("input");
+    Save_Button.type="button";
+    Save_Button.value="Save Settings";
+    Save_Button.className="btn_green_white_innerfade";
+    Save_Button.style.width = "10%";
+    Save_Button.style.height = "30px";
+    Save_Button.onclick = Save_F;
+    document.body.appendChild(Save_Button);
 }
 //settings page stuff--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -136,7 +236,7 @@ if(document.URL.match(re_appstore))
     if ((GM_getValue("StoreTracker_Value") == 0) || (GM_getValue("StoreTracker_Value") == "undefined") || (GM_getValue("StoreTracker_Value") == null) ) {
         console.log("StoreTracker is set to : " + GM_getValue("StoreTracker_Value") + " and will not add a Steam-Tracker Button to the Steam Store Page.");
     }
-    if ((GM_getValue("StoreTracker_Value") == 1)) {
+    else if ((GM_getValue("StoreTracker_Value") == 1)) {
         console.log("StoreTracker is set to : " + GM_getValue("StoreTracker_Value") + " and will add a Steam-Tracker Button to the Steam Store Page.");
         var appid = document.URL;
         appid = appid.split("app/").pop().replace(/\D+$/g, '').substring(0, appid.indexOf('/')+1);
@@ -147,22 +247,19 @@ if(document.URL.match(re_appstore))
         steamtracker.appendChild(steamtracker_button);
         steamtracker_button.innerHTML ="<span>SteamTracker</span>";
     }
+    else {
+        //donothing
+    }
 }
 
 //community app hub stuff (should respect the exclude rules)
-/*
-tiny issue here, this wont run on /screenshot and /videos: reason being we have the exclude rules for the steam profile ..
-anyway the important part is that it is on the main app hub page.
-exclude      *://steamcommunity.com/* /* /videos*
-exclude      *://steamcommunity.com/* /* /screenshots*
-*/
 var re_apphub = new RegExp(/^https?:\/\/steamcommunity\.com\/app\/*/);
 if(document.URL.match(re_apphub))
 {
     if ((GM_getValue("HubTracker_Value") == 0) || (GM_getValue("HubTracker_Value") == "undefined") || (GM_getValue("HubTracker_Value") == null) ) {
         console.log("HubTracker is set to : " + GM_getValue("HubTracker_Value") + " and will not add a Steam-Tracker Button to the Hub.");
     }
-    if ((GM_getValue("HubTracker_Value") == 1)) {
+    else if ((GM_getValue("HubTracker_Value") == 1)) {
         console.log("HubTracker is set to : " + GM_getValue("HubTracker_Value") + " and will add a Steam-Tracker Button to the Hub.");
         var appid = document.URL;
         appid = appid.split("app/").pop().replace(/\D+$/g, '');
@@ -172,6 +269,9 @@ if(document.URL.match(re_apphub))
         steamtracker_button.href = href="https://steam-tracker.com/app/" + appid + "/";
         steamtracker.appendChild(steamtracker_button);
         steamtracker_button.innerHTML ="<span>SteamTracker</span>";
+    }
+    else{
+        //donothing
     }
 }
 
@@ -199,25 +299,28 @@ function Steam_id(){
         var c7k_p = "<a href=\"https://c7k.jfietkau.me/\">C7K</a>";
         var tk_p ="<a href=" + "http://removed.timekillerz.eu/tools.php?steamprofile="+steam_id + ">TimeKillerz</a>";
         var st_p ="<a href=" + "https://steam-tracker.com/user/"+steam_id+"/" + ">Steam-Tracker</a>";
+        var st_p2 ="<a href=" + " https://steamcommunity.com/profiles/"+steam_id+ "/edit/settings/steamtracker" + "> Settings</a>";
         var div_pil_p = document.getElementsByClassName("profile_rightcol")[0];
         var pil_Div_p = document.createElement('div');
         pil_Div_p.id = 'profile_item_links_st_tk_c7k';
         pil_Div_p.className = "count_link_label";
         div_pil_p.prepend(pil_Div_p);
-        pil_Div_p.innerHTML ="<p><span id=\"st\" class=\"count_link_label\">"+st_p+"</span></p>"+"<p><span id=\"tk\" class=\"count_link_label\">"+tk_p+"</span></p>"+"<p><span id=\"c7k\" class=\"count_link_label\">"+c7k_p+"</span></p>";
+        pil_Div_p.innerHTML ="<p><span id=\"st\" class=\"count_link_label\">"+st_p+"</span>" + " " +"<span id=\"st\" class=\"btn_profile_action btn_medium\">"+st_p2+"</span></p>"+"<p><span id=\"tk\" class=\"count_link_label\">"+tk_p+"</span></p>"+"<p><span id=\"c7k\" class=\"count_link_label\">"+c7k_p+"</span></p>";
     }
     else
     {
         var c7k = "<a href=\"https://c7k.jfietkau.me/\">C7K</a>";
         var tk ="<a href=" + "http://removed.timekillerz.eu/tools.php?steamprofile="+steam_id + ">TimeKillerz</a>";
         var st ="<a href=" + "https://steam-tracker.com/user/"+steam_id+"/" + ">Steam-Tracker</a>";
+        var st2 ="<a href=" + " https://steamcommunity.com/profiles/"+steam_id+ "/edit/settings/steamtracker" + "> Settings</a>";
         document.getElementsByClassName("profile_item_links")[0].setAttribute("id", "MalikQayum_profile_item_links");
         var div_pil = document.getElementById("MalikQayum_profile_item_links");
         var pil_Div = document.createElement('div');
         pil_Div.id = 'profile_item_links_st_tk_c7k';
         pil_Div.className = "count_link_label";
         div_pil.prepend(pil_Div);
-        pil_Div.innerHTML ="<p><span id=\"st\" class=\"count_link_label\">"+st+"</span></p>"+"<p><span id=\"tk\" class=\"count_link_label\">"+tk+"</span></p>"+"<p><span id=\"c7k\" class=\"count_link_label\">"+c7k+"</span></p>";
+        pil_Div.innerHTML ="<p><span id=\"st\" class=\"count_link_label\">"+st+"</span>" + " " + "<span id=\"st\" class=\"btn_profile_action btn_medium\">"+st2+"</span></p>"+"<p><span id=\"tk\" class=\"count_link_label\">"+tk+"</span></p>"+"<p><span id=\"c7k\" class=\"count_link_label\">"+c7k+"</span></p>";
+        
         timekillerz_data();
     }
 }
@@ -252,8 +355,6 @@ function steam_tracker_data(){
                 console.log("User does not exist in the steam-tracker db: " +json_st_data.success);
                 var c7k = "<a href=\"https://c7k.jfietkau.me/\">C7K : " + GM_getValue("G_c7k_rcount")+ " / " +GM_getValue("G_c7k_trcount")+ "</a>";
                 var tk ="<a href=" + "http://removed.timekillerz.eu/tools.php?steamprofile="+GM_getValue("G_steam_id") + ">TimeKillerz : " + GM_getValue("G_timekillerz_rcount")+ " / " +GM_getValue("G_timekillerz_trcount")+ "</a>";
-                var st ="<a href=" + "https://steam-tracker.com/user/"+GM_getValue("G_steam_id")+"/" + ">Steam-Tracker</a>";               
-                document.getElementById("st").innerHTML ="<p><span id=\"st\" class=\"count_link_label\">"+st+"</span></p>";
                 document.getElementById("tk").innerHTML ="<p><span id=\"tk\" class=\"count_link_label\">"+tk+"</span></p>";
                 document.getElementById("c7k").innerHTML ="<p><span id=\"c7k\" class=\"count_link_label\">"+c7k+"</span></p>";
             }
@@ -373,22 +474,22 @@ function steam_tracker_data_2(){
 	var Total = "<tr><td>" + "Total" + "</td>" + "<td>" + GM_getValue("G_steamtracker_total_2") + "</td>" + "<td>" + GM_getValue("G_steamtracker_total_1") + "</td><tr>";    
 	var total_tk = "<tr><td>" + '<a href = "' + TimeKillerz_link + '">Delisted: TimeKillerz</a>' + "</td>" + "<td>" +  GM_getValue("G_timekillerz_rcount") + "</td>" + "<td>" +  GM_getValue("G_timekillerz_trcount") + "</td><tr>";    
 	var total_ck7 = "<tr><td>" + '<a href = "https://c7k.jfietkau.me/">Delisted: C7K</a>' + "</td>" + "<td>" +  GM_getValue("G_c7k_rcount") + "</td>" + "<td>" +  GM_getValue("G_c7k_trcount") + "</td><tr>";
-    
- 
+
     if (/private/i.test(GM_getValue("G_steamtracker_privacy")))
     {
         console.log("Recent Activity Setting: is set to private and is being honored. #2");
 
-        var stc_changelog_url_0x = 'https://steam-tracker.com/app/'+ GM_getValue("G_steamtracker_changelog_appid_0") +"/";
-        var stc_changelog_url_1x = 'https://steam-tracker.com/app/'+ GM_getValue("G_steamtracker_changelog_appid_1") +"/";
-        var stc_changelog_url_2x = 'https://steam-tracker.com/app/'+ GM_getValue("G_steamtracker_changelog_appid_2") +"/";
-        var stc_changelog_url_3x = 'https://steam-tracker.com/app/'+ GM_getValue("G_steamtracker_changelog_appid_3") +"/";
-        var stc_changelog_url_4x = 'https://steam-tracker.com/app/'+ GM_getValue("G_steamtracker_changelog_appid_4") +"/";
-        var stc_image_0s = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_changelog_appid_0") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" width="100%" style="max-width: 100px;" title="' + GM_getValue("G_steamtracker_changelog_title_0") + '"id="'+ GM_getValue("G_steamtracker_changelog_change_0").replace(" ", "") +'" alt="' + stc_changelog_url_0x + '" onclick="window.open(this.alt)">';
-        var stc_image_1s = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_changelog_appid_1") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" width="100%" style="max-width: 100px;" title="' + GM_getValue("G_steamtracker_changelog_title_1") + '"id="'+ GM_getValue("G_steamtracker_changelog_change_1").replace(" ", "") +'" alt="' + stc_changelog_url_1x + '" onclick="window.open(this.alt)">';
-        var stc_image_2s = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_changelog_appid_2") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" width="100%" style="max-width: 100px;" title="' + GM_getValue("G_steamtracker_changelog_title_2") + '"id="'+ GM_getValue("G_steamtracker_changelog_change_2").replace(" ", "") +'" alt="' + stc_changelog_url_2x + '" onclick="window.open(this.alt)">';
-        var stc_image_3s = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_changelog_appid_3") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" width="100%" style="max-width: 100px;" title="' + GM_getValue("G_steamtracker_changelog_title_3") + '"id="'+ GM_getValue("G_steamtracker_changelog_change_3").replace(" ", "") +'" alt="' + stc_changelog_url_3x + '" onclick="window.open(this.alt)">';
-        var stc_image_4s = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_changelog_appid_4") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" width="100%" style="max-width: 100px;" title="' + GM_getValue("G_steamtracker_changelog_title_4") + '"id="'+ GM_getValue("G_steamtracker_changelog_change_4").replace(" ", "") +'" alt="' + stc_changelog_url_4x + '" onclick="window.open(this.alt)">';
+        if ((GM_getValue("Showcase_Default_Value") == 0) || (GM_getValue("Showcase_Default_Value") == "undefined") || (GM_getValue("Showcase_Default_Value") == null) ) {
+            console.log("Showcase Default is set to : " + GM_getValue("Showcase_Default_Value") + " and will not add Showcase Default to the Steam Profile.");
+        }
+        else if ((GM_getValue("Showcase_Default_Value") == 1)) {
+        console.log("Showcase Default is set to : " + GM_getValue("Showcase_Default_Value") + " and will add Showcase Default to the Steam Profile.");
+
+        var stc_image_0s = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_changelog_appid_0") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" width="100%" style="max-width: 100px;" title="' + GM_getValue("G_steamtracker_changelog_title_0") + " : [" + GM_getValue("G_steamtracker_changelog_change_0") +"]"+ '"id="'+ GM_getValue("G_steamtracker_changelog_change_0").replace(" ", "") +'" alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_steamtracker_changelog_appid_0") +"/" + '" onclick="window.open(this.alt)">';
+        var stc_image_1s = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_changelog_appid_1") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" width="100%" style="max-width: 100px;" title="' + GM_getValue("G_steamtracker_changelog_title_1") + " : [" + GM_getValue("G_steamtracker_changelog_change_1") +"]"+ '"id="'+ GM_getValue("G_steamtracker_changelog_change_1").replace(" ", "") +'" alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_steamtracker_changelog_appid_1") +"/" + '" onclick="window.open(this.alt)">';
+        var stc_image_2s = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_changelog_appid_2") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" width="100%" style="max-width: 100px;" title="' + GM_getValue("G_steamtracker_changelog_title_2") + " : [" + GM_getValue("G_steamtracker_changelog_change_2") +"]"+ '"id="'+ GM_getValue("G_steamtracker_changelog_change_2").replace(" ", "") +'" alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_steamtracker_changelog_appid_2") +"/" + '" onclick="window.open(this.alt)">';
+        var stc_image_3s = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_changelog_appid_3") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" width="100%" style="max-width: 100px;" title="' + GM_getValue("G_steamtracker_changelog_title_3") + " : [" + GM_getValue("G_steamtracker_changelog_change_3") +"]"+ '"id="'+ GM_getValue("G_steamtracker_changelog_change_3").replace(" ", "") +'" alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_steamtracker_changelog_appid_3") +"/" + '" onclick="window.open(this.alt)">';
+        var stc_image_4s = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_changelog_appid_4") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" width="100%" style="max-width: 100px;" title="' + GM_getValue("G_steamtracker_changelog_title_4") + " : [" + GM_getValue("G_steamtracker_changelog_change_4") +"]"+ '"id="'+ GM_getValue("G_steamtracker_changelog_change_4").replace(" ", "") +'" alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_steamtracker_changelog_appid_4") +"/" + '" onclick="window.open(this.alt)">';
         var st_table = "<table style=\"width:100%\">" +tableheader+Total+TotalGames+total_ck7+Delisted+total_tk+Disabled+F2P+retailonly+testapp+preorder+unreleased+software+freesoftware+video+ "</table>";
         
         document.getElementsByClassName("profile_customization_area")[0].setAttribute("id", "MalikQayum_Showcase");
@@ -458,29 +559,30 @@ function steam_tracker_data_2(){
         document.getElementsByTagName('head')[0].appendChild(styleNode);
 
         console.log("skipping RA images/history : private 2 of 2");
+        }
+        else{
+            //donothing
+        }
     }
     else
     {
+        //start-- showcase Default.
+        if ((GM_getValue("Showcase_Default_Value") == 0) || (GM_getValue("Showcase_Default_Value") == "undefined") || (GM_getValue("Showcase_Default_Value") == null) ) {
+            console.log("Showcase Default is set to : " + GM_getValue("Showcase_Default_Value") + " and will not add Showcase Default to the Steam Profile.");
+        }
+        else if ((GM_getValue("Showcase_Default_Value") == 1)) {
+        console.log("Showcase Default is set to : " + GM_getValue("Showcase_Default_Value") + " and will add Showcase Default to the Steam Profile.");
         //RA
-        var recent_activity_url_0x = 'https://steam-tracker.com/app/'+ GM_getValue("G_steamtracker_recentactivity_appid_0") +"/";
-        var recent_activity_url_1x = 'https://steam-tracker.com/app/'+ GM_getValue("G_steamtracker_recentactivity_appid_1") +"/";
-        var recent_activity_url_2x = 'https://steam-tracker.com/app/'+ GM_getValue("G_steamtracker_recentactivity_appid_2") +"/";
-        var recent_activity_url_3x = 'https://steam-tracker.com/app/'+ GM_getValue("G_steamtracker_recentactivity_appid_3") +"/";
-        var ra_image_0s = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_recentactivity_appid_0") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" size="100%" title="' + GM_getValue("G_steamtracker_recentactivity_title_0") + '"id="'+ GM_getValue("G_steamtracker_recentactivity_status_0").replace(" ", "") + '"alt="' + recent_activity_url_0x + '" onclick="window.open(this.alt)">';
-        var ra_image_1s = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_recentactivity_appid_1") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" size="100%" title="' + GM_getValue("G_steamtracker_recentactivity_title_1") + '"id="'+ GM_getValue("G_steamtracker_recentactivity_status_1").replace(" ", "") + '"alt="' + recent_activity_url_1x + '" onclick="window.open(this.alt)">';
-        var ra_image_2s = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_recentactivity_appid_2") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" size="100%" title="' + GM_getValue("G_steamtracker_recentactivity_title_2") + '"id="'+ GM_getValue("G_steamtracker_recentactivity_status_2").replace(" ", "") + '"alt="' + recent_activity_url_2x + '" onclick="window.open(this.alt)">';
-        var ra_image_3s = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_recentactivity_appid_3") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" size="100%" title="' + GM_getValue("G_steamtracker_recentactivity_title_3") + '"id="'+ GM_getValue("G_steamtracker_recentactivity_status_3").replace(" ", "") + '"alt="' + recent_activity_url_3x + '" onclick="window.open(this.alt)">';
-
-        var stc_changelog_url_0x2 = 'https://steam-tracker.com/app/'+ GM_getValue("G_steamtracker_changelog_appid_0") +"/";
-        var stc_changelog_url_1x2 = 'https://steam-tracker.com/app/'+ GM_getValue("G_steamtracker_changelog_appid_1") +"/";
-        var stc_changelog_url_2x2 = 'https://steam-tracker.com/app/'+ GM_getValue("G_steamtracker_changelog_appid_2") +"/";
-        var stc_changelog_url_3x2 = 'https://steam-tracker.com/app/'+ GM_getValue("G_steamtracker_changelog_appid_3") +"/";
-        var stc_changelog_url_4x2 = 'https://steam-tracker.com/app/'+ GM_getValue("G_steamtracker_changelog_appid_4") +"/";
-        var stc_image_0s2 = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_changelog_appid_0") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" width="100%" style="max-width: 100px;" title="' + GM_getValue("G_steamtracker_changelog_title_0") + '"id="'+ GM_getValue("G_steamtracker_changelog_change_0").replace(" ", "") +'" alt="' + stc_changelog_url_0x2 + '" onclick="window.open(this.alt)">';
-        var stc_image_1s2 = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_changelog_appid_1") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" width="100%" style="max-width: 100px;" title="' + GM_getValue("G_steamtracker_changelog_title_1") + '"id="'+ GM_getValue("G_steamtracker_changelog_change_1").replace(" ", "") +'" alt="' + stc_changelog_url_1x2 + '" onclick="window.open(this.alt)">';
-        var stc_image_2s2 = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_changelog_appid_2") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" width="100%" style="max-width: 100px;" title="' + GM_getValue("G_steamtracker_changelog_title_2") + '"id="'+ GM_getValue("G_steamtracker_changelog_change_2").replace(" ", "") +'" alt="' + stc_changelog_url_2x2 + '" onclick="window.open(this.alt)">';
-        var stc_image_3s2 = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_changelog_appid_3") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" width="100%" style="max-width: 100px;" title="' + GM_getValue("G_steamtracker_changelog_title_3") + '"id="'+ GM_getValue("G_steamtracker_changelog_change_3").replace(" ", "") +'" alt="' + stc_changelog_url_3x2 + '" onclick="window.open(this.alt)">';
-        var stc_image_4s2 = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_changelog_appid_4") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" width="100%" style="max-width: 100px;" title="' + GM_getValue("G_steamtracker_changelog_title_4") + '"id="'+ GM_getValue("G_steamtracker_changelog_change_4").replace(" ", "") +'" alt="' + stc_changelog_url_4x2 + '" onclick="window.open(this.alt)">';
+        var ra_image_0s = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_recentactivity_appid_0") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" size="100%" title="' + GM_getValue("G_steamtracker_recentactivity_title_0") + " : [" + GM_getValue("G_steamtracker_recentactivity_status_0") +"]"+ '"id="'+ GM_getValue("G_steamtracker_recentactivity_status_0").replace(" ", "") + '"alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_steamtracker_recentactivity_appid_0") +"/" + '" onclick="window.open(this.alt)">';
+        var ra_image_1s = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_recentactivity_appid_1") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" size="100%" title="' + GM_getValue("G_steamtracker_recentactivity_title_1") + " : [" + GM_getValue("G_steamtracker_recentactivity_status_1") +"]"+ '"id="'+ GM_getValue("G_steamtracker_recentactivity_status_1").replace(" ", "") + '"alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_steamtracker_recentactivity_appid_1") +"/" + '" onclick="window.open(this.alt)">';
+        var ra_image_2s = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_recentactivity_appid_2") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" size="100%" title="' + GM_getValue("G_steamtracker_recentactivity_title_2") + " : [" + GM_getValue("G_steamtracker_recentactivity_status_2") +"]"+ '"id="'+ GM_getValue("G_steamtracker_recentactivity_status_2").replace(" ", "") + '"alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_steamtracker_recentactivity_appid_2") +"/" + '" onclick="window.open(this.alt)">';
+        var ra_image_3s = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_recentactivity_appid_3") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" size="100%" title="' + GM_getValue("G_steamtracker_recentactivity_title_3") + " : [" + GM_getValue("G_steamtracker_recentactivity_status_3") +"]"+ '"id="'+ GM_getValue("G_steamtracker_recentactivity_status_3").replace(" ", "") + '"alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_steamtracker_recentactivity_appid_3") +"/" + '" onclick="window.open(this.alt)">';
+        //Changelog
+        var stc_image_0s2 = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_changelog_appid_0") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" width="100%" style="max-width: 100px;" title="' + GM_getValue("G_steamtracker_changelog_title_0") + " : [" + GM_getValue("G_steamtracker_changelog_change_0") +"]"+ '"id="'+ GM_getValue("G_steamtracker_changelog_change_0").replace(" ", "") +'" alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_steamtracker_changelog_appid_0") +"/" + '" onclick="window.open(this.alt)">';
+        var stc_image_1s2 = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_changelog_appid_1") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" width="100%" style="max-width: 100px;" title="' + GM_getValue("G_steamtracker_changelog_title_1") + " : [" + GM_getValue("G_steamtracker_changelog_change_1") +"]"+ '"id="'+ GM_getValue("G_steamtracker_changelog_change_1").replace(" ", "") +'" alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_steamtracker_changelog_appid_1") +"/" + '" onclick="window.open(this.alt)">';
+        var stc_image_2s2 = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_changelog_appid_2") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" width="100%" style="max-width: 100px;" title="' + GM_getValue("G_steamtracker_changelog_title_2") + " : [" + GM_getValue("G_steamtracker_changelog_change_2") +"]"+ '"id="'+ GM_getValue("G_steamtracker_changelog_change_2").replace(" ", "") +'" alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_steamtracker_changelog_appid_2") +"/" + '" onclick="window.open(this.alt)">';
+        var stc_image_3s2 = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_changelog_appid_3") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" width="100%" style="max-width: 100px;" title="' + GM_getValue("G_steamtracker_changelog_title_3") + " : [" + GM_getValue("G_steamtracker_changelog_change_3") +"]"+ '"id="'+ GM_getValue("G_steamtracker_changelog_change_3").replace(" ", "") +'" alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_steamtracker_changelog_appid_3") +"/" + '" onclick="window.open(this.alt)">';
+        var stc_image_4s2 = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_changelog_appid_4") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" width="100%" style="max-width: 100px;" title="' + GM_getValue("G_steamtracker_changelog_title_4") + " : [" + GM_getValue("G_steamtracker_changelog_change_4") +"]"+ '"id="'+ GM_getValue("G_steamtracker_changelog_change_4").replace(" ", "") +'" alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_steamtracker_changelog_appid_4") +"/" + '" onclick="window.open(this.alt)">';
 
         var st_tablex = "<table style=\"width:100%\">" +tableheader+Total+TotalGames+total_ck7+Delisted+total_tk+Disabled+F2P+retailonly+testapp+preorder+unreleased+software+freesoftware+video+ "</table>";
 
@@ -574,7 +676,61 @@ function steam_tracker_data_2(){
             `);
         styleNode2.appendChild(styleText2);
         document.getElementsByTagName('head')[0].appendChild(styleNode2);
+        }
+        else{
+            //donothing
+        }
+        //end-- showcase Default.
+        
+        //start-- showcase Recent Activity.
+        if ((GM_getValue("Showcase_RA_Value") == 0) || (GM_getValue("Showcase_RA_Value") == "undefined") || (GM_getValue("Showcase_RA_Value") == null) ) {
+            console.log("Showcase Recent Activity is set to : " + GM_getValue("Showcase_RA_Value") + " and will not add Showcase Recent Activity to the Steam Profile.");
+        }
+        else if ((GM_getValue("Showcase_RA_Value") == 1)) {
+        console.log("Showcase Recent Activity is set to : " + GM_getValue("Showcase_RA_Value") + " and will add Showcase Recent Activity to the Steam Profile.");
+        //RA
+        var ra_image_0s = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_recentactivity_appid_0") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" size="100%" title="' + GM_getValue("G_steamtracker_recentactivity_title_0") + " : [" + GM_getValue("G_steamtracker_recentactivity_status_0") +"]"+ '"id="'+ GM_getValue("G_steamtracker_recentactivity_status_0").replace(" ", "") + '"alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_steamtracker_recentactivity_appid_0") +"/"+ '" onclick="window.open(this.alt)">';
+        var ra_image_1s = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_recentactivity_appid_1") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" size="100%" title="' + GM_getValue("G_steamtracker_recentactivity_title_1") + " : [" + GM_getValue("G_steamtracker_recentactivity_status_1") +"]"+ '"id="'+ GM_getValue("G_steamtracker_recentactivity_status_1").replace(" ", "") + '"alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_steamtracker_recentactivity_appid_1") +"/" + '" onclick="window.open(this.alt)">';
+        var ra_image_2s = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_recentactivity_appid_2") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" size="100%" title="' + GM_getValue("G_steamtracker_recentactivity_title_2") + " : [" + GM_getValue("G_steamtracker_recentactivity_status_2") +"]"+ '"id="'+ GM_getValue("G_steamtracker_recentactivity_status_2").replace(" ", "") + '"alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_steamtracker_recentactivity_appid_2") +"/" + '" onclick="window.open(this.alt)">';
+        var ra_image_3s = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_recentactivity_appid_3") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" size="100%" title="' + GM_getValue("G_steamtracker_recentactivity_title_3") + " : [" + GM_getValue("G_steamtracker_recentactivity_status_3") +"]"+ '"id="'+ GM_getValue("G_steamtracker_recentactivity_status_3").replace(" ", "") + '"alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_steamtracker_recentactivity_appid_3") +"/" + '" onclick="window.open(this.alt)">';
 
+        document.getElementsByClassName("profile_customization_area")[0].setAttribute("id", "MalikQayum_Showcase");
+        var div_remgc2 = document.getElementById("MalikQayum_Showcase");
+
+        var remgc_Div2 = document.createElement('div');
+        remgc_Div2.id = 'MalikQayum_Showcase_content';
+        div_remgc2.appendChild(remgc_Div2);
+        remgc_Div2.innerHTML =
+`
+<div class="profile_customization"><div class="profile_customization_header">Recent Activity</div><div class="profile_customization_block"><div class="gamecollector_showcase"><div class="showcase_gamecollector_games">
+				<div class="showcase_slot showcase_gamecollector_game" >
+					` +ra_image_0s +`
+				</div>
+				<div class="showcase_slot showcase_gamecollector_game">
+					` +ra_image_1s +`
+					</div>
+				</div>
+				<div class="showcase_slot showcase_gamecollector_game">
+					` +ra_image_2s +`
+					</div>
+				</div>
+				<div class="showcase_slot showcase_gamecollector_game">
+					` +ra_image_3s +`
+					</div>
+				</div>
+				<div style="clear: left;"></div></div></div><div style="clear: both"></div></div></div>
+`;
+        var styleNode2 = document.createElement('style');
+        styleNode2.type = "text/css";
+        var styleText2 = document.createTextNode(` #deleted {-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */ filter: grayscale(100%);}`);
+        styleNode2.appendChild(styleText2);
+        document.getElementsByTagName('head')[0].appendChild(styleNode2);
+        //end-- showcase Recent Activity.
+            
+        }
+        else{
+            //donothing
+        }
     }
     
 GM_deleteValue("G_steam_id");
