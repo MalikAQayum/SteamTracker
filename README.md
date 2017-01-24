@@ -11,18 +11,18 @@ Default Settings:
 There are 4 Settings:
 - enable StoreTracker = adds a Steam-Tracker button on the store page that directs to the app page on Steam-Tracker. 
 - enable HubTracker = adds a Steam-Tracker button on the app hub page that directs to the app page on Steam-Tracker. 
-- Showcase1 = adds the default showcase.
+- Showcase Default  = adds the default showcase.
 (if all privacy settings are public, it adds a table with all your removed stats / changelog / recent activity.)
-- Showcase2 = adds a Recent Activity Showcase.
+- Showcase Recent Activity = adds a Recent Activity Showcase.
 (if user is a registret user on Steam-Tracker and has NOT set their recent activity private, then it only showcases the recent activity.)
 
 (all the data comes from https://steam-tracker.com/ and http://timekillerz.eu/removed/ via their API which made to serve the purpose of this userscript, 
 if you want to create something yourself using the apis perhaps ask for permission)
 
 SteamTracker will ask for permission 3 times:
-1- https://Steam-Tracker.com api
-2- http://timekillerz.eu/ api
-3- https://store.steampowered.com/ owned appids  (Currently not doing it but should expect it might ask for permission in the future.)
+- https://Steam-Tracker.com api 
+- http://timekillerz.eu/ api
+- https://store.steampowered.com/ owned appids  (Currently not doing it but should expect it might ask for permission in the future.)
 
 ## Installation
 
