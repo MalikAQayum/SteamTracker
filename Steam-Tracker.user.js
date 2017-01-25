@@ -53,7 +53,7 @@ var StoreTracker_Value, Showcase_Default_Value, Showcase_RA_Value, HubTracker_Va
 var re_settings_page = new RegExp(/settings\/steamtracker/);
 if(document.URL.match(re_settings_page))
 {
-    test2();
+    Settings();
 }
 //settings page stuff--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
