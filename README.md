@@ -16,14 +16,6 @@ There are 4 Settings:
 - Showcase Recent Activity = adds a Recent Activity Showcase.
 (if user is a registret user on Steam-Tracker and has NOT set their recent activity private, then it only showcases the recent activity.)
 
-(all the data comes from https://steam-tracker.com/ and http://timekillerz.eu/removed/ via their API which made to serve the purpose of this userscript, 
-if you want to create something yourself using the apis perhaps ask for permission)
-
-SteamTracker will ask for permission 3 times:
-- https://Steam-Tracker.com api 
-- http://timekillerz.eu/ api
-- https://store.steampowered.com/ owned appids  (Currently not doing it but should expect it might ask for permission in the future.)
-
 ## Installation
 
 1. Make sure you have Tampermonkey installed:
