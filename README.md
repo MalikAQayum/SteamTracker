@@ -1,6 +1,6 @@
 # SteamTracker
 
-SteamTracker Userscript, adds features to the steam profile / community app hub / steam store page;
+SteamTracker Userscript, adds features to the steam profile / community app hub / steam store page;<br />
 (it honors all privacy settings)
 
 Default Settings:
@@ -11,9 +11,9 @@ Default Settings:
 There are 4 Settings:
 - enable StoreTracker = adds a Steam-Tracker button on the store page that directs to the app page on Steam-Tracker. 
 - enable HubTracker = adds a Steam-Tracker button on the app hub page that directs to the app page on Steam-Tracker. 
-- Showcase Default  = adds the default showcase.
+- Showcase Default  = adds the default showcase. <br />
 (if all privacy settings are public, it adds a table with all your removed stats / changelog / recent activity.)
-- Showcase Recent Activity = adds a Recent Activity Showcase.
+- Showcase Recent Activity = adds a Recent Activity Showcase.<br />
 (if user is a registret user on Steam-Tracker and has NOT set their recent activity private, then it only showcases the recent activity.)
 
 ## Installation
