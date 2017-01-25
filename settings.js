@@ -1,4 +1,5 @@
 // ==UserScript==
+// @name         settings
 // ==/UserScript==
 function settings(){
     document.body.innerHTML = ' ';
