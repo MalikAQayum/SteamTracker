@@ -45,7 +45,22 @@
 // @grant        GM_getValue
 // @grant        GM_setValue
 // @grant        GM_deleteValue
+// @grant        GM_addStyle
 // ==/UserScript==
+
+GM_addStyle(`
+            #Available {-webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */ filter: grayscale(0%);}
+            #Opensub {-webkit-filter: grayscale(0.5) sepia(0.75); /* Safari 6.0 - 9.0 */ filter: grayscale(0.5) sepia(0.75);}
+            #Purchasedisabled {-webkit-filter: grayscale(0.75); /* Safari 6.0 - 9.0 */ filter: grayscale(0.75);}
+            #Delisted {-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */ filter: grayscale(100%);}
+
+            #Freesoftware {-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */ filter: grayscale(100%);}
+            #Software {-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */ filter: grayscale(100%);}
+            #Video {-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */ filter: grayscale(100%);}
+
+            #deleted {-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */ filter: grayscale(100%);}
+`);
+
 
 //settings page stuff--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 var StoreTracker_Value, Showcase_Default_Value, Showcase_RA_Value, HubTracker_Value;
@@ -368,23 +383,6 @@ function steam_tracker_data_2(){
 	</div>
 </div>
 `;
-        var styleNode = document.createElement('style');
-        styleNode.type = "text/css";
-        var styleText = document.createTextNode(
-            `
-            #Available {-webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */ filter: grayscale(0%);}
-            #Opensub {-webkit-filter: grayscale(0.5) sepia(0.5); /* Safari 6.0 - 9.0 */ filter: grayscale(0.5) sepia(0.5);}
-            #Purchasedisabled {-webkit-filter: grayscale(0.5); /* Safari 6.0 - 9.0 */ filter: grayscale(0.5);}
-            #Delisted {-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */ filter: grayscale(100%);}
-
-            #Freesoftware {-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */ filter: grayscale(100%);}
-            #Software {-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */ filter: grayscale(100%);}
-            #Video {-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */ filter: grayscale(100%);}
-
-            #deleted {-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */ filter: grayscale(100%);}
-            `);
-        styleNode.appendChild(styleText);
-        document.getElementsByTagName('head')[0].appendChild(styleNode);
 
         console.log("skipping RA images/history : private 2 of 2");
         }
@@ -487,23 +485,7 @@ function steam_tracker_data_2(){
 
 </div>
 `;
-        var styleNode2 = document.createElement('style');
-        styleNode2.type = "text/css";
-        var styleText2 = document.createTextNode(
-            `
-            #Available {-webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */ filter: grayscale(0%);}
-            #Opensub {-webkit-filter: grayscale(0.5) sepia(0.5); /* Safari 6.0 - 9.0 */ filter: grayscale(0.5) sepia(0.5);}
-            #Purchasedisabled {-webkit-filter: grayscale(0.5); /* Safari 6.0 - 9.0 */ filter: grayscale(0.5);}
-            #Delisted {-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */ filter: grayscale(100%);}
 
-            #Freesoftware {-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */ filter: grayscale(100%);}
-            #Software {-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */ filter: grayscale(100%);}
-            #Video {-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */ filter: grayscale(100%);}
-
-            #deleted {-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */ filter: grayscale(100%);}
-            `);
-        styleNode2.appendChild(styleText2);
-        document.getElementsByTagName('head')[0].appendChild(styleNode2);
         }
         else{
             //donothing
@@ -517,42 +499,38 @@ function steam_tracker_data_2(){
         else if ((GM_getValue("Showcase_RA_Value") == 1)) {
         console.log("Showcase Recent Activity is set to : " + GM_getValue("Showcase_RA_Value") + " and will add Showcase Recent Activity to the Steam Profile.");
         //RA
-        var ra_image_0s = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_recentactivity_appid_0") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" size="100%" title="' + GM_getValue("G_steamtracker_recentactivity_title_0") + " : [" + GM_getValue("G_steamtracker_recentactivity_status_0") +"]"+ '"id="'+ GM_getValue("G_steamtracker_recentactivity_status_0").replace(" ", "") + '"alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_steamtracker_recentactivity_appid_0") +"/"+ '" onclick="window.open(this.alt)">';
-        var ra_image_1s = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_recentactivity_appid_1") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" size="100%" title="' + GM_getValue("G_steamtracker_recentactivity_title_1") + " : [" + GM_getValue("G_steamtracker_recentactivity_status_1") +"]"+ '"id="'+ GM_getValue("G_steamtracker_recentactivity_status_1").replace(" ", "") + '"alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_steamtracker_recentactivity_appid_1") +"/" + '" onclick="window.open(this.alt)">';
-        var ra_image_2s = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_recentactivity_appid_2") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" size="100%" title="' + GM_getValue("G_steamtracker_recentactivity_title_2") + " : [" + GM_getValue("G_steamtracker_recentactivity_status_2") +"]"+ '"id="'+ GM_getValue("G_steamtracker_recentactivity_status_2").replace(" ", "") + '"alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_steamtracker_recentactivity_appid_2") +"/" + '" onclick="window.open(this.alt)">';
-        var ra_image_3s = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_recentactivity_appid_3") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" size="100%" title="' + GM_getValue("G_steamtracker_recentactivity_title_3") + " : [" + GM_getValue("G_steamtracker_recentactivity_status_3") +"]"+ '"id="'+ GM_getValue("G_steamtracker_recentactivity_status_3").replace(" ", "") + '"alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_steamtracker_recentactivity_appid_3") +"/" + '" onclick="window.open(this.alt)">';
+        var ra_image_0sx = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_recentactivity_appid_0") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" size="100%" title="' + GM_getValue("G_steamtracker_recentactivity_title_0") + " : [" + GM_getValue("G_steamtracker_recentactivity_status_0") +"]"+ '"id="'+ GM_getValue("G_steamtracker_recentactivity_status_0").replace(" ", "") + '"alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_steamtracker_recentactivity_appid_0") +"/"+ '" onclick="window.open(this.alt)">';
+        var ra_image_1sx = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_recentactivity_appid_1") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" size="100%" title="' + GM_getValue("G_steamtracker_recentactivity_title_1") + " : [" + GM_getValue("G_steamtracker_recentactivity_status_1") +"]"+ '"id="'+ GM_getValue("G_steamtracker_recentactivity_status_1").replace(" ", "") + '"alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_steamtracker_recentactivity_appid_1") +"/" + '" onclick="window.open(this.alt)">';
+        var ra_image_2sx = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_recentactivity_appid_2") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" size="100%" title="' + GM_getValue("G_steamtracker_recentactivity_title_2") + " : [" + GM_getValue("G_steamtracker_recentactivity_status_2") +"]"+ '"id="'+ GM_getValue("G_steamtracker_recentactivity_status_2").replace(" ", "") + '"alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_steamtracker_recentactivity_appid_2") +"/" + '" onclick="window.open(this.alt)">';
+        var ra_image_3sx = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_recentactivity_appid_3") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" size="100%" title="' + GM_getValue("G_steamtracker_recentactivity_title_3") + " : [" + GM_getValue("G_steamtracker_recentactivity_status_3") +"]"+ '"id="'+ GM_getValue("G_steamtracker_recentactivity_status_3").replace(" ", "") + '"alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_steamtracker_recentactivity_appid_3") +"/" + '" onclick="window.open(this.alt)">';
 
-        document.getElementsByClassName("profile_customization_area")[0].setAttribute("id", "MalikQayum_Showcase");
-        var div_remgc2 = document.getElementById("MalikQayum_Showcase");
+        document.getElementsByClassName("profile_customization_area")[0].setAttribute("id", "MalikQayum_Showcasex");
+        var div_remgc2x = document.getElementById("MalikQayum_Showcasex");
 
-        var remgc_Div2 = document.createElement('div');
-        remgc_Div2.id = 'MalikQayum_Showcase_content';
-        div_remgc2.appendChild(remgc_Div2);
-        remgc_Div2.innerHTML =
+        var remgc_Div2x = document.createElement('div');
+        remgc_Div2x.id = 'MalikQayum_Showcase_content';
+        div_remgc2x.appendChild(remgc_Div2x);
+        remgc_Div2x.innerHTML =
 `
 <div class="profile_customization"><div class="profile_customization_header">Recent Activity</div><div class="profile_customization_block"><div class="gamecollector_showcase"><div class="showcase_gamecollector_games">
 				<div class="showcase_slot showcase_gamecollector_game" >
-					` +ra_image_0s +`
+					` +ra_image_0sx +`
 				</div>
 				<div class="showcase_slot showcase_gamecollector_game">
-					` +ra_image_1s +`
+					` +ra_image_1sx +`
 					</div>
 				</div>
 				<div class="showcase_slot showcase_gamecollector_game">
-					` +ra_image_2s +`
+					` +ra_image_2sx +`
 					</div>
 				</div>
 				<div class="showcase_slot showcase_gamecollector_game">
-					` +ra_image_3s +`
+					` +ra_image_3sx +`
 					</div>
 				</div>
 				<div style="clear: left;"></div></div></div><div style="clear: both"></div></div></div>
 `;
-        var styleNode2 = document.createElement('style');
-        styleNode2.type = "text/css";
-        var styleText2 = document.createTextNode(` #deleted {-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */ filter: grayscale(100%);}`);
-        styleNode2.appendChild(styleText2);
-        document.getElementsByTagName('head')[0].appendChild(styleNode2);
+
         //end-- showcase Recent Activity.
             
         }
