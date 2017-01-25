@@ -2,7 +2,7 @@
 // @name         Steam-Tracker_settings
 // ==/UserScript==
 
-function test(){
+function test2(){
     document.body.innerHTML = ' ';
     var Settings = document.createElement("div");
     Settings.innerHTML = "<p><h3>SteamTracker Extension Settings.</h3></p><br>";
