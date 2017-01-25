@@ -18,12 +18,15 @@ There are 4 Settings:
 
 ## Installation
 
-1. Make sure you have Tampermonkey installed, then Install SteamTracker below:
+1. Make sure you have Tampermonkey installed:
 
-	
-	                                                                            | Userscript                | Direct Install     |
-* Chrome - install [Tampermonkey](https://tampermonkey.net/?ext=dhdg&browser=chrome)|---------------------------|:------------------:|
-	                                                                            | SteamTracker              | [install][st-raw]  |
+	* Chrome - install [Tampermonkey](https://tampermonkey.net/?ext=dhdg&browser=chrome)
+
+2. Install SteamTracker Below:
+
+	| Userscript                | Direct Install     |
+	|---------------------------|:------------------:|
+	| SteamTracker              | [install][st-raw]  |
 
 
 [st-raw]: https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/Steam-Tracker.user.js
