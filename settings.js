@@ -1,7 +1,3 @@
-// ==UserScript==
-// @name         Steam-Tracker_settings
-// ==/UserScript==
-
 function test(){
     document.body.innerHTML = ' ';
     var Settings = document.createElement("div");
