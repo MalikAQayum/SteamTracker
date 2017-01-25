@@ -1,3 +1,5 @@
+// ==UserScript==
+// ==/UserScript==
 function settings(){
     document.body.innerHTML = ' ';
     var Settings = document.createElement("div");
