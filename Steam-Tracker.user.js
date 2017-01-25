@@ -3,6 +3,9 @@
 // @namespace    https://githubsss.com/MalikAQayum/SteamTracker
 // @description  add stats to the steam profile page from http://removed.timekillerz.eu/ and https://steam-tracker.com/user/*/ + adds a button to steam-tracker <appid> to the app hub page and store page.
 // @author       MalikQayum
+// @connect	 http://removed.timekillerz.eu/content/steamext.php?steamid=*
+// @connect	 https://steam-tracker.com/api?action=GetUserInfo&steamid=*
+// @connect	 https://steam-tracker.com/api?action=GetChangelog
 // @include      /^https?://steamcommunity\.com/(id|profiles)/*/edit/settings/steamtracker/
 // @include      /^https?://steamcommunity\.com/(id|profiles)/*/
 // @include      /^https?://steamcommunity\.com/app/*/
