@@ -3,6 +3,8 @@
 // @namespace    https://githubsss.com/MalikAQayum/SteamTracker
 // @description  add stats to the steam profile page from http://removed.timekillerz.eu/ and https://steam-tracker.com/user/*/ + adds a button to steam-tracker <appid> to the app hub page and store page.
 // @author       MalikQayum
+// @connect      removed.timekillerz.eu
+// @connect      steam-tracker.com
 // @include      /^https?://steamcommunity\.com/(id|profiles)/*/edit/settings/steamtracker/
 // @include      /^https?://steamcommunity\.com/(id|profiles)/*/
 // @include      /^https?://steamcommunity\.com/app/*/
@@ -37,7 +39,7 @@
 // @exclude      *://steamcommunity.com/app/*/reviews*
 // @downloadURL https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.user.js
 // @updateURL   https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.meta.js
-// @version      1.4
+// @version      1.5
 // @grant        GM_xmlhttpRequest
 // @grant        GM_getValue
 // @grant        GM_setValue
