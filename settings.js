@@ -1,7 +1,3 @@
-// ==UserScript==
-// @name         Settings
-// ==/UserScript==
-
 function Settings(){
     document.body.innerHTML = ' ';
     var Settings = document.createElement("div");
