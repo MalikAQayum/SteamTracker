@@ -38,7 +38,6 @@
 // @exclude      *://steamcommunity.com/app/*/guides*
 // @exclude      *://steamcommunity.com/app/*/reviews*
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/settings.js
-// @require     https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/showcase_default.js
 // @downloadURL https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.user.js
 // @updateURL   https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.meta.js
 // @version      1.5
