@@ -1,7 +1,3 @@
-// ==UserScript==
-// @name         Showcase_Default
-// ==/UserScript==
-
 function Showcase_Default(){
 console.log("Showcase Default is set to : " + GM_getValue("Showcase_Default_Value") + " and will add Showcase Default to the Steam Profile.");
         //RA
