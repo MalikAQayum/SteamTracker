@@ -161,11 +161,87 @@ function Settings(){
     document.body.appendChild(hr);
     console.log("[HubTracker:] = " + GM_getValue("HubTracker_Value"));
 
+    //RemGC Showcase setting.
+    var RemGCTracker_F = function() {
+        var RemGCTracker_V = document.getElementById('RemGCTrackerid').value;
+        GM_setValue("RemGCTracker_Value", RemGCTracker_V);
+        console.log("[RemGCTracker:] = " + GM_getValue("RemGCTracker_Value"));
+    };
+
+    var RemGCTracker_B = document.createElement("input");
+    RemGCTracker_B.type="button";
+    RemGCTracker_B.value="RemGCTracker";
+    RemGCTracker_B.className="btnv6_blue_hoverfade";
+    RemGCTracker_B.style.width = "150px";
+    RemGCTracker_B.style.height = "30px";
+    RemGCTracker_B.onclick = RemGCTracker_F;
+    document.body.appendChild(RemGCTracker_B);
+
+    var RemGCTracker_I = document.createElement("input");
+    RemGCTracker_I.type="number";
+    RemGCTracker_I.id="RemGCTrackerid";
+    RemGCTracker_I.name="RemGCTrackerid";
+    RemGCTracker_I.value=GM_getValue("RemGCTracker_Value");
+    RemGCTracker_I.min="0";
+    RemGCTracker_I.max="1";
+    RemGCTracker_I.style.width = "33px";
+    RemGCTracker_I.style.height = "25px";
+    RemGCTracker_I.onclick = RemGCTracker_F;
+    document.body.appendChild(RemGCTracker_I);
+
+    var P_RemGCTracker = document.createElement("p");
+    var RemGCTracker_Text = document.createTextNode(" : 0 = off / 1 = on  - adds a C7K Showcase to the profile.");
+    document.body.appendChild(RemGCTracker_Text);
+
+    var hr = document.createElement('hr');
+    hr.innerHTML = ' ';
+    document.body.appendChild(hr);
+    console.log("[RemGCTracker:] = " + GM_getValue("RemGCTracker_Value"));
+
+    //C7K Showcase setting.
+    var C7KTracker_F = function() {
+        var C7KTracker_V = document.getElementById('C7KTrackerid').value;
+        GM_setValue("C7KTracker_Value", C7KTracker_V);
+        console.log("[C7KTracker:] = " + GM_getValue("C7KTracker_Value"));
+    };
+
+    var C7KTracker_B = document.createElement("input");
+    C7KTracker_B.type="button";
+    C7KTracker_B.value="C7KTracker";
+    C7KTracker_B.className="btnv6_blue_hoverfade";
+    C7KTracker_B.style.width = "150px";
+    C7KTracker_B.style.height = "30px";
+    C7KTracker_B.onclick = C7KTracker_F;
+    document.body.appendChild(C7KTracker_B);
+
+    var C7KTracker_I = document.createElement("input");
+    C7KTracker_I.type="number";
+    C7KTracker_I.id="C7KTrackerid";
+    C7KTracker_I.name="C7KTrackerid";
+    C7KTracker_I.value=GM_getValue("C7KTracker_Value");
+    C7KTracker_I.min="0";
+    C7KTracker_I.max="1";
+    C7KTracker_I.style.width = "33px";
+    C7KTracker_I.style.height = "25px";
+    C7KTracker_I.onclick = C7KTracker_F;
+    document.body.appendChild(C7KTracker_I);
+
+    var P_C7KTracker = document.createElement("p");
+    var C7KTracker_Text = document.createTextNode(" : 0 = off / 1 = on  - adds a C7K Showcase to the profile.");
+    document.body.appendChild(C7KTracker_Text);
+
+    var hr = document.createElement('hr');
+    hr.innerHTML = ' ';
+    document.body.appendChild(hr);
+    console.log("[C7KTracker:] = " + GM_getValue("C7KTracker_Value"));
+
     var Save_F = function() {
         StoreTracker_F();
         HubTracker_F();
         Showcase_Default_F();
         Showcase_RA_F();
+		RemGCTracker_F();
+		C7KTracker_F();
 
         location.href="http://steamcommunity.com/my";
     };
