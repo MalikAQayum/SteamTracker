@@ -63,7 +63,7 @@ GM_addStyle(`
 
 
 //settings page stuff--------------------------------------------------------------------------------------------------------------------------------------------------------------------
-var StoreTracker_Value, Showcase_Default_Value, Showcase_RA_Value, HubTracker_Value, Showcase_RemGC_Value, Showcase_C7K_Value;
+var StoreTracker_Value, Showcase_Default_Value, Showcase_RA_Value, HubTracker_Value, RemGCTracker_Value, C7KTracker_Value;
 
 var re_settings_page = new RegExp(/settings\/steamtracker/);
 if(document.URL.match(re_settings_page))
@@ -607,11 +607,11 @@ function Recent_Activity_Showcase(){
 }
 
 function RemGC_Showcase(){
-        if ((GM_getValue("Showcase_RemGC_Value") == 0) || (GM_getValue("Showcase_RemGC_Value") == "undefined") || (GM_getValue("Showcase_RemGC_Value") == null) ) {
-            console.log("Showcase Recent Activity is set to : " + GM_getValue("Showcase_RemGC_Value") + " and will not add Showcase Recent Activity to the Steam Profile.");
+        if ((GM_getValue("RemGCTracker_Value") == 0) || (GM_getValue("RemGCTracker_Value") == "undefined") || (GM_getValue("RemGCTracker_Value") == null) ) {
+            console.log("Showcase RemGC is set to : " + GM_getValue("RemGCTracker_Value") + " and will not add Showcase RemGC to the Steam Profile.");
         }
-        else if ((GM_getValue("Showcase_RemGC_Value") == 1)) {
-        console.log("Showcase Recent Activity is set to : " + GM_getValue("Showcase_RemGC_Value") + " and will add Showcase Recent Activity to the Steam Profile.");
+        else if ((GM_getValue("RemGCTracker_Value") == 1)) {
+        console.log("Showcase RemGC Activity is set to : " + GM_getValue("RemGCTracker_Value") + " and will add Showcase RemGC to the Steam Profile.");
 
         document.getElementsByClassName("profile_customization_area")[0].setAttribute("id", "MalikQayum_Showcase_3");
         var div_3 = document.getElementById("MalikQayum_Showcase_3");
@@ -657,11 +657,11 @@ function RemGC_Showcase(){
 }
 
 function C7K_Showcase(){
-        if ((GM_getValue("Showcase_C7K_Value") == 0) || (GM_getValue("Showcase_C7K_Value") == "undefined") || (GM_getValue("Showcase_C7K_Value") == null) ) {
-            console.log("Showcase Recent Activity is set to : " + GM_getValue("Showcase_C7K_Value") + " and will not add Showcase Recent Activity to the Steam Profile.");
+        if ((GM_getValue("C7KTracker_Value") == 0) || (GM_getValue("C7KTracker_Value") == "undefined") || (GM_getValue("C7KTracker_Value") == null) ) {
+            console.log("Showcase C7K is set to : " + GM_getValue("C7KTracker_Value") + " and will not add Showcase C7K to the Steam Profile.");
         }
         else if ((GM_getValue("Showcase_C7K_Value") == 1)) {
-        console.log("Showcase Recent Activity is set to : " + GM_getValue("Showcase_C7K_Value") + " and will add Showcase Recent Activity to the Steam Profile.");
+        console.log("Showcase C7K is set to : " + GM_getValue("C7KTracker_Value") + " and will add Showcase C7K to the Steam Profile.");
 
         document.getElementsByClassName("profile_customization_area")[0].setAttribute("id", "MalikQayum_Showcase_4");
         var div_4 = document.getElementById("MalikQayum_Showcase_4");
