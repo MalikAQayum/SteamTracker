@@ -63,7 +63,7 @@ GM_addStyle(`
 
 
 //settings page stuff--------------------------------------------------------------------------------------------------------------------------------------------------------------------
-var StoreTracker_Value, Showcase_Default_Value, Showcase_RA_Value, HubTracker_Value, RemGCTracker_Value, C7KTracker_Value;
+var StoreTracker_Value, Showcase_Default_Value, Showcase_RA_Value, HubTracker_Value, RemGCTracker_Value, C7KTracker_Value, Showcase_ROA_Value;
 
 var re_settings_page = new RegExp(/settings\/steamtracker/);
 if(document.URL.match(re_settings_page))
@@ -169,6 +169,7 @@ function Steam_id(){
 }
 
 var G_steam_id, G_timekillerz_rcount, G_timekillerz_trcount, G_c7k_rcount, G_c7k_trcount, G_steamtracker_privacy, G_steamtracker_total_1, G_steamtracker_total_2, G_steamtracker_totalgames_1, G_steamtracker_totalgames_2, G_steamtracker_delisted_1, G_steamtracker_delisted_2, G_steamtracker_disabled_1, G_steamtracker_disabled_2, G_steamtracker_F2P_1, G_steamtracker_F2P_2, G_steamtracker_retailonly_1, G_steamtracker_retailonly_2, G_steamtracker_testapp_1, G_steamtracker_testapp_2, G_steamtracker_preorder_1, G_steamtracker_preorder_2, G_steamtracker_unreleased_1, G_steamtracker_unreleased_2, G_steamtracker_software_1, G_steamtracker_software_2, G_steamtracker_freesoftware_1, G_steamtracker_freesoftware_2, G_steamtracker_video_1, G_steamtracker_video_2, G_steamtracker_recentactivity_title_0, G_steamtracker_recentactivity_appid_0, G_steamtracker_recentactivity_status_0, G_steamtracker_recentactivity_title_1, G_steamtracker_recentactivity_appid_1, G_steamtracker_recentactivity_status_1, G_steamtracker_recentactivity_title_2, G_steamtracker_recentactivity_appid_2, G_steamtracker_recentactivity_status_2, G_steamtracker_recentactivity_title_3, G_steamtracker_recentactivity_appid_3, G_steamtracker_recentactivity_status_3, G_steamtracker_changelog_appid_0, G_steamtracker_changelog_title_0, G_steamtracker_changelog_change_0, G_steamtracker_changelog_appid_1, G_steamtracker_changelog_title_1, G_steamtracker_changelog_change_1, G_steamtracker_changelog_appid_2, G_steamtracker_changelog_title_2, G_steamtracker_changelog_change_2, G_steamtracker_changelog_appid_3, G_steamtracker_changelog_title_3, G_steamtracker_changelog_change_3, G_steamtracker_changelog_appid_4, G_steamtracker_changelog_title_4, G_steamtracker_changelog_change_4;
+var G_st_keys, G_tk_keys, G_r_owned_appids_0, G_r_owned_appids_1, G_r_owned_appids_2, G_r_owned_appids_3;
 
 function timekillerz_data(){
     GM_xmlhttpRequest({
@@ -495,6 +496,7 @@ function steam_tracker_data_2(){
         Recent_Activity_Showcase();
         RemGC_Showcase();
         C7K_Showcase();
+        Rarest_Owned_Appids();
     }
     
 GM_deleteValue("G_steam_id");
@@ -554,12 +556,19 @@ GM_deleteValue("G_steamtracker_changelog_change_3");
 GM_deleteValue("G_steamtracker_changelog_appid_4");
 GM_deleteValue("G_steamtracker_changelog_title_4");
 GM_deleteValue("G_steamtracker_changelog_change_4");
+GM_deleteValue("G_st_keys");
+GM_deleteValue("G_tk_keys");
+GM_deleteValue("G_r_owned_appids_0");
+GM_deleteValue("G_r_owned_appids_1");
+GM_deleteValue("G_r_owned_appids_2");
+GM_deleteValue("G_r_owned_appids_3");
+               
 }
 
 
 //SHOWCASES ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//Recent Activity Showcase.
 function Recent_Activity_Showcase(){
-        //start-- showcase Recent Activity.
         if ((GM_getValue("Showcase_RA_Value") == 0) || (GM_getValue("Showcase_RA_Value") == "undefined") || (GM_getValue("Showcase_RA_Value") == null) ) {
             console.log("Showcase Recent Activity is set to : " + GM_getValue("Showcase_RA_Value") + " and will not add Showcase Recent Activity to the Steam Profile.");
         }
@@ -597,15 +606,13 @@ function Recent_Activity_Showcase(){
 				</div>
 				<div style="clear: left;"></div></div></div><div style="clear: both"></div></div></div>
 `;
-
-        //end-- showcase Recent Activity.
-            
         }
         else{
             //donothing
         }
 }
 
+//RemGC Showcase
 function RemGC_Showcase(){
         if ((GM_getValue("RemGCTracker_Value") == 0) || (GM_getValue("RemGCTracker_Value") == "undefined") || (GM_getValue("RemGCTracker_Value") == null) ) {
             console.log("Showcase RemGC is set to : " + GM_getValue("RemGCTracker_Value") + " and will not add Showcase RemGC to the Steam Profile.");
@@ -656,6 +663,7 @@ function RemGC_Showcase(){
         }
 }
 
+//C7K Showcase.
 function C7K_Showcase(){
         if ((GM_getValue("C7KTracker_Value") == 0) || (GM_getValue("C7KTracker_Value") == "undefined") || (GM_getValue("C7KTracker_Value") == null) ) {
             console.log("Showcase C7K is set to : " + GM_getValue("C7KTracker_Value") + " and will not add Showcase C7K to the Steam Profile.");
@@ -704,4 +712,117 @@ function C7K_Showcase(){
         else{
             //donothing
         }
+}
+//Rarest Owned Appids Showcase.
+function Rarest_Owned_Appids(){
+    if ((GM_getValue("Showcase_ROA_Value") == 0) || (GM_getValue("Showcase_ROA_Value") == "undefined") || (GM_getValue("Showcase_ROA_Value") == null) ) {
+        console.log("Showcase Rarest Owned Appids is set to : " + GM_getValue("Showcase_ROA_Value") + " and will not add Showcase Rarest Owned Appids to the Steam Profile.");
+    }
+    else if ((GM_getValue("Showcase_ROA_Value") == 1)) {
+        console.log("Showcase Rarest Owned Appids is set to : " + GM_getValue("Showcase_ROA_Value") + " and will add Showcase Rarest Owned Appids to the Steam Profile.");
+        tk_ownedapps();
+    }
+    else
+    {
+        //donothing
+    }
+}
+
+function tk_ownedapps(){
+    GM_xmlhttpRequest({
+        method: "GET",
+        url: "http://removed.timekillerz.eu/content/generatejson.php?steamid="+ GM_getValue("G_steam_id"),
+        onload: function(response_tk) {
+            var tk_str = response_tk.responseText;
+            var json_tk_data = JSON.parse(tk_str);
+            var tk_keys=[];
+            for(var i = 0; i < json_tk_data.response.games.length; i++) {
+                tk_keys += json_tk_data.response.games[i].appid + ",";
+            }
+            GM_setValue("G_tk_keys", tk_keys.substring(0, tk_keys.length - 1));
+            st_GetAppList();
+        }
+    });
+}
+
+function st_GetAppList(){
+    GM_xmlhttpRequest({
+        method: "GET",
+        url: "https://steam-tracker.com/api?action=GetAppList",
+        onload: function(response_GetAppList) {
+            var GetAppList_str = response_GetAppList.responseText;
+            var json_ownedappids_data = JSON.parse(GetAppList_str);
+            var st_keys=[];
+            for(var i = 0; i < json_ownedappids_data.removed_apps.length; i++) {
+                st_keys += json_ownedappids_data.removed_apps[i].appid + ",";
+            }
+            GM_setValue("G_st_keys", st_keys.substring(0, st_keys.length - 1));
+            r_ownedappids();
+        }
+    });
+}
+
+function r_ownedappids(){
+    var rarest_appids_Array =  JSON.parse("["+GM_getValue("G_st_keys")+"]");
+    var Owned_appids_Array =  JSON.parse("["+GM_getValue("G_tk_keys")+"]");
+
+    var r_owned_appids=[];
+    var x = 0;
+
+    for (var i = 0; i < rarest_appids_Array.length; i++) {
+        for (var j = 0; j < Owned_appids_Array.length; j++) {
+            if (x == 4) {
+                break;
+            }
+            else if (rarest_appids_Array[i] == Owned_appids_Array[j]) {
+                r_owned_appids += Owned_appids_Array[j]+",";
+                x = x + 1;
+            }
+            else {
+                //donothing
+            }
+        }
+    }
+    r_owned_appids = r_owned_appids.substring(0, r_owned_appids.length - 1);
+    r_owned_appids=r_owned_appids.split(',');
+    var out=[];
+    for(i=0; i<r_owned_appids.length;i=i+2)
+        out.push(r_owned_appids.slice(i,i+2).join(','));
+
+    GM_setValue("G_r_owned_appids_0",r_owned_appids[0]);
+    GM_setValue("G_r_owned_appids_1",r_owned_appids[1]);
+    GM_setValue("G_r_owned_appids_2",r_owned_appids[2]);
+    GM_setValue("G_r_owned_appids_3",r_owned_appids[3]);
+    rarest_owned_appids();
+}
+
+function rarest_owned_appids(){
+    
+        document.getElementsByClassName("profile_customization_area")[0].setAttribute("id", "MalikQayum_Showcase_5");
+        var div_5 = document.getElementById("MalikQayum_Showcase_5");
+
+        var x_div_5 = document.createElement('div');
+        x_div_5.id = 'MalikQayum_Showcase_5';
+        div_5.appendChild(x_div_5);
+        x_div_5.innerHTML =
+`
+<div class="profile_customization"><div class="profile_customization_header">Rarest Owned Appids</div><div class="profile_customization_block"><div class="gamecollector_showcase"><div class="showcase_gamecollector_games">
+				<div class="showcase_slot showcase_gamecollector_game" >
+					` +'<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_r_owned_appids_0") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" size="100%" title="' + GM_getValue("G_r_owned_appids_0") + '"alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_r_owned_appids_0") +"/"+ '" onclick="window.open(this.alt)">' +`
+				</div>
+				<div class="showcase_slot showcase_gamecollector_game">
+					` +'<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_r_owned_appids_1") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" size="100%" title="' + GM_getValue("G_r_owned_appids_1") + '"alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_r_owned_appids_1") +"/"+ '" onclick="window.open(this.alt)">' +`
+					</div>
+				</div>
+				<div class="showcase_slot showcase_gamecollector_game">
+					` +'<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_r_owned_appids_2") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" size="100%" title="' + GM_getValue("G_r_owned_appids_2") + '"alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_r_owned_appids_2") +"/"+ '" onclick="window.open(this.alt)">' +`
+					</div>
+				</div>
+				<div class="showcase_slot showcase_gamecollector_game">
+					` +'<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_r_owned_appids_3") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" size="100%" title="' + GM_getValue("G_r_owned_appids_3") + '"alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_r_owned_appids_3") +"/"+ '" onclick="window.open(this.alt)">' +`
+					</div>
+				</div>
+				<div style="clear: left;"></div></div></div><div style="clear: both"></div></div></div>
+`;
+
 }
