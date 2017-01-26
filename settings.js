@@ -190,7 +190,7 @@ function Settings(){
     document.body.appendChild(RemGCTracker_I);
 
     var P_RemGCTracker = document.createElement("p");
-    var RemGCTracker_Text = document.createTextNode(" : 0 = off / 1 = on  - adds a C7K Showcase to the profile.");
+    var RemGCTracker_Text = document.createTextNode(" : 0 = off / 1 = on  - adds a RemGC Showcase to the profile.");
     document.body.appendChild(RemGCTracker_Text);
 
     var hr = document.createElement('hr');
