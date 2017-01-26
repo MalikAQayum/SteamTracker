@@ -40,7 +40,7 @@
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/settings.js
 // @downloadURL https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.user.js
 // @updateURL   https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.meta.js
-// @version      1.5
+// @version      1.6
 // @grant        GM_xmlhttpRequest
 // @grant        GM_getValue
 // @grant        GM_setValue
@@ -63,7 +63,7 @@ GM_addStyle(`
 
 
 //settings page stuff--------------------------------------------------------------------------------------------------------------------------------------------------------------------
-var StoreTracker_Value, Showcase_Default_Value, Showcase_RA_Value, HubTracker_Value;
+var StoreTracker_Value, Showcase_Default_Value, Showcase_RA_Value, HubTracker_Value, Showcase_RemGC_Value, Showcase_C7K_Value;
 
 var re_settings_page = new RegExp(/settings\/steamtracker/);
 if(document.URL.match(re_settings_page))
@@ -335,12 +335,12 @@ function steam_tracker_data_2(){
         var stc_image_4s = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_changelog_appid_4") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" width="100%" style="max-width: 100px;" title="' + GM_getValue("G_steamtracker_changelog_title_4") + " : [" + GM_getValue("G_steamtracker_changelog_change_4") +"]"+ '"id="'+ GM_getValue("G_steamtracker_changelog_change_4").replace(" ", "") +'" alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_steamtracker_changelog_appid_4") +"/" + '" onclick="window.open(this.alt)">';
         var st_table = "<table style=\"width:100%\">" +tableheader+Total+TotalGames+total_ck7+Delisted+total_tk+Disabled+F2P+retailonly+testapp+preorder+unreleased+software+freesoftware+video+ "</table>";
         
-        document.getElementsByClassName("profile_customization_area")[0].setAttribute("id", "MalikQayum_Showcase");
-        var div_remgc = document.getElementById("MalikQayum_Showcase");
-        var remgc_Div = document.createElement('div');
-        remgc_Div.id = 'MalikQayum_Showcase_content';
-        div_remgc.prepend(remgc_Div);
-        remgc_Div.innerHTML =
+        document.getElementsByClassName("profile_customization_area")[0].setAttribute("id", "MalikQayum_Showcase_0");
+        var div_0 = document.getElementById("MalikQayum_Showcase_0");
+        var x_div_0 = document.createElement('div');
+        x_div_0.id = 'MalikQayum_Showcase_0';
+        div_0.prepend(x_div_0);
+        x_div_0.innerHTML =
 `
 <div class="profile_customization">
 	<div class="profile_customization_header"> Steam Removed Games Showcase	</div>
@@ -389,6 +389,7 @@ function steam_tracker_data_2(){
         else{
             //donothing
         }
+        //showcase
     }
     else
     {
@@ -412,13 +413,13 @@ function steam_tracker_data_2(){
 
         var st_tablex = "<table style=\"width:100%\">" +tableheader+Total+TotalGames+total_ck7+Delisted+total_tk+Disabled+F2P+retailonly+testapp+preorder+unreleased+software+freesoftware+video+ "</table>";
 
-        document.getElementsByClassName("profile_customization_area")[0].setAttribute("id", "MalikQayum_Showcase");
-        var div_remgc2 = document.getElementById("MalikQayum_Showcase");
+        document.getElementsByClassName("profile_customization_area")[0].setAttribute("id", "MalikQayum_Showcase_1");
+        var div_1 = document.getElementById("MalikQayum_Showcase_1");
 
-        var remgc_Div2 = document.createElement('div');
-        remgc_Div2.id = 'MalikQayum_Showcase_content';
-        div_remgc2.prepend(remgc_Div2);
-        remgc_Div2.innerHTML =
+        var x_div_1 = document.createElement('div');
+        x_div_1.id = 'MalikQayum_Showcase_1';
+        div_1.prepend(x_div_1);
+        x_div_1.innerHTML =
 `
 <div class="profile_customization"><div class="profile_customization_header"> Steam Removed Games Showcase	</div>
 <div class="profile_customization_block">
@@ -489,53 +490,11 @@ function steam_tracker_data_2(){
         else{
             //donothing
         }
-        //end-- showcase Default.
         
-        //start-- showcase Recent Activity.
-        if ((GM_getValue("Showcase_RA_Value") == 0) || (GM_getValue("Showcase_RA_Value") == "undefined") || (GM_getValue("Showcase_RA_Value") == null) ) {
-            console.log("Showcase Recent Activity is set to : " + GM_getValue("Showcase_RA_Value") + " and will not add Showcase Recent Activity to the Steam Profile.");
-        }
-        else if ((GM_getValue("Showcase_RA_Value") == 1)) {
-        console.log("Showcase Recent Activity is set to : " + GM_getValue("Showcase_RA_Value") + " and will add Showcase Recent Activity to the Steam Profile.");
-        //RA
-        var ra_image_0sx = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_recentactivity_appid_0") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" size="100%" title="' + GM_getValue("G_steamtracker_recentactivity_title_0") + " : [" + GM_getValue("G_steamtracker_recentactivity_status_0") +"]"+ '"id="'+ GM_getValue("G_steamtracker_recentactivity_status_0").replace(" ", "") + '"alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_steamtracker_recentactivity_appid_0") +"/"+ '" onclick="window.open(this.alt)">';
-        var ra_image_1sx = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_recentactivity_appid_1") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" size="100%" title="' + GM_getValue("G_steamtracker_recentactivity_title_1") + " : [" + GM_getValue("G_steamtracker_recentactivity_status_1") +"]"+ '"id="'+ GM_getValue("G_steamtracker_recentactivity_status_1").replace(" ", "") + '"alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_steamtracker_recentactivity_appid_1") +"/" + '" onclick="window.open(this.alt)">';
-        var ra_image_2sx = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_recentactivity_appid_2") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" size="100%" title="' + GM_getValue("G_steamtracker_recentactivity_title_2") + " : [" + GM_getValue("G_steamtracker_recentactivity_status_2") +"]"+ '"id="'+ GM_getValue("G_steamtracker_recentactivity_status_2").replace(" ", "") + '"alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_steamtracker_recentactivity_appid_2") +"/" + '" onclick="window.open(this.alt)">';
-        var ra_image_3sx = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_recentactivity_appid_3") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" size="100%" title="' + GM_getValue("G_steamtracker_recentactivity_title_3") + " : [" + GM_getValue("G_steamtracker_recentactivity_status_3") +"]"+ '"id="'+ GM_getValue("G_steamtracker_recentactivity_status_3").replace(" ", "") + '"alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_steamtracker_recentactivity_appid_3") +"/" + '" onclick="window.open(this.alt)">';
-
-        document.getElementsByClassName("profile_customization_area")[0].setAttribute("id", "MalikQayum_Showcasex");
-        var div_remgc2x = document.getElementById("MalikQayum_Showcasex");
-
-        var remgc_Div2x = document.createElement('div');
-        remgc_Div2x.id = 'MalikQayum_Showcase_content';
-        div_remgc2x.appendChild(remgc_Div2x);
-        remgc_Div2x.innerHTML =
-`
-<div class="profile_customization"><div class="profile_customization_header">Recent Activity</div><div class="profile_customization_block"><div class="gamecollector_showcase"><div class="showcase_gamecollector_games">
-				<div class="showcase_slot showcase_gamecollector_game" >
-					` +ra_image_0sx +`
-				</div>
-				<div class="showcase_slot showcase_gamecollector_game">
-					` +ra_image_1sx +`
-					</div>
-				</div>
-				<div class="showcase_slot showcase_gamecollector_game">
-					` +ra_image_2sx +`
-					</div>
-				</div>
-				<div class="showcase_slot showcase_gamecollector_game">
-					` +ra_image_3sx +`
-					</div>
-				</div>
-				<div style="clear: left;"></div></div></div><div style="clear: both"></div></div></div>
-`;
-
-        //end-- showcase Recent Activity.
-            
-        }
-        else{
-            //donothing
-        }
+        //showcase
+        Recent_Activity_Showcase();
+        RemGC_Showcase();
+        C7K_Showcase();
     }
     
 GM_deleteValue("G_steam_id");
@@ -595,4 +554,154 @@ GM_deleteValue("G_steamtracker_changelog_change_3");
 GM_deleteValue("G_steamtracker_changelog_appid_4");
 GM_deleteValue("G_steamtracker_changelog_title_4");
 GM_deleteValue("G_steamtracker_changelog_change_4");
+}
+
+
+//SHOWCASES ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+function Recent_Activity_Showcase(){
+        //start-- showcase Recent Activity.
+        if ((GM_getValue("Showcase_RA_Value") == 0) || (GM_getValue("Showcase_RA_Value") == "undefined") || (GM_getValue("Showcase_RA_Value") == null) ) {
+            console.log("Showcase Recent Activity is set to : " + GM_getValue("Showcase_RA_Value") + " and will not add Showcase Recent Activity to the Steam Profile.");
+        }
+        else if ((GM_getValue("Showcase_RA_Value") == 1)) {
+        console.log("Showcase Recent Activity is set to : " + GM_getValue("Showcase_RA_Value") + " and will add Showcase Recent Activity to the Steam Profile.");
+        //RA
+        var ra_image_0sx = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_recentactivity_appid_0") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" size="100%" title="' + GM_getValue("G_steamtracker_recentactivity_title_0") + " : [" + GM_getValue("G_steamtracker_recentactivity_status_0") +"]"+ '"id="'+ GM_getValue("G_steamtracker_recentactivity_status_0").replace(" ", "") + '"alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_steamtracker_recentactivity_appid_0") +"/"+ '" onclick="window.open(this.alt)">';
+        var ra_image_1sx = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_recentactivity_appid_1") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" size="100%" title="' + GM_getValue("G_steamtracker_recentactivity_title_1") + " : [" + GM_getValue("G_steamtracker_recentactivity_status_1") +"]"+ '"id="'+ GM_getValue("G_steamtracker_recentactivity_status_1").replace(" ", "") + '"alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_steamtracker_recentactivity_appid_1") +"/" + '" onclick="window.open(this.alt)">';
+        var ra_image_2sx = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_recentactivity_appid_2") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" size="100%" title="' + GM_getValue("G_steamtracker_recentactivity_title_2") + " : [" + GM_getValue("G_steamtracker_recentactivity_status_2") +"]"+ '"id="'+ GM_getValue("G_steamtracker_recentactivity_status_2").replace(" ", "") + '"alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_steamtracker_recentactivity_appid_2") +"/" + '" onclick="window.open(this.alt)">';
+        var ra_image_3sx = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_recentactivity_appid_3") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" size="100%" title="' + GM_getValue("G_steamtracker_recentactivity_title_3") + " : [" + GM_getValue("G_steamtracker_recentactivity_status_3") +"]"+ '"id="'+ GM_getValue("G_steamtracker_recentactivity_status_3").replace(" ", "") + '"alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_steamtracker_recentactivity_appid_3") +"/" + '" onclick="window.open(this.alt)">';
+
+        document.getElementsByClassName("profile_customization_area")[0].setAttribute("id", "MalikQayum_Showcase_2");
+        var div_2 = document.getElementById("MalikQayum_Showcase_2");
+
+        var x_div_2 = document.createElement('div');
+        x_div_2.id = 'MalikQayum_Showcase_2';
+        div_2.appendChild(x_div_2);
+        x_div_2.innerHTML =
+`
+<div class="profile_customization"><div class="profile_customization_header">Recent Activity</div><div class="profile_customization_block"><div class="gamecollector_showcase"><div class="showcase_gamecollector_games">
+				<div class="showcase_slot showcase_gamecollector_game" >
+					` +ra_image_0sx +`
+				</div>
+				<div class="showcase_slot showcase_gamecollector_game">
+					` +ra_image_1sx +`
+					</div>
+				</div>
+				<div class="showcase_slot showcase_gamecollector_game">
+					` +ra_image_2sx +`
+					</div>
+				</div>
+				<div class="showcase_slot showcase_gamecollector_game">
+					` +ra_image_3sx +`
+					</div>
+				</div>
+				<div style="clear: left;"></div></div></div><div style="clear: both"></div></div></div>
+`;
+
+        //end-- showcase Recent Activity.
+            
+        }
+        else{
+            //donothing
+        }
+}
+
+function RemGC_Showcase(){
+        if ((GM_getValue("Showcase_RemGC_Value") == 0) || (GM_getValue("Showcase_RemGC_Value") == "undefined") || (GM_getValue("Showcase_RemGC_Value") == null) ) {
+            console.log("Showcase Recent Activity is set to : " + GM_getValue("Showcase_RemGC_Value") + " and will not add Showcase Recent Activity to the Steam Profile.");
+        }
+        else if ((GM_getValue("Showcase_RemGC_Value") == 1)) {
+        console.log("Showcase Recent Activity is set to : " + GM_getValue("Showcase_RemGC_Value") + " and will add Showcase Recent Activity to the Steam Profile.");
+
+        document.getElementsByClassName("profile_customization_area")[0].setAttribute("id", "MalikQayum_Showcase_3");
+        var div_3 = document.getElementById("MalikQayum_Showcase_3");
+
+        var x_div_3 = document.createElement('div');
+        x_div_3.id = 'MalikQayum_Showcase_3';
+        div_3.appendChild(x_div_3);
+        x_div_3.innerHTML =
+`
+<div class="profile_customization"><div class="profile_customization_header">RemGC Group</div><div class="profile_customization_block">	<div class="favoritegroup_showcase"><div class="showcase_content_bg">
+				<div class="favoritegroup_showcase_group showcase_slot ">
+										<div class="favoritegroup_avatar">
+						<a href="http://steamcommunity.com/groups/RemGC">
+							<img src="http://cdn.akamai.steamstatic.com/steamcommunity/public/images/avatars/ea/ead110655c8169284d74b17a4d2c2e45eee6734e_full.jpg">
+						</a>
+					</div>
+					<div class="favoritegroup_content">
+													<div class="favoritegroup_namerow ellipsis">
+								<a class="favoritegroup_name whiteLink" href="http://steamcommunity.com/groups/RemGC">Removed Games Collectors</a>
+															</div>
+							<div class="favoritegroup_description">
+								Official Group for Removed Games Collectors							</div>
+							<div class="favoritegroup_stats showcase_stats_row">
+								<div class="showcase_stat favoritegroup_ingame">
+									<div class="value">`+ GM_getValue("G_timekillerz_rcount")+`</div>
+									<div class="label">Delisted</div>
+								</div>
+								<div class="showcase_stat favoritegroup_online">
+									<div class="value">`+ GM_getValue("G_timekillerz_trcount")+`</div>
+									<div class="label">Total</div>
+								</div>
+								<div class="showcase_stat favoritegroup_inchat">
+							<div class="value">RemGC</div>
+							<div class="label"><a href="steam://friends/joinchat/103582791435030951">Steam Chat</a></div>
+						</div>
+						<div style="clear: left;">
+</div></div></div></div></div></div></div></div>
+`;
+        }
+        else{
+            //donothing
+        }
+}
+
+function C7K_Showcase(){
+        if ((GM_getValue("Showcase_C7K_Value") == 0) || (GM_getValue("Showcase_C7K_Value") == "undefined") || (GM_getValue("Showcase_C7K_Value") == null) ) {
+            console.log("Showcase Recent Activity is set to : " + GM_getValue("Showcase_C7K_Value") + " and will not add Showcase Recent Activity to the Steam Profile.");
+        }
+        else if ((GM_getValue("Showcase_C7K_Value") == 1)) {
+        console.log("Showcase Recent Activity is set to : " + GM_getValue("Showcase_C7K_Value") + " and will add Showcase Recent Activity to the Steam Profile.");
+
+        document.getElementsByClassName("profile_customization_area")[0].setAttribute("id", "MalikQayum_Showcase_4");
+        var div_4 = document.getElementById("MalikQayum_Showcase_4");
+
+        var x_div_4 = document.createElement('div');
+        x_div_4.id = 'MalikQayum_Showcase_4';
+        div_4.appendChild(x_div_4);
+        x_div_4.innerHTML =
+`
+<div class="profile_customization"><div class="profile_customization_header">C7K Group</div><div class="profile_customization_block">	<div class="favoritegroup_showcase"><div class="showcase_content_bg">
+				<div class="favoritegroup_showcase_group showcase_slot ">
+										<div class="favoritegroup_avatar">
+						<a href="http://steamcommunity.com/groups/club7000">
+							<img src="http://cdn.akamai.steamstatic.com/steamcommunity/public/images/avatars/7a/7aae84f5ec0c364ed2cecda22a822b7e3a01a8b0_full.jpg">
+						</a>
+					</div>
+					<div class="favoritegroup_content">
+													<div class="favoritegroup_namerow ellipsis">
+								<a class="favoritegroup_name whiteLink" href="http://steamcommunity.com/groups/club7000">Club 7000</a>
+															</div>
+							<div class="favoritegroup_description">
+								Official Group for Club 7000							</div>
+							<div class="favoritegroup_stats showcase_stats_row">
+								<div class="showcase_stat favoritegroup_ingame">
+									<div class="value">`+ GM_getValue("G_c7k_rcount")+`</div>
+									<div class="label">Delisted</div>
+								</div>
+								<div class="showcase_stat favoritegroup_online">
+									<div class="value">`+GM_getValue("G_c7k_trcount")+`</div>
+									<div class="label">Total</div>
+								</div>
+								<div class="showcase_stat favoritegroup_inchat">
+							<div class="value">C7K</div>
+							<div class="label"><a href="steam://friends/joinchat/103582791433418659">Steam Chat</a></div>
+						</div>
+						<div style="clear: left;">
+</div></div></div></div></div></div></div></div>
+`;
+        }
+        else{
+            //donothing
+        }
 }
