@@ -660,7 +660,7 @@ function C7K_Showcase(){
         if ((GM_getValue("C7KTracker_Value") == 0) || (GM_getValue("C7KTracker_Value") == "undefined") || (GM_getValue("C7KTracker_Value") == null) ) {
             console.log("Showcase C7K is set to : " + GM_getValue("C7KTracker_Value") + " and will not add Showcase C7K to the Steam Profile.");
         }
-        else if ((GM_getValue("Showcase_C7K_Value") == 1)) {
+        else if ((GM_getValue("C7KTracker_Value") == 1)) {
         console.log("Showcase C7K is set to : " + GM_getValue("C7KTracker_Value") + " and will add Showcase C7K to the Steam Profile.");
 
         document.getElementsByClassName("profile_customization_area")[0].setAttribute("id", "MalikQayum_Showcase_4");
