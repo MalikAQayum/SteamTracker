@@ -10,44 +10,6 @@ function Settings(){
 
     /*-------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-    //store page steam-tracker button.
-    var StoreTracker_F = function() {
-        var StoreTracker_V = document.getElementById('StoreTrackerid').value;
-        GM_setValue("StoreTracker_Value", StoreTracker_V);
-        console.log("[StoreTracker:] = " + GM_getValue("StoreTracker_Value"));
-    };
-
-    var StoreTracker_B = document.createElement("input");
-    StoreTracker_B.type="button";
-    StoreTracker_B.value="StoreTracker";
-    StoreTracker_B.className="btnv6_blue_hoverfade";
-    StoreTracker_B.style.width = "150px";
-    StoreTracker_B.style.height = "30px";
-    StoreTracker_B.onclick = StoreTracker_F;
-    document.body.appendChild(StoreTracker_B);
-
-    var StoreTracker_I = document.createElement("input");
-    StoreTracker_I.type="number";
-    StoreTracker_I.id="StoreTrackerid";
-    StoreTracker_I.name="StoreTrackerid";
-    StoreTracker_I.value=GM_getValue("StoreTracker_Value");
-    StoreTracker_I.min="0";
-    StoreTracker_I.max="1";
-    StoreTracker_I.style.width = "33px";
-    StoreTracker_I.style.height = "25px";
-    StoreTracker_I.onclick = StoreTracker_F;
-    document.body.appendChild(StoreTracker_I);
-
-    var P_StoreTracker = document.createElement("p");
-    var StoreTracker_Text = document.createTextNode(" : 0 = off / 1 = on  - adds a Steam-Tracker Button to the store page.");
-    document.body.appendChild(StoreTracker_Text);
-
-    console.log("[StoreTracker:] = " + GM_getValue("StoreTracker_Value"));
-
-    var hr = document.createElement('hr');
-    hr.innerHTML = ' ';
-    document.body.appendChild(hr);
-
     //Showcase Default.
     var Showcase_Default_F = function() {
         var Showcase_Default_V = document.getElementById('Showcase_Default_id').value;
@@ -124,43 +86,44 @@ function Settings(){
     hr.innerHTML = ' ';
     document.body.appendChild(hr);
 
-    //app hub page steam-tracker button.
-    var HubTracker_F = function() {
-        var HubTracker_V = document.getElementById('HubTrackerid').value;
-        GM_setValue("HubTracker_Value", HubTracker_V);
-        console.log("[HubTracker:] = " + GM_getValue("HubTracker_Value"));
+    //Showcase Rarest Owned Appid.
+    var Showcase_ROA_F = function() {
+        var Showcase_ROA_V = document.getElementById('Showcase_ROA_id').value;
+        GM_setValue("Showcase_ROA_Value", Showcase_ROA_V);
+        console.log("[Showcase_ROA:] = " + GM_getValue("Showcase_ROA_Value"));
     };
 
-    var HubTracker_B = document.createElement("input");
-    HubTracker_B.type="button";
-    HubTracker_B.value="HubTracker";
-    HubTracker_B.className="btnv6_blue_hoverfade";
-    HubTracker_B.style.width = "150px";
-    HubTracker_B.style.height = "30px";
-    HubTracker_B.onclick = HubTracker_F;
-    document.body.appendChild(HubTracker_B);
+    var Showcase_ROA_B = document.createElement("input");
+    Showcase_ROA_B.type="button";
+    Showcase_ROA_B.value="Showcase_ROA";
+    Showcase_ROA_B.className="btnv6_blue_hoverfade";
+    Showcase_ROA_B.style.width = "150px";
+    Showcase_ROA_B.style.height = "30px";
+    Showcase_ROA_B.onclick = Showcase_ROA_F;
+    document.body.appendChild(Showcase_ROA_B);
 
-    var HubTracker_I = document.createElement("input");
-    HubTracker_I.type="number";
-    HubTracker_I.id="HubTrackerid";
-    HubTracker_I.name="HubTrackerid";
-    HubTracker_I.value=GM_getValue("HubTracker_Value");
-    HubTracker_I.min="0";
-    HubTracker_I.max="1";
-    HubTracker_I.style.width = "33px";
-    HubTracker_I.style.height = "25px";
-    HubTracker_I.onclick = HubTracker_F;
-    document.body.appendChild(HubTracker_I);
+    var Showcase_ROA_I = document.createElement("input");
+    Showcase_ROA_I.type="number";
+    Showcase_ROA_I.id="Showcase_ROA_id";
+    Showcase_ROA_I.name="Showcase_ROA_id";
+    Showcase_ROA_I.value=GM_getValue("Showcase_ROA_Value");
+    Showcase_ROA_I.min="0";
+    Showcase_ROA_I.max="1";
+    Showcase_ROA_I.style.width = "33px";
+    Showcase_ROA_I.style.height = "25px";
+    Showcase_ROA_I.onclick = Showcase_ROA_F;
+    document.body.appendChild(Showcase_ROA_I);
 
-    var P_HubTracker = document.createElement("p");
-    var HubTracker_Text = document.createTextNode(" : 0 = off / 1 = on  - adds a Steam-Tracker Button to the hub page.");
-    document.body.appendChild(HubTracker_Text);
+    var P_Showcase_ROA = document.createElement("p");
+    var Showcase_ROA_Text = document.createTextNode(" : 0 = off / 1 = on  - adds Showcase Rarest Owned Appids to the steam profile page.");
+    document.body.appendChild(Showcase_ROA_Text);
+
+    console.log("[Showcase_ROA:] = " + GM_getValue("Showcase_ROA_Value"));
 
     var hr = document.createElement('hr');
     hr.innerHTML = ' ';
     document.body.appendChild(hr);
-    console.log("[HubTracker:] = " + GM_getValue("HubTracker_Value"));
-
+	
     //RemGC Showcase setting.
     var RemGCTracker_F = function() {
         var RemGCTracker_V = document.getElementById('RemGCTrackerid').value;
@@ -234,14 +197,90 @@ function Settings(){
     hr.innerHTML = ' ';
     document.body.appendChild(hr);
     console.log("[C7KTracker:] = " + GM_getValue("C7KTracker_Value"));
+	
+     //store page steam-tracker button.
+    var StoreTracker_F = function() {
+        var StoreTracker_V = document.getElementById('StoreTrackerid').value;
+        GM_setValue("StoreTracker_Value", StoreTracker_V);
+        console.log("[StoreTracker:] = " + GM_getValue("StoreTracker_Value"));
+    };
+
+    var StoreTracker_B = document.createElement("input");
+    StoreTracker_B.type="button";
+    StoreTracker_B.value="StoreTracker";
+    StoreTracker_B.className="btnv6_blue_hoverfade";
+    StoreTracker_B.style.width = "150px";
+    StoreTracker_B.style.height = "30px";
+    StoreTracker_B.onclick = StoreTracker_F;
+    document.body.appendChild(StoreTracker_B);
+
+    var StoreTracker_I = document.createElement("input");
+    StoreTracker_I.type="number";
+    StoreTracker_I.id="StoreTrackerid";
+    StoreTracker_I.name="StoreTrackerid";
+    StoreTracker_I.value=GM_getValue("StoreTracker_Value");
+    StoreTracker_I.min="0";
+    StoreTracker_I.max="1";
+    StoreTracker_I.style.width = "33px";
+    StoreTracker_I.style.height = "25px";
+    StoreTracker_I.onclick = StoreTracker_F;
+    document.body.appendChild(StoreTracker_I);
+
+    var P_StoreTracker = document.createElement("p");
+    var StoreTracker_Text = document.createTextNode(" : 0 = off / 1 = on  - adds a Steam-Tracker Button to the store page.");
+    document.body.appendChild(StoreTracker_Text);
+
+    console.log("[StoreTracker:] = " + GM_getValue("StoreTracker_Value"));
+
+    var hr = document.createElement('hr');
+    hr.innerHTML = ' ';
+    document.body.appendChild(hr);
+	
+    //app hub page steam-tracker button.
+    var HubTracker_F = function() {
+        var HubTracker_V = document.getElementById('HubTrackerid').value;
+        GM_setValue("HubTracker_Value", HubTracker_V);
+        console.log("[HubTracker:] = " + GM_getValue("HubTracker_Value"));
+    };
+
+    var HubTracker_B = document.createElement("input");
+    HubTracker_B.type="button";
+    HubTracker_B.value="HubTracker";
+    HubTracker_B.className="btnv6_blue_hoverfade";
+    HubTracker_B.style.width = "150px";
+    HubTracker_B.style.height = "30px";
+    HubTracker_B.onclick = HubTracker_F;
+    document.body.appendChild(HubTracker_B);
+
+    var HubTracker_I = document.createElement("input");
+    HubTracker_I.type="number";
+    HubTracker_I.id="HubTrackerid";
+    HubTracker_I.name="HubTrackerid";
+    HubTracker_I.value=GM_getValue("HubTracker_Value");
+    HubTracker_I.min="0";
+    HubTracker_I.max="1";
+    HubTracker_I.style.width = "33px";
+    HubTracker_I.style.height = "25px";
+    HubTracker_I.onclick = HubTracker_F;
+    document.body.appendChild(HubTracker_I);
+
+    var P_HubTracker = document.createElement("p");
+    var HubTracker_Text = document.createTextNode(" : 0 = off / 1 = on  - adds a Steam-Tracker Button to the hub page.");
+    document.body.appendChild(HubTracker_Text);
+
+    var hr = document.createElement('hr');
+    hr.innerHTML = ' ';
+    document.body.appendChild(hr);
+    console.log("[HubTracker:] = " + GM_getValue("HubTracker_Value"));
 
     var Save_F = function() {
         StoreTracker_F();
         HubTracker_F();
         Showcase_Default_F();
         Showcase_RA_F();
-		RemGCTracker_F();
-		C7KTracker_F();
+	RemGCTracker_F();
+	C7KTracker_F();
+	Showcase_ROA_F();
 
         location.href="http://steamcommunity.com/my";
     };
