@@ -907,10 +907,6 @@ function rarest_owned_appids2(){
     while(rarest_appids_data !== 1){
         break;
     };
-    console.log(GM_getValue("G_r_owned_appids_i_0"));
-    console.log(GM_getValue("G_r_owned_appids_i_1"));
-    console.log(GM_getValue("G_r_owned_appids_i_2"));
-    console.log(GM_getValue("G_r_owned_appids_i_3"));
     
     document.getElementsByClassName("profile_badges")[0].setAttribute("id", "MalikQayum_Showcase_6");
     var div_6 = document.getElementById("MalikQayum_Showcase_6");
