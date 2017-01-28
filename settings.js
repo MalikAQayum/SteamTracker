@@ -10,7 +10,7 @@ function Settings(){
 
     /*-------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-    //Showcase Default.
+    //Showcase Default..
     var Showcase_Default_F = function() {
         var Showcase_Default_V = document.getElementById('Showcase_Default_id').value;
         GM_setValue("Showcase_Default_Value", Showcase_Default_V);
