@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Steam-Tracker
-// @namespace    https://githubsss.com/MalikAQayum/SteamTracker
+// @namespace    https://github.com/MalikAQayum/SteamTracker
 // @description  add stats to the steam profile page from http://removed.timekillerz.eu/ and https://steam-tracker.com/user/*/ + adds a button to steam-tracker <appid> to the app hub page and store page.
 // @author       MalikQayum
 // @connect      removed.timekillerz.eu
@@ -40,7 +40,7 @@
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/settings.js
 // @downloadURL https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.user.js
 // @updateURL   https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.meta.js
-// @version      1.7.1.1
+// @version      1.7.7
 // @grant        GM_xmlhttpRequest
 // @grant        GM_getValue
 // @grant        GM_setValue
@@ -496,7 +496,29 @@ function steam_tracker_data_2(){
         Recent_Activity_Showcase();
         RemGC_Showcase();
         C7K_Showcase();
-        Rarest_Owned_Appids();
+        
+        if ((GM_getValue("Showcase_ROA_Value") == 0) || (GM_getValue("Showcase_ROA_Value") == "undefined") || (GM_getValue("Showcase_ROA_Value") == null) ) {
+            console.log("Showcase Rarest Owned Appids is set to : " + GM_getValue("Showcase_ROA_Value") + " and will not add Showcase Rarest Owned Appids to the Steam Profile.");
+        }
+        else if ((GM_getValue("Showcase_ROA_Value") == 1)) {
+        console.log("Showcase Rarest Owned Appids is set to : " + GM_getValue("Showcase_ROA_Value") + " and will add Showcase Rarest Owned Appids to the Steam Profile.");
+            tk_ownedapps();
+        }
+        else
+        {
+            //donothing
+        }
+        if ((GM_getValue("Showcase_ROA2_Value") == 0) || (GM_getValue("Showcase_ROA2_Value") == "undefined") || (GM_getValue("Showcase_ROA2_Value") == null) ) {
+            console.log("Showcase Rarest Owned Appids is set to : " + GM_getValue("Showcase_ROA2_Value") + " and will not add Showcase Rarest Owned Appids to the Steam Profile.");
+        }
+        else if ((GM_getValue("Showcase_ROA2_Value") == 1)) {
+            console.log("Showcase Rarest Owned Appids is set to : " + GM_getValue("Showcase_ROA2_Value") + " and will add Showcase Rarest Owned Appids to the Steam Profile.");
+            tk_ownedapps();
+        }
+        else
+        {
+            //donothing
+        }
     }
     
 GM_deleteValue("G_steam_id");
@@ -562,7 +584,10 @@ GM_deleteValue("G_r_owned_appids_0");
 GM_deleteValue("G_r_owned_appids_1");
 GM_deleteValue("G_r_owned_appids_2");
 GM_deleteValue("G_r_owned_appids_3");
-               
+GM_deleteValue("G_r_owned_appids_i_0");
+GM_deleteValue("G_r_owned_appids_i_1");
+GM_deleteValue("G_r_owned_appids_i_2");
+GM_deleteValue("G_r_owned_appids_i_3");               
 }
 
 
@@ -714,19 +739,7 @@ function C7K_Showcase(){
         }
 }
 //Rarest Owned Appids Showcase.
-function Rarest_Owned_Appids(){
-    if ((GM_getValue("Showcase_ROA_Value") == 0) || (GM_getValue("Showcase_ROA_Value") == "undefined") || (GM_getValue("Showcase_ROA_Value") == null) ) {
-        console.log("Showcase Rarest Owned Appids is set to : " + GM_getValue("Showcase_ROA_Value") + " and will not add Showcase Rarest Owned Appids to the Steam Profile.");
-    }
-    else if ((GM_getValue("Showcase_ROA_Value") == 1)) {
-        console.log("Showcase Rarest Owned Appids is set to : " + GM_getValue("Showcase_ROA_Value") + " and will add Showcase Rarest Owned Appids to the Steam Profile.");
-        tk_ownedapps();
-    }
-    else
-    {
-        //donothing
-    }
-}
+
 
 function tk_ownedapps(){
     GM_xmlhttpRequest({
@@ -793,7 +806,29 @@ function r_ownedappids(){
     GM_setValue("G_r_owned_appids_1",r_owned_appids[1]);
     GM_setValue("G_r_owned_appids_2",r_owned_appids[2]);
     GM_setValue("G_r_owned_appids_3",r_owned_appids[3]);
-    rarest_owned_appids();
+    
+    if ((GM_getValue("Showcase_ROA_Value") == 0) || (GM_getValue("Showcase_ROA_Value") == "undefined") || (GM_getValue("Showcase_ROA_Value") == null) ) {
+        console.log("Showcase Rarest Owned Appids is set to : " + GM_getValue("Showcase_ROA_Value") + " and will not add Showcase Rarest Owned Appids to the Steam Profile.");
+    }
+    else if ((GM_getValue("Showcase_ROA_Value") == 1)) {
+        console.log("Showcase Rarest Owned Appids is set to : " + GM_getValue("Showcase_ROA_Value") + " and will add Showcase Rarest Owned Appids to the Steam Profile.");
+        rarest_owned_appids();
+    }
+    else
+    {
+        //donothing
+    }
+    if ((GM_getValue("Showcase_ROA2_Value") == 0) || (GM_getValue("Showcase_ROA2_Value") == "undefined") || (GM_getValue("Showcase_ROA2_Value") == null) ) {
+        console.log("Showcase Rarest Owned Appids is set to : " + GM_getValue("Showcase_ROA2_Value") + " and will not add Showcase Rarest Owned Appids to the Steam Profile.");
+    }
+    else if ((GM_getValue("Showcase_ROA2_Value") == 1)) {
+        console.log("Showcase Rarest Owned Appids is set to : " + GM_getValue("Showcase_ROA2_Value") + " and will add Showcase Rarest Owned Appids to the Steam Profile.");
+        rarest_owned_appids2();
+    }
+    else
+    {
+        //donothing
+    }
 }
 
 function rarest_owned_appids(){
@@ -824,5 +859,97 @@ function rarest_owned_appids(){
 				</div>
 				<div style="clear: left;"></div></div></div><div style="clear: both"></div></div></div>
 `;
+}
 
+function rarest_owned_appids2(){
+    var G_r_owned_appids_i_0, G_r_owned_appids_i_1, G_r_owned_appids_i_2, G_r_owned_appids_i_3;
+    GM_xmlhttpRequest({
+        method: "GET",
+        url: "http://steamcommunity.com/app/"+GM_getValue("G_r_owned_appids_0")+"/",
+        onload: function(response_AppIcon_0) {
+            var apphub_AppIcon_0_str = response_AppIcon_0.responseText;
+            var start_pos_i = apphub_AppIcon_0_str.indexOf('Icon"><img src="') + 16;
+            var end_pos_i = apphub_AppIcon_0_str.indexOf('jpg\"><div',start_pos_i) +3;
+            apphub_AppIcon_0_str = apphub_AppIcon_0_str.substring(start_pos_i,end_pos_i);
+            GM_setValue("G_r_owned_appids_i_0", apphub_AppIcon_0_str);
+        }
+    });
+     GM_xmlhttpRequest({
+        method: "GET",
+        url: "http://steamcommunity.com/app/"+GM_getValue("G_r_owned_appids_1")+"/",
+        onload: function(response_AppIcon_1) {
+            var apphub_AppIcon_1_str = response_AppIcon_1.responseText;
+            var start_pos_i = apphub_AppIcon_1_str.indexOf('Icon"><img src="') + 16;
+            var end_pos_i = apphub_AppIcon_1_str.indexOf('jpg\"><div',start_pos_i) +3;
+            apphub_AppIcon_1_str = apphub_AppIcon_1_str.substring(start_pos_i,end_pos_i);
+            GM_setValue("G_r_owned_appids_i_1", apphub_AppIcon_1_str);
+        }
+    });
+    GM_xmlhttpRequest({
+        method: "GET",
+        url: "http://steamcommunity.com/app/"+GM_getValue("G_r_owned_appids_2")+"/",
+        onload: function(response_AppIcon_2) {
+            var apphub_AppIcon_2_str = response_AppIcon_2.responseText;
+            var start_pos_i = apphub_AppIcon_2_str.indexOf('Icon"><img src="') + 16;
+            var end_pos_i = apphub_AppIcon_2_str.indexOf('jpg\"><div',start_pos_i) +3;
+            apphub_AppIcon_2_str = apphub_AppIcon_2_str.substring(start_pos_i,end_pos_i);
+            GM_setValue("G_r_owned_appids_i_2", apphub_AppIcon_2_str);
+        }
+    });
+    GM_xmlhttpRequest({
+        method: "GET",
+        url: "http://steamcommunity.com/app/"+GM_getValue("G_r_owned_appids_3")+"/",
+        onload: function(response_AppIcon_3) {
+            var apphub_AppIcon_3_str = response_AppIcon_3.responseText;
+            var start_pos_i = apphub_AppIcon_3_str.indexOf('Icon"><img src="') + 16;
+            var end_pos_i = apphub_AppIcon_3_str.indexOf('jpg\"><div',start_pos_i) +3;
+            apphub_AppIcon_3_str = apphub_AppIcon_3_str.substring(start_pos_i,end_pos_i);
+            GM_setValue("G_r_owned_appids_i_3", apphub_AppIcon_3_str);
+        }
+    });
+
+    var rarest_appids_data;
+    if (GM_getValue("G_r_owned_appids_i_0") === 'undefined' &&
+        GM_getValue("G_r_owned_appids_i_1") === 'undefined' &&
+        GM_getValue("G_r_owned_appids_i_2") === 'undefined' &&
+        GM_getValue("G_r_owned_appids_i_3") === 'undefined')
+    {
+        rarest_appids_data = 1;
+    }
+    while(rarest_appids_data !== 1){
+        break;
+    };
+    
+    document.getElementsByClassName("profile_badges")[0].setAttribute("id", "MalikQayum_Showcase_6");
+    var div_6 = document.getElementById("MalikQayum_Showcase_6");
+
+    var x_div_6 = document.createElement('div');
+    x_div_6.id = 'MalikQayum_Showcase_6';
+    div_6.appendChild(x_div_6);
+    x_div_6.innerHTML =
+    `
+    
+<div class="profile_badges"><div class="profile_count_link_preview_ctn"><div class="profile_count_link ellipsis"><span class="count_link_label">Rarest Owned Apps</span></div>														
+<div class="profile_count_link_preview">
+<div class="profile_badges_badge " style="max-width:50px; max-height:50px;"><a href="`+"https://steam-tracker.com/app/" + GM_getValue("G_r_owned_appids_0")+`">
+											<img src="`+GM_getValue("G_r_owned_appids_i_0")+`" class="badge_icon small">
+										</a>
+									</div>
+<div class="profile_badges_badge " style="max-width:50px; max-height:50px;"><a href="`+"https://steam-tracker.com/app/" + GM_getValue("G_r_owned_appids_1")+`">
+											<img src="`+GM_getValue("G_r_owned_appids_i_1")+`" class="badge_icon small">
+										</a>
+									</div>
+<div class="profile_badges_badge " style="max-width:50px; max-height:50px;"><a href="`+"https://steam-tracker.com/app/" + GM_getValue("G_r_owned_appids_2")+`">
+											<img src="`+GM_getValue("G_r_owned_appids_i_2")+`" class="badge_icon small">
+										</a>
+									</div>
+<div class="profile_badges_badge " style="max-width:50px; max-height:50px;"><a href="`+"https://steam-tracker.com/app/" + GM_getValue("G_r_owned_appids_3")+`">
+											<img src="`+GM_getValue("G_r_owned_appids_i_3")+`" class="badge_icon small">
+										</a>
+									</div>
+<div style="clear: left;"></div>
+							</div>
+						</div>
+					</div>
+`;
 }
