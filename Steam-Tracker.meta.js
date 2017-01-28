@@ -39,7 +39,7 @@
 // @exclude      *://steamcommunity.com/app/*/reviews*
 // @downloadURL https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.user.js
 // @updateURL   https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.meta.js
-// @version      1.7.3
+// @version      1.7.4
 // @grant        GM_xmlhttpRequest
 // @grant        GM_getValue
 // @grant        GM_setValue
