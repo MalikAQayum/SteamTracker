@@ -123,6 +123,44 @@ function Settings(){
     var hr = document.createElement('hr');
     hr.innerHTML = ' ';
     document.body.appendChild(hr);
+
+    //Showcase Rarest Owned Appid 2.
+    var Showcase_ROA2_F = function() {
+        var Showcase_ROA2_V = document.getElementById('Showcase_ROA2_id').value;
+        GM_setValue("Showcase_ROA2_Value", Showcase_ROA2_V);
+        console.log("[Showcase_ROA2:] = " + GM_getValue("Showcase_ROA2_Value"));
+    };
+
+    var Showcase_ROA2_B = document.createElement("input");
+    Showcase_ROA2_B.type="button";
+    Showcase_ROA2_B.value="Showcase_ROA2";
+    Showcase_ROA2_B.className="btnv6_blue_hoverfade";
+    Showcase_ROA2_B.style.width = "150px";
+    Showcase_ROA2_B.style.height = "30px";
+    Showcase_ROA2_B.onclick = Showcase_ROA2_F;
+    document.body.appendChild(Showcase_ROA2_B);
+
+    var Showcase_ROA2_I = document.createElement("input");
+    Showcase_ROA2_I.type="number";
+    Showcase_ROA2_I.id="Showcase_ROA2_id";
+    Showcase_ROA2_I.name="Showcase_ROA2_id";
+    Showcase_ROA2_I.value=GM_getValue("Showcase_ROA2_Value");
+    Showcase_ROA2_I.min="0";
+    Showcase_ROA2_I.max="1";
+    Showcase_ROA2_I.style.width = "33px";
+    Showcase_ROA2_I.style.height = "25px";
+    Showcase_ROA2_I.onclick = Showcase_ROA2_F;
+    document.body.appendChild(Showcase_ROA2_I);
+
+    var P_Showcase_ROA2 = document.createElement("p");
+    var Showcase_ROA2_Text = document.createTextNode(" : 0 = off / 1 = on  - adds Rarest Owned Appids the badge area on the steam profile page. (REALLY SLOW SO AVOID)");
+    document.body.appendChild(Showcase_ROA2_Text);
+
+    console.log("[Showcase_ROA2:] = " + GM_getValue("Showcase_ROA2_Value"));
+
+    var hr = document.createElement('hr');
+    hr.innerHTML = ' ';
+    document.body.appendChild(hr);
 	
     //RemGC Showcase setting.
     var RemGCTracker_F = function() {
