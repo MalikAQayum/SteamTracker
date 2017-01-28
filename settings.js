@@ -319,6 +319,7 @@ function Settings(){
 	RemGCTracker_F();
 	C7KTracker_F();
 	Showcase_ROA_F();
+	Showcase_ROA2_F();
 
         location.href="http://steamcommunity.com/my";
     };
