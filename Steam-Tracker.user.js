@@ -513,7 +513,7 @@ function steam_tracker_data_2(){
         }
         else if ((GM_getValue("Showcase_ROA2_Value") == 1)) {
             console.log("Showcase Rarest Owned Appids is set to : " + GM_getValue("Showcase_ROA2_Value") + " and will add Showcase Rarest Owned Appids to the Steam Profile.");
-            Rarest_Owned_Appids2();
+            rarest_owned_appids2();
         }
         else
         {
