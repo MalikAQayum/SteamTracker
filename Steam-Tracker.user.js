@@ -40,7 +40,7 @@
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/settings.js
 // @downloadURL https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.user.js
 // @updateURL   https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.meta.js
-// @version      1.7.5
+// @version      1.7.6
 // @grant        GM_xmlhttpRequest
 // @grant        GM_getValue
 // @grant        GM_setValue
@@ -502,7 +502,7 @@ function steam_tracker_data_2(){
         }
         else if ((GM_getValue("Showcase_ROA_Value") == 1)) {
         console.log("Showcase Rarest Owned Appids is set to : " + GM_getValue("Showcase_ROA_Value") + " and will add Showcase Rarest Owned Appids to the Steam Profile.");
-            Rarest_Owned_Appids();
+            tk_ownedapps();
         }
         else
         {
@@ -513,7 +513,7 @@ function steam_tracker_data_2(){
         }
         else if ((GM_getValue("Showcase_ROA2_Value") == 1)) {
             console.log("Showcase Rarest Owned Appids is set to : " + GM_getValue("Showcase_ROA2_Value") + " and will add Showcase Rarest Owned Appids to the Steam Profile.");
-            rarest_owned_appids2();
+            tk_ownedapps();
         }
         else
         {
@@ -736,19 +736,7 @@ function C7K_Showcase(){
         }
 }
 //Rarest Owned Appids Showcase.
-function Rarest_Owned_Appids(){
-    if ((GM_getValue("Showcase_ROA_Value") == 0) || (GM_getValue("Showcase_ROA_Value") == "undefined") || (GM_getValue("Showcase_ROA_Value") == null) ) {
-        console.log("Showcase Rarest Owned Appids is set to : " + GM_getValue("Showcase_ROA_Value") + " and will not add Showcase Rarest Owned Appids to the Steam Profile.");
-    }
-    else if ((GM_getValue("Showcase_ROA_Value") == 1)) {
-        console.log("Showcase Rarest Owned Appids is set to : " + GM_getValue("Showcase_ROA_Value") + " and will add Showcase Rarest Owned Appids to the Steam Profile.");
-        tk_ownedapps();
-    }
-    else
-    {
-        //donothing
-    }
-}
+
 
 function tk_ownedapps(){
     GM_xmlhttpRequest({
@@ -816,7 +804,28 @@ function r_ownedappids(){
     GM_setValue("G_r_owned_appids_2",r_owned_appids[2]);
     GM_setValue("G_r_owned_appids_3",r_owned_appids[3]);
     
-    rarest_owned_appids();
+    if ((GM_getValue("Showcase_ROA_Value") == 0) || (GM_getValue("Showcase_ROA_Value") == "undefined") || (GM_getValue("Showcase_ROA_Value") == null) ) {
+        console.log("Showcase Rarest Owned Appids is set to : " + GM_getValue("Showcase_ROA_Value") + " and will not add Showcase Rarest Owned Appids to the Steam Profile.");
+    }
+    else if ((GM_getValue("Showcase_ROA_Value") == 1)) {
+        console.log("Showcase Rarest Owned Appids is set to : " + GM_getValue("Showcase_ROA_Value") + " and will add Showcase Rarest Owned Appids to the Steam Profile.");
+        rarest_owned_appids();
+    }
+    else
+    {
+        //donothing
+    }
+    if ((GM_getValue("Showcase_ROA2_Value") == 0) || (GM_getValue("Showcase_ROA2_Value") == "undefined") || (GM_getValue("Showcase_ROA2_Value") == null) ) {
+        console.log("Showcase Rarest Owned Appids is set to : " + GM_getValue("Showcase_ROA2_Value") + " and will not add Showcase Rarest Owned Appids to the Steam Profile.");
+    }
+    else if ((GM_getValue("Showcase_ROA2_Value") == 1)) {
+        console.log("Showcase Rarest Owned Appids is set to : " + GM_getValue("Showcase_ROA2_Value") + " and will add Showcase Rarest Owned Appids to the Steam Profile.");
+        rarest_owned_appids2();
+    }
+    else
+    {
+        //donothing
+    }
 }
 
 function rarest_owned_appids(){
