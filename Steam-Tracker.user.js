@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Steam-Tracker
-// @namespace    https://githubsss.com/MalikAQayum/SteamTracker
+// @namespace    https://github.com/MalikAQayum/SteamTracker
 // @description  add stats to the steam profile page from http://removed.timekillerz.eu/ and https://steam-tracker.com/user/*/ + adds a button to steam-tracker <appid> to the app hub page and store page.
 // @author       MalikQayum
 // @connect      removed.timekillerz.eu
@@ -40,7 +40,7 @@
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/settings.js
 // @downloadURL https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.user.js
 // @updateURL   https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.meta.js
-// @version      1.7.6
+// @version      1.7.7
 // @grant        GM_xmlhttpRequest
 // @grant        GM_getValue
 // @grant        GM_setValue
@@ -584,7 +584,10 @@ GM_deleteValue("G_r_owned_appids_0");
 GM_deleteValue("G_r_owned_appids_1");
 GM_deleteValue("G_r_owned_appids_2");
 GM_deleteValue("G_r_owned_appids_3");
-               
+GM_deleteValue("G_r_owned_appids_i_0");
+GM_deleteValue("G_r_owned_appids_i_1");
+GM_deleteValue("G_r_owned_appids_i_2");
+GM_deleteValue("G_r_owned_appids_i_3");               
 }
 
 
