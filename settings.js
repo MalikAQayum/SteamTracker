@@ -153,7 +153,7 @@ function Settings(){
     document.body.appendChild(Showcase_ROA2_I);
 
     var P_Showcase_ROA2 = document.createElement("p");
-    var Showcase_ROA2_Text = document.createTextNode(" : 0 = off / 1 = on  - adds Rarest Owned Appids the badge area on the steam profile page. (REALLY SLOW SO AVOID)");
+    var Showcase_ROA2_Text = document.createTextNode(" : 0 = off / 1 = on  - adds Rarest Owned Appids to the badge area on the steam profile page. (REALLY SLOW SO AVOID)");
     document.body.appendChild(Showcase_ROA2_Text);
 
     console.log("[Showcase_ROA2:] = " + GM_getValue("Showcase_ROA2_Value"));
