@@ -36,25 +36,18 @@ Optional Settings:
 
 If you have Installed the SteamTracker from the install link above, you are set up to automatically update whenever an update presents itself. 
 
-
-## personal note: Script is more or less split into multiple files to better get a grasp of what is going on:
-### Steam-Tracker.user.js
+### personal note: Script is more or less split into multiple files to better get a grasp of what is going on:
+- Steam-Tracker.user.js
 The Userscript, should only really be touched if there is some new showcase to be added.
-
-### api.js
+- api.js
 our 3 options for the api are here (both sites api are needed/steam-tracker.com api only needed/timekillerz.eu api only) which should only be touched if new apis from other sources should be added example (dynamicstore) or new apis from these st or tk.
-
-### settings.js
+- settings.js
 for user setting page, where users can chose which showcases they want present on their profiles + extra stuff.
-
-### GMDelete.js
+- GMDelete.js
 deletes all the gm values not even sure this is needed anymore but i did have issues with some values not being updated, when going to another profile and requiring a double refresh on that steam profile.
-
-### default_private.js
+- default_private.js
 showcases the default showcase but honoring the users privacy settings on the sites the apis come from.
-
-### default_public.js
+- default_public.js
 showcases the default showcase if there are non privacy settings set.
-
-### Showcases.js
+- Showcases.js
 here we add all the showcases, except for the default showcase private/public.
