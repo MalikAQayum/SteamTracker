@@ -42,10 +42,12 @@
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/Showcases.js
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/default_private.js
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/default_public.js
+// @require     https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/default_st_public.js
+// @require     https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/default_st_private.js
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/GMDelete.js
 // @downloadURL https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.user.js
 // @updateURL   https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.user.js
-// @version      4.0.0.3
+// @version      4.0.1.1
 // @grant        GM_xmlhttpRequest
 // @grant        GM_getValue
 // @grant        GM_setValue
@@ -187,39 +189,19 @@ function wait_api() {
         GM_setValue("G_API", "0");
         if (/private/i.test(GM_getValue("G_steamtracker_privacy")))
         {
-            //
             console.log("Recent Activity Setting: is set to private and is being honored. #2");
-
-            if ((GM_getValue("Showcase_Default_Value") == 0) || (GM_getValue("Showcase_Default_Value") == "undefined") || (GM_getValue("Showcase_Default_Value") == null) ) {
-                console.log("Showcase Default is set to : " + GM_getValue("Showcase_Default_Value") + " and will not add Showcase Default to the Steam Profile.");
-            }
-            else if ((GM_getValue("Showcase_Default_Value") == 1)) {
-                console.log("Showcase Default is set to : " + GM_getValue("Showcase_Default_Value") + " and will add Showcase Default to the Steam Profile.");
-                default_private();
-                console.log("skipping RA images/history : private 2 of 2");
-            }
-            else{
-                //donothing
-            }
             //showcase
+			default_private();
+			default_st_public();
             RemGC_Showcase();
             C7K_Showcase();
             Rarest_Owned_Appids();
         }
         else
         {
-            //start-- showcase Default.
-            if ((GM_getValue("Showcase_Default_Value") == 0) || (GM_getValue("Showcase_Default_Value") == "undefined") || (GM_getValue("Showcase_Default_Value") == null) ) {
-                console.log("Showcase Default is set to : " + GM_getValue("Showcase_Default_Value") + " and will not add Showcase Default to the Steam Profile.");
-            }
-            else if ((GM_getValue("Showcase_Default_Value") == 1)) {
-                console.log("Showcase Default is set to : " + GM_getValue("Showcase_Default_Value") + " and will add Showcase Default to the Steam Profile.");
-                default_public();
-            }
-            else{
-                //donothing
-            }
             //showcase
+			default_public();
+			default_st_public();
             Recent_Activity_Showcase();
             RemGC_Showcase();
             C7K_Showcase();

@@ -45,6 +45,44 @@ function Settings(){
     var hr = document.createElement('hr');
     hr.innerHTML = ' ';
     document.body.appendChild(hr);
+	
+	//Showcase Steam-Tracker Default.
+    var Showcase_ST_Default_F = function() {
+        var Showcase_ST_Default_V = document.getElementById('Showcase_ST_Default_id').value;
+        GM_setValue("Showcase_ST_Default_Value", Showcase_ST_Default_V);
+        console.log("[Showcase_ST_Default:] = " + GM_getValue("Showcase_ST_Default_Value"));
+    };
+
+    var Showcase_ST_Default_B = document.createElement("input");
+    Showcase_ST_Default_B.type="button";
+    Showcase_ST_Default_B.value="Showcase_ST_Default";
+    Showcase_ST_Default_B.className="btnv6_blue_hoverfade";
+    Showcase_ST_Default_B.style.width = "150px";
+    Showcase_ST_Default_B.style.height = "30px";
+    Showcase_ST_Default_B.onclick = Showcase_ST_Default_F;
+    document.body.appendChild(Showcase_ST_Default_B);
+
+    var Showcase_ST_Default_I = document.createElement("input");
+    Showcase_ST_Default_I.type="number";
+    Showcase_ST_Default_I.id="Showcase_ST_Default_id";
+    Showcase_ST_Default_I.name="Showcase_ST_Default_id";
+    Showcase_ST_Default_I.value=GM_getValue("Showcase_ST_Default_Value");
+    Showcase_ST_Default_I.min="0";
+    Showcase_ST_Default_I.max="1";
+    Showcase_ST_Default_I.style.width = "33px";
+    Showcase_ST_Default_I.style.height = "25px";
+    Showcase_ST_Default_I.onclick = Showcase_ST_Default_F;
+    document.body.appendChild(Showcase_ST_Default_I);
+
+    var P_Showcase_ST_Default = document.createElement("p");
+    var Showcase_ST_Default_Text = document.createTextNode(" : 0 = off / 1 = on  - adds Showcase Default to the steam profile page.");
+    document.body.appendChild(Showcase_ST_Default_Text);
+
+    console.log("[Showcase_ST_Default:] = " + GM_getValue("Showcase_ST_Default_Value"));
+
+    var hr = document.createElement('hr');
+    hr.innerHTML = ' ';
+    document.body.appendChild(hr);
 
     //Showcase Recent Activity.
     var Showcase_RA_F = function() {
