@@ -316,7 +316,6 @@ function steamtracker_changelog_data_only(){
             GM_setValue("G_steamtracker_changelog_appid_4", json_stc.changelog[4].appid);
             GM_setValue("G_steamtracker_changelog_title_4", json_stc.changelog[4].Name);
             GM_setValue("G_steamtracker_changelog_change_4", json_stc.changelog[4].new_category);
-			console.log("5/5 Timekillerz & Steam-Tracker API Stuff Done.");
             console.log("3/3 Steam-Tracker API Stuff Done.");;
             GM_setValue("G_API", "1");
         }
