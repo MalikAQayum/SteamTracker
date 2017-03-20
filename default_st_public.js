@@ -1,10 +1,10 @@
 
 function default_st_public(){
     if ((GM_getValue("Showcase_ST_Default_Value") == 0) || (GM_getValue("Showcase_ST_Default_Value") == "undefined") || (GM_getValue("Showcase_ST_Default_Value") == null) ) {
-        console.log("Showcase Default is set to : " + GM_getValue("Showcase_ST_Default_Value") + " and will not add Showcase Default to the Steam Profile.");
+        console.log("Showcase Default is set to : " + GM_getValue("Showcase_ST_Default_Value") + " and will not add Showcase steam-tracker Default to the Steam Profile.");
     }
     else if ((GM_getValue("Showcase_ST_Default_Value") == 1)) {
-        console.log("Showcase Default is set to : " + GM_getValue("Showcase_ST_Default_Value") + " and will add Showcase Default to the Steam Profile.");
+        console.log("Showcase Default is set to : " + GM_getValue("Showcase_ST_Default_Value") + " and will add Showcase steam-tracker Default to the Steam Profile.");
         var SteamTracker_link = document.createElement('a');
         var link = document.createTextNode("Steam-Tracker Profile: " + GM_getValue("G_steam_id"));
         SteamTracker_link.appendChild(link);
