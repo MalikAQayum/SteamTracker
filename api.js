@@ -122,12 +122,12 @@ function st_GetAppList_both(){
             }
             GM_setValue("G_st_keys", st_keys.substring(0, st_keys.length - 1));
 			console.log("4/5");
-            steamtracker_changelog_data();
+            steamtracker_changelog_data_both();
         }
     });
 }
 
-function steamtracker_changelog_data(){
+function steamtracker_changelog_data_both(){
     GM_xmlhttpRequest({
         method: "GET",
         url: "https://steam-tracker.com/api?action=GetChangelog",
@@ -268,7 +268,7 @@ function steam_tracker_data_only(){
                     GM_setValue("G_steamtracker_recentactivity_status_3", json_st_data.recent_activity[3].status);
 
                 }
-				console.log("1/2");
+				console.log("1/3");
                 st_GetAppList_only();
             }
         }
@@ -287,9 +287,37 @@ function st_GetAppList_only(){
                 st_keys += json_ownedappids_data.removed_apps[i].appid + ",";
             }
             GM_setValue("G_st_keys", st_keys.substring(0, st_keys.length - 1));
-            console.log("2/2 Steam-Tracker API Stuff Done.");;
-            GM_setValue("G_API", "1");
+            console.log("2/3");
 
+        }
+    });
+}
+
+function steamtracker_changelog_data_only(){
+    GM_xmlhttpRequest({
+        method: "GET",
+        url: "https://steam-tracker.com/api?action=GetChangelog",
+        onload: function(response_st_changelog) {
+            var st_changelog_str = response_st_changelog.responseText;
+            var json_stc = JSON.parse(st_changelog_str);           
+            GM_setValue("G_steamtracker_changelog_appid_0", json_stc.changelog[0].appid);
+            GM_setValue("G_steamtracker_changelog_title_0", json_stc.changelog[0].Name);
+            GM_setValue("G_steamtracker_changelog_change_0", json_stc.changelog[0].new_category);
+            GM_setValue("G_steamtracker_changelog_appid_1", json_stc.changelog[1].appid);
+            GM_setValue("G_steamtracker_changelog_title_1", json_stc.changelog[1].Name);
+            GM_setValue("G_steamtracker_changelog_change_1", json_stc.changelog[1].new_category);
+            GM_setValue("G_steamtracker_changelog_appid_2", json_stc.changelog[2].appid);
+            GM_setValue("G_steamtracker_changelog_title_2", json_stc.changelog[2].Name);
+            GM_setValue("G_steamtracker_changelog_change_2", json_stc.changelog[2].new_category);
+            GM_setValue("G_steamtracker_changelog_appid_3", json_stc.changelog[3].appid);
+            GM_setValue("G_steamtracker_changelog_title_3", json_stc.changelog[3].Name);
+            GM_setValue("G_steamtracker_changelog_change_3", json_stc.changelog[3].new_category);
+            GM_setValue("G_steamtracker_changelog_appid_4", json_stc.changelog[4].appid);
+            GM_setValue("G_steamtracker_changelog_title_4", json_stc.changelog[4].Name);
+            GM_setValue("G_steamtracker_changelog_change_4", json_stc.changelog[4].new_category);
+			console.log("5/5 Timekillerz & Steam-Tracker API Stuff Done.");
+            console.log("3/3 Steam-Tracker API Stuff Done.");;
+            GM_setValue("G_API", "1");
         }
     });
 }
