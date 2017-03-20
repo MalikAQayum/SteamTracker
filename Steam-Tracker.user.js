@@ -1,4 +1,13 @@
 // ==UserScript==
+// @name         New Userscript
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  try to take over the world!
+// @author       You
+// @match        https://github.com/MalikAQayum/SteamTracker/upload
+// @grant        none
+// ==/UserScript==
+// ==UserScript==
 // @name         Steam-Tracker
 // @namespace    https://github.com/MalikAQayum/SteamTracker
 // @description  add stats/showcases to the steam profile page from http://removed.timekillerz.eu/ and https://steam-tracker.com/user/*/ + adds a button to steam-tracker <appid> to the app hub page and store page.
@@ -47,7 +56,7 @@
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/GMDelete.js
 // @downloadURL https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.user.js
 // @updateURL   https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.user.js
-// @version      4.0.1.4
+// @version      4.0.1.5
 // @grant        GM_xmlhttpRequest
 // @grant        GM_getValue
 // @grant        GM_setValue
@@ -169,7 +178,7 @@ if(document.URL.match(re_steam_profile))
             timekillerz_data_only();
             wait_api();
         }
-        else if ((GM_getValue("Showcase_RA_Value") == 1)) || (GM_getValue("Showcase_ST_Default_Value") == 1))  {
+        else if ((GM_getValue("Showcase_RA_Value") == 1) || (GM_getValue("Showcase_ST_Default_Value") == 1))  {
             steam_tracker_data_only();
             wait_api();
         }
@@ -191,8 +200,8 @@ function wait_api() {
         {
             console.log("Recent Activity Setting: is set to private and is being honored. #2");
             //showcase
-			default_private();
-			default_st_public();
+            default_private();
+            default_st_public();
             RemGC_Showcase();
             C7K_Showcase();
             Rarest_Owned_Appids();
@@ -200,8 +209,8 @@ function wait_api() {
         else
         {
             //showcase
-			default_public();
-			default_st_public();
+            default_public();
+            default_st_public();
             Recent_Activity_Showcase();
             RemGC_Showcase();
             C7K_Showcase();
