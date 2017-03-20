@@ -66,20 +66,6 @@ function default_st_public(){
 <div class="screenshot_showcase_smallscreenshot showcase_slot ">
 ` +stc_image_4s2 +`
 </div>
-<div class="screenshot_showcase_smallscreenshot showcase_slot ">
-<div class="showcase_stat favoritegroup_inchat">
-<div class="value"></div>
-<div class="label"><a href="https://steamcommunity.com/groups/remgc">RemGC</a></div>
-</div>
-<div style="clear: left;"></div>
-</div>
-<div class="screenshot_showcase_smallscreenshot showcase_slot ">
-<div class="showcase_stat favoritegroup_inchat">
-<div class="value"></div>
-<div class="label"><a href="https://steamcommunity.com/groups/club7000">C7K</a></div>
-</div>
-<div style="clear: left;"></div>
-</div>
 </div>
 <div style="clear: both;"></div>
 </div>
