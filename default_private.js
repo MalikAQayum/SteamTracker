@@ -1,5 +1,5 @@
 function default_private(){
-    if ((GM_getValue("Showcase_Default_Value") === 0) || (GM_getValue("Showcase_Default_Value") === "undefined") || (GM_getValue("Showcase_Default_Value") === null) ) {
+    if ((GM_getValue("Showcase_Default_Value") == 0) || (GM_getValue("Showcase_Default_Value") == "undefined") || (GM_getValue("Showcase_Default_Value") == null) ) {
         console.log("Showcase Default is set to : " + GM_getValue("Showcase_Default_Value") + " and will not add Showcase Default to the Steam Profile.");
     }
     else if ((GM_getValue("Showcase_Default_Value") == 1)) {
