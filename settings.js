@@ -75,7 +75,7 @@ function Settings(){
     document.body.appendChild(Showcase_ST_Default_I);
 
     var P_Showcase_ST_Default = document.createElement("p");
-    var Showcase_ST_Default_Text = document.createTextNode(" : 0 = off / 1 = on  - adds Showcase Default to the steam profile page.");
+    var Showcase_ST_Default_Text = document.createTextNode(" : 0 = off / 1 = on  - adds Showcase steam-tracker Default to the steam profile page.");
     document.body.appendChild(Showcase_ST_Default_Text);
 
     console.log("[Showcase_ST_Default:] = " + GM_getValue("Showcase_ST_Default_Value"));
@@ -310,6 +310,7 @@ function Settings(){
     console.log("[HubTracker:] = " + GM_getValue("HubTracker_Value"));
 
     var Save_F = function() {
+		Showcase_ST_Default_F();
         StoreTracker_F();
         HubTracker_F();
         Showcase_Default_F();
