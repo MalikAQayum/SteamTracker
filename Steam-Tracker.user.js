@@ -47,7 +47,7 @@
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/GMDelete.js
 // @downloadURL https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.user.js
 // @updateURL   https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.user.js
-// @version      4.0.1.3
+// @version      4.0.1.4
 // @grant        GM_xmlhttpRequest
 // @grant        GM_getValue
 // @grant        GM_setValue
@@ -169,7 +169,7 @@ if(document.URL.match(re_steam_profile))
             timekillerz_data_only();
             wait_api();
         }
-        else if ((GM_getValue("Showcase_RA_Value") == 1))  {
+        else if ((GM_getValue("Showcase_RA_Value") == 1)) || (GM_getValue("Showcase_ST_Default_Value") == 1))  {
             steam_tracker_data_only();
             wait_api();
         }
