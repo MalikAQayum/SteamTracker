@@ -1,3 +1,4 @@
+// ==UserScript==
 // @name         Steam-Tracker
 // @namespace    https://github.com/MalikAQayum/SteamTracker
 // @description  add stats/showcases to the steam profile page from http://removed.timekillerz.eu/ and https://steam-tracker.com/user/*/ + adds a button to steam-tracker <appid> to the app hub page and store page.
@@ -46,7 +47,7 @@
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/GMDelete.js
 // @downloadURL https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.user.js
 // @updateURL   https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.user.js
-// @version      4.0.1.6
+// @version      4.0.1.7
 // @grant        GM_xmlhttpRequest
 // @grant        GM_getValue
 // @grant        GM_setValue
