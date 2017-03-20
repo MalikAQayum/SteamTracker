@@ -1,13 +1,3 @@
-// ==UserScript==
-// @name         New Userscript
-// @namespace    http://tampermonkey.net/
-// @version      0.1
-// @description  try to take over the world!
-// @author       You
-// @match        https://github.com/MalikAQayum/SteamTracker/upload
-// @grant        none
-// ==/UserScript==
-// ==UserScript==
 // @name         Steam-Tracker
 // @namespace    https://github.com/MalikAQayum/SteamTracker
 // @description  add stats/showcases to the steam profile page from http://removed.timekillerz.eu/ and https://steam-tracker.com/user/*/ + adds a button to steam-tracker <appid> to the app hub page and store page.
