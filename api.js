@@ -288,6 +288,7 @@ function st_GetAppList_only(){
             }
             GM_setValue("G_st_keys", st_keys.substring(0, st_keys.length - 1));
             console.log("2/3");
+			steamtracker_changelog_data_only();
 
         }
     });
