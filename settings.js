@@ -3,11 +3,130 @@ function Settings(){
     var Settings = document.createElement("div");
     Settings.innerHTML = "<p><h3>SteamTracker Extension Settings.</h3></p><br>";
     document.body.appendChild(Settings, document.body.firstChild);
-
+	
+/*	Steam-Tracker.com API only needed showcases.	*/
     var hr = document.createElement('hr');
     hr.innerHTML = ' ';
     document.body.appendChild(hr);
 
+	//Steam-Tracker Default Showcase.
+    var Showcase_ST_Default_F = function() {
+        var Showcase_ST_Default_V = document.getElementById('Showcase_ST_Default_id').value;
+        GM_setValue("Showcase_ST_Default_Value", Showcase_ST_Default_V);
+        console.log("[Showcase_ST_Default:] = " + GM_getValue("Showcase_ST_Default_Value"));
+    };
+
+    var Showcase_ST_Default_B = document.createElement("input");
+    Showcase_ST_Default_B.type="button";
+    Showcase_ST_Default_B.value="Showcase_ST_Default";
+    Showcase_ST_Default_B.className="btnv6_blue_hoverfade";
+    Showcase_ST_Default_B.style.width = "150px";
+    Showcase_ST_Default_B.style.height = "30px";
+    Showcase_ST_Default_B.onclick = Showcase_ST_Default_F;
+    document.body.appendChild(Showcase_ST_Default_B);
+
+    var Showcase_ST_Default_I = document.createElement("input");
+    Showcase_ST_Default_I.type="number";
+    Showcase_ST_Default_I.id="Showcase_ST_Default_id";
+    Showcase_ST_Default_I.name="Showcase_ST_Default_id";
+    Showcase_ST_Default_I.value=GM_getValue("Showcase_ST_Default_Value");
+    Showcase_ST_Default_I.min="0";
+    Showcase_ST_Default_I.max="1";
+    Showcase_ST_Default_I.style.width = "33px";
+    Showcase_ST_Default_I.style.height = "25px";
+    Showcase_ST_Default_I.onclick = Showcase_ST_Default_F;
+    document.body.appendChild(Showcase_ST_Default_I);
+
+    var P_Showcase_ST_Default = document.createElement("p");
+    var Showcase_ST_Default_Text = document.createTextNode(" : 0 = off / 1 = on  - adds Showcase steam-tracker Default to the steam profile page.");
+    document.body.appendChild(Showcase_ST_Default_Text);
+
+    console.log("[Showcase_ST_Default:] = " + GM_getValue("Showcase_ST_Default_Value"));
+
+	/*
+    var hr = document.createElement('hr');
+    hr.innerHTML = ' ';
+    document.body.appendChild(hr);
+	*/
+	
+    //Recent Activity Showcase.
+    var Showcase_RA_F = function() {
+        var Showcase_RA_V = document.getElementById('Showcase_RA_id').value;
+        GM_setValue("Showcase_RA_Value", Showcase_RA_V);
+        console.log("[Showcase_RA:] = " + GM_getValue("Showcase_RA_Value"));
+    };
+
+    var Showcase_RA_B = document.createElement("input");
+    Showcase_RA_B.type="button";
+    Showcase_RA_B.value="Showcase_RA";
+    Showcase_RA_B.className="btnv6_blue_hoverfade";
+    Showcase_RA_B.style.width = "150px";
+    Showcase_RA_B.style.height = "30px";
+    Showcase_RA_B.onclick = Showcase_RA_F;
+    document.body.appendChild(Showcase_RA_B);
+
+    var Showcase_RA_I = document.createElement("input");
+    Showcase_RA_I.type="number";
+    Showcase_RA_I.id="Showcase_RA_id";
+    Showcase_RA_I.name="Showcase_RA_id";
+    Showcase_RA_I.value=GM_getValue("Showcase_RA_Value");
+    Showcase_RA_I.min="0";
+    Showcase_RA_I.max="1";
+    Showcase_RA_I.style.width = "33px";
+    Showcase_RA_I.style.height = "25px";
+    Showcase_RA_I.onclick = Showcase_RA_F;
+    document.body.appendChild(Showcase_RA_I);
+
+    var P_Showcase_RA = document.createElement("p");
+    var Showcase_RA_Text = document.createTextNode(" : 0 = off / 1 = on  - adds Showcase Recent Activity to the steam profile page.");
+    document.body.appendChild(Showcase_RA_Text);
+
+    console.log("[Showcase_RA:] = " + GM_getValue("Showcase_RA_Value"));
+	/*
+    var hr = document.createElement('hr');
+    hr.innerHTML = ' ';
+    document.body.appendChild(hr);
+	*/
+	
+	//Steam-Tracker Showcase Rarest Owned Appid.
+    var Showcase_ST_ROA_F = function() {
+        var Showcase_ST_ROA_V = document.getElementById('Showcase_ST_ROA_id').value;
+        GM_setValue("Showcase_ST_ROA_Value", Showcase_ST_ROA_V);
+        console.log("[Showcase_ST_ROA:] = " + GM_getValue("Showcase_ST_ROA_Value"));
+    };
+
+    var Showcase_ST_ROA_B = document.createElement("input");
+    Showcase_ST_ROA_B.type="button";
+    Showcase_ST_ROA_B.value="Showcase_ST_ROA";
+    Showcase_ST_ROA_B.className="btnv6_blue_hoverfade";
+    Showcase_ST_ROA_B.style.width = "150px";
+    Showcase_ST_ROA_B.style.height = "30px";
+    Showcase_ST_ROA_B.onclick = Showcase_ST_ROA_F;
+    document.body.appendChild(Showcase_ST_ROA_B);
+
+    var Showcase_ST_ROA_I = document.createElement("input");
+    Showcase_ST_ROA_I.type="number";
+    Showcase_ST_ROA_I.id="Showcase_ST_ROA_id";
+    Showcase_ST_ROA_I.name="Showcase_ST_ROA_id";
+    Showcase_ST_ROA_I.value=GM_getValue("Showcase_ST_ROA_Value");
+    Showcase_ST_ROA_I.min="0";
+    Showcase_ST_ROA_I.max="1";
+    Showcase_ST_ROA_I.style.width = "33px";
+    Showcase_ST_ROA_I.style.height = "25px";
+    Showcase_ST_ROA_I.onclick = Showcase_ST_ROA_F;
+    document.body.appendChild(Showcase_ST_ROA_I);
+
+    var P_Showcase_ST_ROA = document.createElement("p");
+    var Showcase_ST_ROA_Text = document.createTextNode(" : 0 = off / 1 = on  - adds Steam-Tracker Showcase Rarest Owned Appids to the steam profile page.");
+    document.body.appendChild(Showcase_ST_ROA_Text);
+
+    console.log("[Showcase_ST_ROA:] = " + GM_getValue("Showcase_ST_ROA_Value"));
+
+    var hr = document.createElement('hr');
+    hr.innerHTML = ' ';
+    document.body.appendChild(hr);
+	
+	/*	Steam-Tracker.com and Timekillerz API needed showcases.	*/
     //Showcase Default.
     var Showcase_Default_F = function() {
         var Showcase_Default_V = document.getElementById('Showcase_Default_id').value;
@@ -46,81 +165,7 @@ function Settings(){
     hr.innerHTML = ' ';
     document.body.appendChild(hr);
 	
-	//Showcase Steam-Tracker Default.
-    var Showcase_ST_Default_F = function() {
-        var Showcase_ST_Default_V = document.getElementById('Showcase_ST_Default_id').value;
-        GM_setValue("Showcase_ST_Default_Value", Showcase_ST_Default_V);
-        console.log("[Showcase_ST_Default:] = " + GM_getValue("Showcase_ST_Default_Value"));
-    };
-
-    var Showcase_ST_Default_B = document.createElement("input");
-    Showcase_ST_Default_B.type="button";
-    Showcase_ST_Default_B.value="Showcase_ST_Default";
-    Showcase_ST_Default_B.className="btnv6_blue_hoverfade";
-    Showcase_ST_Default_B.style.width = "150px";
-    Showcase_ST_Default_B.style.height = "30px";
-    Showcase_ST_Default_B.onclick = Showcase_ST_Default_F;
-    document.body.appendChild(Showcase_ST_Default_B);
-
-    var Showcase_ST_Default_I = document.createElement("input");
-    Showcase_ST_Default_I.type="number";
-    Showcase_ST_Default_I.id="Showcase_ST_Default_id";
-    Showcase_ST_Default_I.name="Showcase_ST_Default_id";
-    Showcase_ST_Default_I.value=GM_getValue("Showcase_ST_Default_Value");
-    Showcase_ST_Default_I.min="0";
-    Showcase_ST_Default_I.max="1";
-    Showcase_ST_Default_I.style.width = "33px";
-    Showcase_ST_Default_I.style.height = "25px";
-    Showcase_ST_Default_I.onclick = Showcase_ST_Default_F;
-    document.body.appendChild(Showcase_ST_Default_I);
-
-    var P_Showcase_ST_Default = document.createElement("p");
-    var Showcase_ST_Default_Text = document.createTextNode(" : 0 = off / 1 = on  - adds Showcase steam-tracker Default to the steam profile page.");
-    document.body.appendChild(Showcase_ST_Default_Text);
-
-    console.log("[Showcase_ST_Default:] = " + GM_getValue("Showcase_ST_Default_Value"));
-
-    var hr = document.createElement('hr');
-    hr.innerHTML = ' ';
-    document.body.appendChild(hr);
-
-    //Showcase Recent Activity.
-    var Showcase_RA_F = function() {
-        var Showcase_RA_V = document.getElementById('Showcase_RA_id').value;
-        GM_setValue("Showcase_RA_Value", Showcase_RA_V);
-        console.log("[Showcase_RA:] = " + GM_getValue("Showcase_RA_Value"));
-    };
-
-    var Showcase_RA_B = document.createElement("input");
-    Showcase_RA_B.type="button";
-    Showcase_RA_B.value="Showcase_RA";
-    Showcase_RA_B.className="btnv6_blue_hoverfade";
-    Showcase_RA_B.style.width = "150px";
-    Showcase_RA_B.style.height = "30px";
-    Showcase_RA_B.onclick = Showcase_RA_F;
-    document.body.appendChild(Showcase_RA_B);
-
-    var Showcase_RA_I = document.createElement("input");
-    Showcase_RA_I.type="number";
-    Showcase_RA_I.id="Showcase_RA_id";
-    Showcase_RA_I.name="Showcase_RA_id";
-    Showcase_RA_I.value=GM_getValue("Showcase_RA_Value");
-    Showcase_RA_I.min="0";
-    Showcase_RA_I.max="1";
-    Showcase_RA_I.style.width = "33px";
-    Showcase_RA_I.style.height = "25px";
-    Showcase_RA_I.onclick = Showcase_RA_F;
-    document.body.appendChild(Showcase_RA_I);
-
-    var P_Showcase_RA = document.createElement("p");
-    var Showcase_RA_Text = document.createTextNode(" : 0 = off / 1 = on  - adds Showcase Recent Activity to the steam profile page.");
-    document.body.appendChild(Showcase_RA_Text);
-
-    console.log("[Showcase_RA:] = " + GM_getValue("Showcase_RA_Value"));
-
-    var hr = document.createElement('hr');
-    hr.innerHTML = ' ';
-    document.body.appendChild(hr);
+	
 
     //Showcase Rarest Owned Appid.
     var Showcase_ROA_F = function() {
@@ -160,43 +205,7 @@ function Settings(){
     hr.innerHTML = ' ';
     document.body.appendChild(hr);
 	
-	//Steam-Tracker Showcase Rarest Owned Appid.
-    var Showcase_ST_ROA_F = function() {
-        var Showcase_ST_ROA_V = document.getElementById('Showcase_ST_ROA_id').value;
-        GM_setValue("Showcase_ST_ROA_Value", Showcase_ST_ROA_V);
-        console.log("[Showcase_ST_ROA:] = " + GM_getValue("Showcase_ST_ROA_Value"));
-    };
-
-    var Showcase_ST_ROA_B = document.createElement("input");
-    Showcase_ST_ROA_B.type="button";
-    Showcase_ST_ROA_B.value="Showcase_ST_ROA";
-    Showcase_ST_ROA_B.className="btnv6_blue_hoverfade";
-    Showcase_ST_ROA_B.style.width = "150px";
-    Showcase_ST_ROA_B.style.height = "30px";
-    Showcase_ST_ROA_B.onclick = Showcase_ST_ROA_F;
-    document.body.appendChild(Showcase_ST_ROA_B);
-
-    var Showcase_ST_ROA_I = document.createElement("input");
-    Showcase_ST_ROA_I.type="number";
-    Showcase_ST_ROA_I.id="Showcase_ST_ROA_id";
-    Showcase_ST_ROA_I.name="Showcase_ST_ROA_id";
-    Showcase_ST_ROA_I.value=GM_getValue("Showcase_ST_ROA_Value");
-    Showcase_ST_ROA_I.min="0";
-    Showcase_ST_ROA_I.max="1";
-    Showcase_ST_ROA_I.style.width = "33px";
-    Showcase_ST_ROA_I.style.height = "25px";
-    Showcase_ST_ROA_I.onclick = Showcase_ST_ROA_F;
-    document.body.appendChild(Showcase_ST_ROA_I);
-
-    var P_Showcase_ST_ROA = document.createElement("p");
-    var Showcase_ST_ROA_Text = document.createTextNode(" : 0 = off / 1 = on  - adds Steam-Tracker Showcase Rarest Owned Appids to the steam profile page.");
-    document.body.appendChild(Showcase_ST_ROA_Text);
-
-    console.log("[Showcase_ST_ROA:] = " + GM_getValue("Showcase_ST_ROA_Value"));
-
-    var hr = document.createElement('hr');
-    hr.innerHTML = ' ';
-    document.body.appendChild(hr);
+	
 
     //RemGC Showcase setting.
     var RemGCTracker_F = function() {
@@ -272,6 +281,10 @@ function Settings(){
     document.body.appendChild(hr);
     console.log("[C7KTracker:] = " + GM_getValue("C7KTracker_Value"));
 
+    
+	
+/*	NO API only needed showcases.	*/
+
     //store page steam-tracker button.
     var StoreTracker_F = function() {
         var StoreTracker_V = document.getElementById('StoreTrackerid').value;
@@ -310,6 +323,7 @@ function Settings(){
     hr.innerHTML = ' ';
     document.body.appendChild(hr);
 
+
     //app hub page steam-tracker button.
     var HubTracker_F = function() {
         var HubTracker_V = document.getElementById('HubTrackerid').value;
@@ -347,6 +361,7 @@ function Settings(){
     document.body.appendChild(hr);
     console.log("[HubTracker:] = " + GM_getValue("HubTracker_Value"));
 
+	/*	SAVE VALUES + Button..	*/
     var Save_F = function() {
 		Showcase_ST_Default_F();
         StoreTracker_F();
