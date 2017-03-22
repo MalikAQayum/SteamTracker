@@ -44,8 +44,8 @@ function Settings(){
     console.log("[Showcase_ST_Default:] = " + GM_getValue("Showcase_ST_Default_Value"));
 
     var hr = document.createElement('hr');
-    hr.innerHTML = ' <br>';
-    document.body.appendChild("");
+    hr.innerHTML = ' <br><br>';
+    document.body.appendChild(hr);
 
     //Showcase Recent Activity.
     var Showcase_RA_F = function() {
