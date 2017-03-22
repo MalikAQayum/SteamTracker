@@ -1,7 +1,7 @@
 function Settings(){
     document.body.innerHTML = ' ';
     var Settings = document.createElement("div");
-    Settings.innerHTML = "<p><h3>SteamTracker Extension Settings. [test]</h3></p><br>";
+    Settings.innerHTML = "<p><h3>SteamTracker Extension Settings.</h3></p><br>";
     document.body.appendChild(Settings, document.body.firstChild);
 	
 /*	Steam-Tracker.com API only needed showcases.	*/
@@ -162,8 +162,6 @@ function Settings(){
     hr.innerHTML = ' ';
     document.body.appendChild(hr);
 	
-	
-
     //Showcase Rarest Owned Appid.
     var Showcase_ROA_F = function() {
         var Showcase_ROA_V = document.getElementById('Showcase_ROA_id').value;
@@ -202,8 +200,6 @@ function Settings(){
     hr.innerHTML = ' ';
     document.body.appendChild(hr);
 	
-	
-
     //RemGC Showcase setting.
     var RemGCTracker_F = function() {
         var RemGCTracker_V = document.getElementById('RemGCTrackerid').value;
@@ -277,11 +273,8 @@ function Settings(){
     hr.innerHTML = ' ';
     document.body.appendChild(hr);
     console.log("[C7KTracker:] = " + GM_getValue("C7KTracker_Value"));
-
-    
 	
 /*	NO API only needed showcases.	*/
-
     //store page steam-tracker button.
     var StoreTracker_F = function() {
         var StoreTracker_V = document.getElementById('StoreTrackerid').value;
@@ -360,7 +353,7 @@ function Settings(){
 
 	/*	SAVE VALUES + BUTTON.	*/
     var Save_F = function() {
-		Showcase_ST_Default_F();
+	Showcase_ST_Default_F();
         StoreTracker_F();
         HubTracker_F();
         Showcase_Default_F();
@@ -368,7 +361,7 @@ function Settings(){
         RemGCTracker_F();
         C7KTracker_F();
         Showcase_ROA_F();
-		Showcase_ST_ROA_F();
+	Showcase_ST_ROA_F();
 
         location.href="http://steamcommunity.com/my";
     };
