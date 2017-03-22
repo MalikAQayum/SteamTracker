@@ -43,7 +43,11 @@ function Settings(){
 
     console.log("[Showcase_ST_Default:] = " + GM_getValue("Showcase_ST_Default_Value"));
 
-    document.body.appendChild(hr+"<br>");
+	
+    var hr = document.createElement('hr');
+    hr.innerHTML = ' ';
+    document.body.appendChild(hr);
+	
 	
     //Recent Activity Showcase.
     var Showcase_RA_F = function() {
@@ -78,11 +82,11 @@ function Settings(){
     document.body.appendChild(Showcase_RA_Text);
 
     console.log("[Showcase_RA:] = " + GM_getValue("Showcase_RA_Value"));
-	/*
+	
     var hr = document.createElement('hr');
     hr.innerHTML = ' ';
     document.body.appendChild(hr);
-	*/
+	
 	
 	//Steam-Tracker Showcase Rarest Owned Appid.
     var Showcase_ST_ROA_F = function() {
