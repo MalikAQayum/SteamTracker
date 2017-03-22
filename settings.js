@@ -159,6 +159,44 @@ function Settings(){
     var hr = document.createElement('hr');
     hr.innerHTML = ' ';
     document.body.appendChild(hr);
+	
+	//Steam-Tracker Showcase Rarest Owned Appid.
+    var Showcase_ST_ROA_F = function() {
+        var Showcase_ST_ROA_V = document.getElementById('Showcase_ST_ROA_id').value;
+        GM_setValue("Showcase_ST_ROA_Value", Showcase_ST_ROA_V);
+        console.log("[Showcase_ST_ROA:] = " + GM_getValue("Showcase_ST_ROA_Value"));
+    };
+
+    var Showcase_ST_ROA_B = document.createElement("input");
+    Showcase_ST_ROA_B.type="button";
+    Showcase_ST_ROA_B.value="Showcase_ST_ROA";
+    Showcase_ST_ROA_B.className="btnv6_blue_hoverfade";
+    Showcase_ST_ROA_B.style.width = "150px";
+    Showcase_ST_ROA_B.style.height = "30px";
+    Showcase_ST_ROA_B.onclick = Showcase_ST_ROA_F;
+    document.body.appendChild(Showcase_ST_ROA_B);
+
+    var Showcase_ST_ROA_I = document.createElement("input");
+    Showcase_ST_ROA_I.type="number";
+    Showcase_ST_ROA_I.id="Showcase_ST_ROA_id";
+    Showcase_ST_ROA_I.name="Showcase_ST_ROA_id";
+    Showcase_ST_ROA_I.value=GM_getValue("Showcase_ST_ROA_Value");
+    Showcase_ST_ROA_I.min="0";
+    Showcase_ST_ROA_I.max="1";
+    Showcase_ST_ROA_I.style.width = "33px";
+    Showcase_ST_ROA_I.style.height = "25px";
+    Showcase_ST_ROA_I.onclick = Showcase_ST_ROA_F;
+    document.body.appendChild(Showcase_ST_ROA_I);
+
+    var P_Showcase_ST_ROA = document.createElement("p");
+    var Showcase_ST_ROA_Text = document.createTextNode(" : 0 = off / 1 = on  - adds Steam-Tracker Showcase Rarest Owned Appids to the steam profile page.");
+    document.body.appendChild(Showcase_ST_ROA_Text);
+
+    console.log("[Showcase_ST_ROA:] = " + GM_getValue("Showcase_ST_ROA_Value"));
+
+    var hr = document.createElement('hr');
+    hr.innerHTML = ' ';
+    document.body.appendChild(hr);
 
     //RemGC Showcase setting.
     var RemGCTracker_F = function() {
@@ -318,6 +356,7 @@ function Settings(){
         RemGCTracker_F();
         C7KTracker_F();
         Showcase_ROA_F();
+		Showcase_ST_ROA_F();
 
         location.href="http://steamcommunity.com/my";
     };

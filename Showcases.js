@@ -256,3 +256,120 @@ Official Group for Club 7000							</div>
     }
 }
 
+//Steam-Tracker Rarest Owned Appids Showcase.
+function ST_ROA(){
+    if ((GM_getValue("Showcase_ST_ROA_Value") == 0) || (GM_getValue("Showcase_ST_ROA_Value") == "undefined") || (GM_getValue("Showcase_ST_ROA_Value") == null) ) {
+        console.log("Showcase Rarest Owned Appids is set to : " + GM_getValue("Showcase_ST_ROA_Value") + " and will not add Showcase Rarest Owned Appids to the Steam Profile.");
+    }
+    else if ((GM_getValue("Showcase_ST_ROA_Value") == 1)) {
+        console.log("Showcase Rarest Owned Appids is set to : " + GM_getValue("Showcase_ST_ROA_Value") + " and will add Showcase Rarest Owned Appids to the Steam Profile.");
+        st_oa();
+    }
+    else
+    {
+        //donothing
+    }
+}
+
+function st_oa(){
+    GM_xmlhttpRequest({
+        method: "GET",
+        url: "https://steam-tracker.com/api?action=GetUserAppList&steamid="+ GM_getValue("G_steam_id"),
+        onload: function(response_st) {
+            var st_str = response_st.responseText;
+            var json_st_data = JSON.parse(st_str);
+            var st_oa_keys=[];
+            for(var i = 0; i < json_st_data.apps.length; i++) {
+                st_oa_keys += json_st_data.apps[i].appid + ",";
+            }
+            GM_setValue("G_st_oa_keys", st_oa_keys.substring(0, st_oa_keys.length - 1));
+            st_GetAppListAPI();
+        }
+    });
+}
+
+//
+
+function st_GetAppListAPI(){
+    GM_xmlhttpRequest({
+        method: "GET",
+        url: "https://steam-tracker.com/api?action=GetAppList",
+        onload: function(response_GetAppList) {
+            var GetAppList_str = response_GetAppList.responseText;
+            var json_ownedappids_data = JSON.parse(GetAppList_str);
+            var st_list_keys=[];
+            for(var i = 0; i < json_ownedappids_data.removed_apps.length; i++) {
+                st_list_keys += json_ownedappids_data.removed_apps[i].appid + ",";
+            }
+            GM_setValue("G_st_list_keys", st_list_keys.substring(0, st_list_keys.length - 1));
+            st_roa();
+        }
+    });
+}
+
+function st_roa(){
+    var st_rarest_appids_Array =  JSON.parse("["+GM_getValue("G_st_list_keys")+"]");
+    var st_Owned_appids_Array =  JSON.parse("["+GM_getValue("G_st_oa_keys")+"]");
+
+    var st_r_owned_appids=[];
+    var x = 0;
+
+    for (var i = 0; i < st_rarest_appids_Array.length; i++) {
+        for (var j = 0; j < st_Owned_appids_Array.length; j++) {
+            if (x == 4) {
+                break;
+            }
+            else if (st_rarest_appids_Array[i] == st_Owned_appids_Array[j]) {
+                st_r_owned_appids += st_Owned_appids_Array[j]+",";
+                x = x + 1;
+            }
+            else {
+                //donothing
+            }
+        }
+    }
+    st_r_owned_appids = st_r_owned_appids.substring(0, st_r_owned_appids.length - 1);
+    st_r_owned_appids=st_r_owned_appids.split(',');
+    var out=[];
+    for(i=0; i<st_r_owned_appids.length;i=i+2)
+        out.push(st_r_owned_appids.slice(i,i+2).join(','));
+
+    GM_setValue("G_st_r_owned_appids_0",st_r_owned_appids[0]);
+    GM_setValue("G_st_r_owned_appids_1",st_r_owned_appids[1]);
+    GM_setValue("G_st_r_owned_appids_2",st_r_owned_appids[2]);
+    GM_setValue("G_st_r_owned_appids_3",st_r_owned_appids[3]);
+    st_rarest_owned_appids_();
+}
+
+function st_rarest_owned_appids_(){
+
+    document.getElementsByClassName("profile_customization_area")[0].setAttribute("id", "MalikQayum_Showcase_7");
+    var div_7 = document.getElementById("MalikQayum_Showcase_7");
+
+    var x_div_7 = document.createElement('div');
+    x_div_7.id = 'MalikQayum_Showcase_7';
+    div_7.appendChild(x_div_7);
+    x_div_7.innerHTML =
+        `
+<div class="profile_customization"><div class="profile_customization_header">Rarest Owned Appids</div><div class="profile_customization_block"><div class="gamecollector_showcase"><div class="showcase_gamecollector_games">
+<div class="showcase_slot showcase_gamecollector_game" >
+` +'<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_st_r_owned_appids_0") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" size="100%" title="' + GM_getValue("G_st_r_owned_appids_0") + '"alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_st_r_owned_appids_0") +"/"+ '" onclick="window.open(this.alt)">' +`
+</div>
+<div class="showcase_slot showcase_gamecollector_game">
+` +'<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_st_r_owned_appids_1") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" size="100%" title="' + GM_getValue("G_st_r_owned_appids_1") + '"alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_st_r_owned_appids_1") +"/"+ '" onclick="window.open(this.alt)">' +`
+</div>
+</div>
+<div class="showcase_slot showcase_gamecollector_game">
+` +'<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_st_r_owned_appids_2") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" size="100%" title="' + GM_getValue("G_st_r_owned_appids_2") + '"alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_st_r_owned_appids_2") +"/"+ '" onclick="window.open(this.alt)">' +`
+</div>
+</div>
+<div class="showcase_slot showcase_gamecollector_game">
+` +'<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_st_r_owned_appids_3") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" size="100%" title="' + GM_getValue("G_st_r_owned_appids_3") + '"alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_st_r_owned_appids_3") +"/"+ '" onclick="window.open(this.alt)">' +`
+</div>
+</div>
+<div style="clear: left;"></div></div></div><div style="clear: both"></div></div></div>
+`;
+
+}
+
+
