@@ -9,7 +9,7 @@ function Settings(){
     hr.innerHTML = ' ';
     document.body.appendChild(hr);
 
-	//Steam-Tracker Default Showcase.
+	//Showcase Steam-Tracker Default.
     var Showcase_ST_Default_F = function() {
         var Showcase_ST_Default_V = document.getElementById('Showcase_ST_Default_id').value;
         GM_setValue("Showcase_ST_Default_Value", Showcase_ST_Default_V);
@@ -43,13 +43,11 @@ function Settings(){
 
     console.log("[Showcase_ST_Default:] = " + GM_getValue("Showcase_ST_Default_Value"));
 
-	
     var hr = document.createElement('hr');
     hr.innerHTML = ' ';
     document.body.appendChild(hr);
-	
-	
-    //Recent Activity Showcase.
+
+    //Showcase Recent Activity.
     var Showcase_RA_F = function() {
         var Showcase_RA_V = document.getElementById('Showcase_RA_id').value;
         GM_setValue("Showcase_RA_Value", Showcase_RA_V);
@@ -82,11 +80,10 @@ function Settings(){
     document.body.appendChild(Showcase_RA_Text);
 
     console.log("[Showcase_RA:] = " + GM_getValue("Showcase_RA_Value"));
-	
+
     var hr = document.createElement('hr');
     hr.innerHTML = ' ';
     document.body.appendChild(hr);
-	
 	
 	//Steam-Tracker Showcase Rarest Owned Appid.
     var Showcase_ST_ROA_F = function() {
@@ -361,7 +358,7 @@ function Settings(){
     document.body.appendChild(hr);
     console.log("[HubTracker:] = " + GM_getValue("HubTracker_Value"));
 
-	/*	SAVE VALUES + Button..	*/
+	/*	SAVE VALUES + BUTTON.	*/
     var Save_F = function() {
 		Showcase_ST_Default_F();
         StoreTracker_F();
