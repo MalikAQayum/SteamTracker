@@ -1,7 +1,7 @@
 function Settings(){
     document.body.innerHTML = ' ';
     var Settings = document.createElement("div");
-    Settings.innerHTML = "<p><h3>SteamTracker Extension Settings.</h3></p><br>";
+    Settings.innerHTML = "<p><h3>SteamTracker Extension Settings. [test]</h3></p><br>";
     document.body.appendChild(Settings, document.body.firstChild);
 	
 /*	Steam-Tracker.com API only needed showcases.	*/
@@ -44,7 +44,7 @@ function Settings(){
     console.log("[Showcase_ST_Default:] = " + GM_getValue("Showcase_ST_Default_Value"));
 
     var hr = document.createElement('hr');
-    hr.innerHTML = ' ';
+    hr.innerHTML = ' <br>';
     document.body.appendChild("");
 
     //Showcase Recent Activity.
