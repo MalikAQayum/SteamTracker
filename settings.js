@@ -45,7 +45,7 @@ function Settings(){
 
     var hr = document.createElement('hr');
     hr.innerHTML = ' ';
-    document.body.appendChild(hr);
+    document.body.appendChild("");
 
     //Showcase Recent Activity.
     var Showcase_RA_F = function() {
