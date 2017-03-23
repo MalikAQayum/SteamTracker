@@ -79,6 +79,10 @@ function steam_tracker_data_both(){
                 GM_setValue("G_steamtracker_total_2",total2);
                 GM_setValue("G_steamtracker_totalgames_1",totalgames1);
                 GM_setValue("G_steamtracker_totalgames_2",totalgames2);
+		
+		    //debug    
+		    console.log("totalgames2+ " / " +totalgames1");
+		    console.log(GM_getValue("G_steamtracker_video_2") + " / " +GM_setValue("G_steamtracker_video_1"));
 
                 GM_setValue("G_steamtracker_privacy",json_st_data.recent_activity.error); 
                 if (/private/i.test(json_st_data.recent_activity.error))
