@@ -152,9 +152,6 @@ function steamtracker_changelog_data_both(){
 			console.log("5/5 Timekillerz & Steam-Tracker API Stuff Done.");
             GM_setValue("G_API", "1");
 		
-		//debug    
-		    console.log(totalgames2+ " / " +totalgames1);
-		    console.log(GM_getValue("G_steamtracker_video_2") + " / " +GM_getValue("G_steamtracker_video_1"));
         }
     });
 }
