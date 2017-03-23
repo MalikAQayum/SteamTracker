@@ -80,11 +80,7 @@ function steam_tracker_data_both(){
                 GM_setValue("G_steamtracker_totalgames_1",totalgames1);
                 GM_setValue("G_steamtracker_totalgames_2",totalgames2);
 		
-		    //debug    
-		    console.log("totalgames2+ " / " +totalgames1");
-		    console.log(GM_getValue("G_steamtracker_video_2") + " / " +GM_setValue("G_steamtracker_video_1"));
-
-                GM_setValue("G_steamtracker_privacy",json_st_data.recent_activity.error); 
+		GM_setValue("G_steamtracker_privacy",json_st_data.recent_activity.error); 
                 if (/private/i.test(json_st_data.recent_activity.error))
                 {
                     console.log("Recent Activity Setting is set to " +json_st_data.recent_activity.error + " and is honored. #1");
@@ -155,6 +151,10 @@ function steamtracker_changelog_data_both(){
             GM_setValue("G_steamtracker_changelog_change_4", json_stc.changelog[4].new_category);
 			console.log("5/5 Timekillerz & Steam-Tracker API Stuff Done.");
             GM_setValue("G_API", "1");
+		
+		//debug    
+		    console.log(totalgames2+ " / " +totalgames1);
+		    console.log(GM_getValue("G_steamtracker_video_2") + " / " +GM_getValue("G_steamtracker_video_1"));
         }
     });
 }
