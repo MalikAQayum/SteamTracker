@@ -69,8 +69,8 @@ function steam_tracker_data_both(){
                 GM_setValue("G_steamtracker_software_2",json_st_data.stats[7].count);
                 GM_setValue("G_steamtracker_freesoftware_1",json_st_data.stats[8].category_total);
                 GM_setValue("G_steamtracker_freesoftware_2",json_st_data.stats[8].count);
-                GM_setValue("G_steamtracker_video_1",json_st_data.stats[9].category_total);
-                GM_setValue("G_steamtracker_video_2",json_st_data.stats[9].count);
+                GM_setValue("G_steamtracker_video_1",json_st_data.stats[10].category_total);
+                GM_setValue("G_steamtracker_video_2",json_st_data.stats[10].count);
                 var total1 =parseInt(GM_getValue("G_steamtracker_delisted_1"))+ parseInt(GM_getValue("G_steamtracker_disabled_1"))+ parseInt(GM_getValue("G_steamtracker_F2P_1"))+ parseInt(GM_getValue("G_steamtracker_retailonly_1"))+ parseInt(GM_getValue("G_steamtracker_testapp_1"))+ parseInt(GM_getValue("G_steamtracker_preorder_1"))+ parseInt(GM_getValue("G_steamtracker_unreleased_1"))+ parseInt(GM_getValue("G_steamtracker_software_1"))+ parseInt(GM_getValue("G_steamtracker_freesoftware_1"))+ parseInt(GM_getValue("G_steamtracker_video_1"));
                 var total2 =parseInt(GM_getValue("G_steamtracker_delisted_2"))+ parseInt(GM_getValue("G_steamtracker_disabled_2"))+ parseInt(GM_getValue("G_steamtracker_F2P_2"))+ parseInt(GM_getValue("G_steamtracker_retailonly_2"))+ parseInt(GM_getValue("G_steamtracker_testapp_2"))+ parseInt(GM_getValue("G_steamtracker_preorder_2"))+ parseInt(GM_getValue("G_steamtracker_unreleased_2"))+ parseInt(GM_getValue("G_steamtracker_software_2"))+ parseInt(GM_getValue("G_steamtracker_freesoftware_2"))+ parseInt(GM_getValue("G_steamtracker_video_2"));
                 var totalgames1 =parseInt(GM_getValue("G_steamtracker_delisted_1"))+ parseInt(GM_getValue("G_steamtracker_disabled_1"))+ parseInt(GM_getValue("G_steamtracker_F2P_1"))+ parseInt(GM_getValue("G_steamtracker_retailonly_1"))+ parseInt(GM_getValue("G_steamtracker_testapp_1"))+ parseInt(GM_getValue("G_steamtracker_preorder_1"))+ parseInt(GM_getValue("G_steamtracker_unreleased_1"));
