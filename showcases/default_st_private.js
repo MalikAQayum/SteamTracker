@@ -45,7 +45,7 @@ function default_st_private(){
 <div class="profile_customization_header"> Steam Removed Games Showcase	</div>
 <div class="profile_customization_block">
 <div class="screenshot_showcase">
-<div class="screenshot_showcase_primary showcase_slot ">`+st_table+`</div>
+<div class="screenshot_showcase_primary showcase_slot ">`+st_tablex+`</div>
 <div class="screenshot_showcase_rightcol">
 <div class="screenshot_showcase_smallscreenshot showcase_slot ">
 ` +stc_image_0s2 +`
