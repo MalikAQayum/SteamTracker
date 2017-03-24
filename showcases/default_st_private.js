@@ -25,11 +25,6 @@ function default_st_private(){
         var TotalGames = "<tr><td>" + "Total Games" + "</td>" + "<td>" + GM_getValue("G_steamtracker_totalgames_2") + "</td>" + "<td>" + GM_getValue("G_steamtracker_totalgames_1")+ "</td><tr>";    
         var Total = "<tr><td>" + "Total" + "</td>" + "<td>" + GM_getValue("G_steamtracker_total_2") + "</td>" + "<td>" + GM_getValue("G_steamtracker_total_1") + "</td><tr>";    
 
-        //RA
-        var ra_image_0s = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_recentactivity_appid_0") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" size="100%" title="' + GM_getValue("G_steamtracker_recentactivity_title_0") + " : [" + GM_getValue("G_steamtracker_recentactivity_status_0") +"]"+ '"id="'+ GM_getValue("G_steamtracker_recentactivity_status_0").replace(" ", "") + '"alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_steamtracker_recentactivity_appid_0") +"/" + '" onclick="window.open(this.alt)">';    
-        var ra_image_1s = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_recentactivity_appid_1") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" size="100%" title="' + GM_getValue("G_steamtracker_recentactivity_title_1") + " : [" + GM_getValue("G_steamtracker_recentactivity_status_1") +"]"+ '"id="'+ GM_getValue("G_steamtracker_recentactivity_status_1").replace(" ", "") + '"alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_steamtracker_recentactivity_appid_1") +"/" + '" onclick="window.open(this.alt)">';
-        var ra_image_2s = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_recentactivity_appid_2") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" size="100%" title="' + GM_getValue("G_steamtracker_recentactivity_title_2") + " : [" + GM_getValue("G_steamtracker_recentactivity_status_2") +"]"+ '"id="'+ GM_getValue("G_steamtracker_recentactivity_status_2").replace(" ", "") + '"alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_steamtracker_recentactivity_appid_2") +"/" + '" onclick="window.open(this.alt)">';
-        var ra_image_3s = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_recentactivity_appid_3") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" size="100%" title="' + GM_getValue("G_steamtracker_recentactivity_title_3") + " : [" + GM_getValue("G_steamtracker_recentactivity_status_3") +"]"+ '"id="'+ GM_getValue("G_steamtracker_recentactivity_status_3").replace(" ", "") + '"alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_steamtracker_recentactivity_appid_3") +"/" + '" onclick="window.open(this.alt)">';
         //Changelog
         var stc_image_0s2 = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_changelog_appid_0") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" width="100%" style="max-width: 100px;" title="' + GM_getValue("G_steamtracker_changelog_title_0") + " : [" + GM_getValue("G_steamtracker_changelog_change_0") +"]"+ '"id="'+ GM_getValue("G_steamtracker_changelog_change_0").replace(" ", "") +'" alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_steamtracker_changelog_appid_0") +"/" + '" onclick="window.open(this.alt)">';
         var stc_image_1s2 = '<img src="' + "https://steamcdn-a.akamaihd.net/steam/apps/" + GM_getValue("G_steamtracker_changelog_appid_1") + "/capsule_231x87.jpg" + '"onerror="this.src=\'https://steam-tracker.com/images/transparent231x87.gif\'"; height="100%" width="100%" style="max-width: 100px;" title="' + GM_getValue("G_steamtracker_changelog_title_1") + " : [" + GM_getValue("G_steamtracker_changelog_change_1") +"]"+ '"id="'+ GM_getValue("G_steamtracker_changelog_change_1").replace(" ", "") +'" alt="' + "https://steam-tracker.com/app/"+ GM_getValue("G_steamtracker_changelog_appid_1") +"/" + '" onclick="window.open(this.alt)">';
@@ -46,16 +41,17 @@ function default_st_private(){
         div_1.prepend(x_div_1);
         x_div_1.innerHTML =
             `
-<div class="profile_customization"><div class="profile_customization_header"> Steam Removed Games Showcase	</div>
+<div class="profile_customization">
+<div class="profile_customization_header"> Steam Removed Games Showcase	</div>
 <div class="profile_customization_block">
 <div class="screenshot_showcase">
-<div class="screenshot_showcase_primary showcase_slot ">`+st_tablex+`</div>
+<div class="screenshot_showcase_primary showcase_slot ">`+st_table+`</div>
 <div class="screenshot_showcase_rightcol">
 <div class="screenshot_showcase_smallscreenshot showcase_slot ">
 ` +stc_image_0s2 +`
 </div>
 <div class="screenshot_showcase_smallscreenshot showcase_slot ">
-` +stc_image_1s2 +`
+` +stc_image_1s +`
 </div>
 <div class="screenshot_showcase_smallscreenshot showcase_slot ">
 ` +stc_image_2s2 +`
@@ -70,30 +66,6 @@ function default_st_private(){
 <div style="clear: both;"></div>
 </div>
 </div>
-<div class="profile_customization_header">Recent Activity</div>
-<div class="profile_customization_block">
-<div class="gamecollector_showcase">
-<div class="showcase_gamecollector_games">
-<div class="showcase_slot showcase_gamecollector_game">
-` +ra_image_0s +`
-</div>
-<div class="showcase_slot showcase_gamecollector_game">
-` +ra_image_1s +`
-</div>
-</div>
-<div class="showcase_slot showcase_gamecollector_game">
-` +ra_image_2s +`
-</div>
-</div>
-<div class="showcase_slot showcase_gamecollector_game">
-` +ra_image_3s +`
-</div>
-</div>
-<div style="clear: left;"></div>
-</div>
-</div>
-<div style="clear: both"></div>
-</div>
 </div>
 `;
         console.log("skipping RA images/history : private 2 of 2");
@@ -101,4 +73,5 @@ function default_st_private(){
     else{
         //donothing
     }
+
 }
