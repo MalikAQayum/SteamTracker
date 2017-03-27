@@ -202,7 +202,10 @@ function wait_api() {
             C7K_Showcase();
             Rarest_Owned_Appids();
 			ST_ROA();
+		if(GM_getValue("SLChart_Value") === "1"){
 		SLData();
+		wait_sldata();
+		}
         }
         else
         {
@@ -214,7 +217,10 @@ function wait_api() {
             C7K_Showcase();
             Rarest_Owned_Appids();
 			ST_ROA();
+		if(GM_getValue("SLChart_Value") === "1"){
 		SLData();
+		wait_sldata();
+		}
         }
         GMDelete();
     }
