@@ -18,7 +18,7 @@ Optional Settings:
 - Showcase Rarest Owned Appids  = adds the Rarest Owned Appids showcase. 
 
 ## Installation  
-- I am really dumbfounded at how different browsers will fail to run this script and I am clearly inable to support other browsers than Chrome atm, if anyone wants to have Opera/Safari/firefox etc. supported they will have to make some commits themselves.
+### I am really dumbfounded at how different browsers will fail to run this script and I am clearly inable to support other browsers than Chrome atm, if anyone wants to have Opera/Safari/firefox etc. supported they will have to make some commits themselves.
 
 1. Make sure you have Tampermonkey installed:
 
