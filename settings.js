@@ -350,6 +350,43 @@ function Settings(){
     hr.innerHTML = ' ';
     document.body.appendChild(hr);
     console.log("[HubTracker:] = " + GM_getValue("HubTracker_Value"));
+	
+	//Steam Licenses Chart button.
+    var SLChart_F = function() {
+        var SLChart_V = document.getElementById('SLChartid').value;
+        GM_setValue("SLChart_Value", SLChart_V);
+        console.log("[SLChart:] = " + GM_getValue("SLChart_Value"));
+    };
+
+    var SLChart_B = document.createElement("input");
+    SLChart_B.type="button";
+    SLChart_B.value="SLChart";
+    SLChart_B.className="btnv6_blue_hoverfade";
+    SLChart_B.style.width = "150px";
+    SLChart_B.style.height = "30px";
+    SLChart_B.onclick = SLChart_F;
+    document.body.appendChild(SLChart_B);
+
+    var SLChart_I = document.createElement("input");
+    SLChart_I.type="number";
+    SLChart_I.id="SLChartid";
+    SLChart_I.name="SLChartid";
+    SLChart_I.value=GM_getValue("SLChart_Value");
+    SLChart_I.min="0";
+    SLChart_I.max="1";
+    SLChart_I.style.width = "33px";
+    SLChart_I.style.height = "25px";
+    SLChart_I.onclick = SLChart_F;
+    document.body.appendChild(SLChart_I);
+
+    var P_SLChart = document.createElement("p");
+    var SLChart_Text = document.createTextNode(" : 0 = off / 1 = on  - adds a Steam Licenses Button to the profile page.");
+    document.body.appendChild(SLChart_Text);
+
+    var hr = document.createElement('hr');
+    hr.innerHTML = ' ';
+    document.body.appendChild(hr);
+    console.log("[SLChart:] = " + GM_getValue("SLChart_Value"));
 
 	/*	SAVE VALUES + BUTTON.	*/
     var Save_F = function() {
@@ -362,6 +399,7 @@ function Settings(){
         C7KTracker_F();
         Showcase_ROA_F();
 	Showcase_ST_ROA_F();
+	SLChart_F();
 
         location.href="http://steamcommunity.com/my";
     };
