@@ -5,7 +5,7 @@
 // @author       MalikQayum
 // @connect      removed.timekillerz.eu
 // @connect      steam-tracker.com
-// @connect      https://store.steampowered.com
+// @connect      store.steampowered.com
 // @include      /^https?://steamcommunity\.com/(id|profiles)/edit/settings/steamtracker/
 // @include      /^https?://steamcommunity\.com/(id|profiles)/*/
 // @include      /^https?://steamcommunity\.com/app/*/
@@ -50,7 +50,7 @@
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/GMDelete.js
 // @downloadURL https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.user.js
 // @updateURL   https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.user.js
-// @version      4.1.1.9
+// @version      4.1.2.0
 // @grant        GM_xmlhttpRequest
 // @grant        GM_getValue
 // @grant        GM_setValue
