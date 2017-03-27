@@ -11,6 +11,7 @@
 // @include      /^https?://steamcommunity\.com/app/*/
 // @include      /^https?://store.steampowered.com/app/*/
 // @exclude      *://steamcommunity.com/*/*/badge*
+// @exclude      *://steamcommunity.com/*/*/gamecards*
 // @exclude      *://steamcommunity.com/*/*/games*
 // @exclude      *://steamcommunity.com/*/*/wishlist*
 // @exclude      *://steamcommunity.com/*/*/inventory*
