@@ -3,18 +3,18 @@ function Settings(){
     var Settings = document.createElement("div");
     Settings.innerHTML = "<p><h3>SteamTracker Extension Settings.</h3></p><br>";
     document.body.appendChild(Settings, document.body.firstChild);
-	
+
+    var hr = document.createElement('hr');
+    hr.innerHTML = ' ';
+    document.body.appendChild(hr);
+
 	var P_Showcase_ST_ROA2 = document.createElement("p");
     var Showcase_ST_ROA2_Text = document.createTextNode(" Steam-Tracker.com API only needed showcases.");
     document.body.appendChild(Showcase_ST_ROA2_Text);
     var hr = document.createElement('hr');
     hr.innerHTML = ' ';
     document.body.appendChild(hr);
-/*	Steam-Tracker.com API only needed showcases.	*/
-    var hr = document.createElement('hr');
-    hr.innerHTML = ' ';
-    document.body.appendChild(hr);
-
+	/*	Steam-Tracker.com API only needed showcases.	*/
 	//Showcase Steam-Tracker Default.
     var Showcase_ST_Default_F = function() {
         var Showcase_ST_Default_V = document.getElementById('Showcase_ST_Default_id').value;
@@ -130,7 +130,7 @@ function Settings(){
     document.body.appendChild(hr);
 	
     var P_Showcase_ST_ROA2 = document.createElement("p");
-    var Showcase_ST_ROA2_Text = document.createTextNode(" Steam-Tracker.com and Timekillerz API needed showcases.");
+    var Showcase_ST_ROA2_Text = document.createTextNode(" Steam-Tracker.com and Timekillerz API needed showcases. (IF you can live without the timekillers + Club7k count then stay away from these settings and use the above instead.)");
     document.body.appendChild(Showcase_ST_ROA2_Text);
     var hr = document.createElement('hr');
     hr.innerHTML = ' ';
@@ -371,7 +371,7 @@ function Settings(){
     console.log("[HubTracker:] = " + GM_getValue("HubTracker_Value"));
 	
 	var P_Showcase_ST_ROA2 = document.createElement("p");
-    var Showcase_ST_ROA2_Text = document.createTextNode(" store.steampowered required logged in.");
+    var Showcase_ST_ROA2_Text = document.createTextNode(" store.steampowered required logged in. (BEING WORKED ON SO IT IS NOT WORKING ATM)");
     document.body.appendChild(Showcase_ST_ROA2_Text);
     var hr = document.createElement('hr');
     hr.innerHTML = ' ';
