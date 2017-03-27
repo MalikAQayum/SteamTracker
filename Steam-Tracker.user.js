@@ -5,7 +5,7 @@
 // @author       MalikQayum
 // @connect      removed.timekillerz.eu
 // @connect      steam-tracker.com
-// @include      /^https?://steamcommunity\.com/(id|profiles)/*/edit/settings/steamtracker/
+// @include      /^https?://steamcommunity\.com/(id|profiles)/edit/settings/steamtracker/
 // @include      /^https?://steamcommunity\.com/(id|profiles)/*/
 // @include      /^https?://steamcommunity\.com/app/*/
 // @include      /^https?://store.steampowered.com/app/*/
