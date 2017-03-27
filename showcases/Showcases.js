@@ -439,6 +439,13 @@ function SLData(){
             count_arr.unshift(arr2.match(/12/g).length);
             count_arr.unshift(arr2.match(/11/g).length);
             count_arr.unshift(arr2.match(/10/g).length);
+            count_arr.unshift(arr2.match(/09/g).length);
+            count_arr.unshift(arr2.match(/08/g).length);
+            count_arr.unshift(arr2.match(/07/g).length);
+            count_arr.unshift(arr2.match(/06/g).length);
+            count_arr.unshift(arr2.match(/05/g).length);
+            count_arr.unshift(arr2.match(/04/g).length);
+            count_arr.unshift(arr2.match(/03/g).length);
 
             var tmp = [];
             for(var i = 0; i < arr.length; i++){
