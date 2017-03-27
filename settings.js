@@ -4,6 +4,12 @@ function Settings(){
     Settings.innerHTML = "<p><h3>SteamTracker Extension Settings.</h3></p><br>";
     document.body.appendChild(Settings, document.body.firstChild);
 	
+	var P_Showcase_ST_ROA2 = document.createElement("p");
+    var Showcase_ST_ROA2_Text = document.createTextNode(" Steam-Tracker.com API only needed showcases.");
+    document.body.appendChild(Showcase_ST_ROA2_Text);
+    var hr = document.createElement('hr');
+    hr.innerHTML = ' ';
+    document.body.appendChild(hr);
 /*	Steam-Tracker.com API only needed showcases.	*/
     var hr = document.createElement('hr');
     hr.innerHTML = ' ';
@@ -124,9 +130,8 @@ function Settings(){
     document.body.appendChild(hr);
 	
     var P_Showcase_ST_ROA2 = document.createElement("p");
-    var Showcase_ST_ROA2_Text = document.createTextNode(" ---------------------------------------------------------------------------------------.");
+    var Showcase_ST_ROA2_Text = document.createTextNode(" Steam-Tracker.com and Timekillerz API needed showcases.");
     document.body.appendChild(Showcase_ST_ROA2_Text);
-	
     var hr = document.createElement('hr');
     hr.innerHTML = ' ';
     document.body.appendChild(hr);
@@ -282,6 +287,12 @@ function Settings(){
     document.body.appendChild(hr);
     console.log("[C7KTracker:] = " + GM_getValue("C7KTracker_Value"));
 	
+	var P_Showcase_ST_ROA2 = document.createElement("p");
+    var Showcase_ST_ROA2_Text = document.createTextNode(" NO API only needed showcases.");
+    document.body.appendChild(Showcase_ST_ROA2_Text);
+    var hr = document.createElement('hr');
+    hr.innerHTML = ' ';
+    document.body.appendChild(hr);
 /*	NO API only needed showcases.	*/
     //store page steam-tracker button.
     var StoreTracker_F = function() {
@@ -359,6 +370,12 @@ function Settings(){
     document.body.appendChild(hr);
     console.log("[HubTracker:] = " + GM_getValue("HubTracker_Value"));
 	
+	var P_Showcase_ST_ROA2 = document.createElement("p");
+    var Showcase_ST_ROA2_Text = document.createTextNode(" store.steampowered required logged in.");
+    document.body.appendChild(Showcase_ST_ROA2_Text);
+    var hr = document.createElement('hr');
+    hr.innerHTML = ' ';
+    document.body.appendChild(hr);
 	//Steam Licenses Chart button.
     var SLChart_F = function() {
         var SLChart_V = document.getElementById('SLChartid').value;
