@@ -127,6 +127,10 @@ function Settings(){
     var Showcase_ST_ROA2_Text = document.createTextNode(" ---------------------------------------------------------------------------------------.");
     document.body.appendChild(Showcase_ST_ROA2_Text);
 	
+    var hr = document.createElement('hr');
+    hr.innerHTML = ' ';
+    document.body.appendChild(hr);
+	
 	/*	Steam-Tracker.com and Timekillerz API needed showcases.	*/
     //Showcase Default.
     var Showcase_Default_F = function() {
