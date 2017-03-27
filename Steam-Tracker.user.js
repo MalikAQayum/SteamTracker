@@ -50,7 +50,7 @@
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/GMDelete.js
 // @downloadURL https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.user.js
 // @updateURL   https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.user.js
-// @version      4.1.1.5
+// @version      4.1.1.6
 // @grant        GM_xmlhttpRequest
 // @grant        GM_getValue
 // @grant        GM_setValue
@@ -171,14 +171,26 @@ if(document.URL.match(re_steam_profile))
             wait_api();
         }
         else if ((GM_getValue("RemGCTracker_Value") == 1) || (GM_getValue("C7KTracker_Value") == 1))  {
+		if(GM_getValue("SLChart_Value") === "1"){
+		SLData();
+		wait_sldata();
+		}
             timekillerz_data_only();
             wait_api();
         }
         else if ((GM_getValue("Showcase_RA_Value") == 1) || (GM_getValue("Showcase_ST_Default_Value") == 1) || (GM_getValue("Showcase_ST_ROA_Value") == 1))  {
-            steam_tracker_data_only();
+            if(GM_getValue("SLChart_Value") === "1"){
+		SLData();
+		wait_sldata();
+		}
+		steam_tracker_data_only();
             wait_api();
         }
         else {
+		if(GM_getValue("SLChart_Value") === "1"){
+		SLData();
+		wait_sldata();
+		}
             console.log("no settings have been set.");
         }
     }
@@ -202,10 +214,7 @@ function wait_api() {
             C7K_Showcase();
             Rarest_Owned_Appids();
 			ST_ROA();
-		if(GM_getValue("SLChart_Value") === "1"){
-		SLData();
-		wait_sldata();
-		}
+		
         }
         else
         {
@@ -217,10 +226,6 @@ function wait_api() {
             C7K_Showcase();
             Rarest_Owned_Appids();
 			ST_ROA();
-		if(GM_getValue("SLChart_Value") === "1"){
-		SLData();
-		wait_sldata();
-		}
         }
         GMDelete();
     }
