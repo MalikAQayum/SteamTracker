@@ -371,7 +371,7 @@ function Settings(){
     console.log("[HubTracker:] = " + GM_getValue("HubTracker_Value"));
 	
 	var P_Showcase_ST_ROA2 = document.createElement("p");
-    var Showcase_ST_ROA2_Text = document.createTextNode(" store.steampowered required logged in. (BEING WORKED ON SO IT IS NOT WORKING ATM)");
+    var Showcase_ST_ROA2_Text = document.createTextNode(" store.steampowered required logged in. (Working: but only on Store Pages set to English)");
     document.body.appendChild(Showcase_ST_ROA2_Text);
     var hr = document.createElement('hr');
     hr.innerHTML = ' ';
