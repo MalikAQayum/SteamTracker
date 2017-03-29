@@ -500,7 +500,7 @@ function SL_Chart_v2() {
             `
 <div class="profile_customization"><div class="profile_customization_header ellipsis">Steam Licenses Chart v2</div>
 <div class="profile_customization_block"><div class="customtext_showcase">
-<div class="showcase_content_bg showcase_notes"><canvas id="SLChart" height="300" width="600"></canvas>
+<div class="showcase_content_bg showcase_notes"><canvas id="SLChart_v2" height="300" width="600"></canvas>
 </div></div></div></div>
 `;
 
