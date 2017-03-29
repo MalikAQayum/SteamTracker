@@ -51,10 +51,10 @@ function Settings(){
 	
 
 	var linebreak = document.createElement("br");
-	document.body..appendChild(linebreak);
-	document.body..appendChild(linebreak);
-	document.body..appendChild(linebreak);
-	document.body..appendChild(linebreak);
+	document.body.appendChild(linebreak);
+	document.body.appendChild(linebreak);
+	document.body.appendChild(linebreak);
+	document.body.appendChild(linebreak);
 	
     var hr = document.createElement('hr');
     hr.innerHTML = ' ';
