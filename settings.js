@@ -413,6 +413,42 @@ function Settings(){
     hr.innerHTML = ' ';
     document.body.appendChild(hr);
     console.log("[SLChart:] = " + GM_getValue("SLChart_Value"));
+	//Steam Licenses Chart button _v2.
+    var SLChart_v2_F = function() {
+        var SLChart_v2_V = document.getElementById('SLChartid_v2').value;
+        GM_setValue("SLChart_v2_Value", SLChart_v2_V);
+        console.log("[SLChart_v2:] = " + GM_getValue("SLChart_v2_Value"));
+    };
+
+    var SLChart_v2_B = document.createElement("input");
+    SLChart_v2_B.type="button";
+    SLChart_v2_B.value="SLChart_v2";
+    SLChart_v2_B.className="btnv6_blue_hoverfade";
+    SLChart_v2_B.style.width = "150px";
+    SLChart_v2_B.style.height = "30px";
+    SLChart_v2_B.onclick = SLChart_v2_F;
+    document.body.appendChild(SLChart_v2_B);
+
+    var SLChart_v2_I = document.createElement("input");
+    SLChart_v2_I.type="number";
+    SLChart_v2_I.id="SLChartid_v2";
+    SLChart_v2_I.name="SLChartid_v2";
+    SLChart_v2_I.value=GM_getValue("SLChart_v2_Value");
+    SLChart_v2_I.min="0";
+    SLChart_v2_I.max="1";
+    SLChart_v2_I.style.width = "33px";
+    SLChart_v2_I.style.height = "25px";
+    SLChart_v2_I.onclick = SLChart_v2_F;
+    document.body.appendChild(SLChart_v2_I);
+
+    var P_SLChart_v2 = document.createElement("p");
+    var SLChart_Text_v2 = document.createTextNode(" : 0 = off / 1 = on  - adds a Steam Licenses Button _v2 to the profile page.");
+    document.body.appendChild(SLChart_Text_v2);
+
+    var hr = document.createElement('hr');
+    hr.innerHTML = ' ';
+    document.body.appendChild(hr);
+    console.log("[SLChart_v2:] = " + GM_getValue("SLChart_v2_Value"));
 
 	/*	SAVE VALUES + BUTTON.	*/
     var Save_F = function() {
@@ -426,6 +462,7 @@ function Settings(){
         Showcase_ROA_F();
 	Showcase_ST_ROA_F();
 	SLChart_F();
+	SLChart_v2_F();
 
         location.href="http://steamcommunity.com/my";
     };
