@@ -49,13 +49,6 @@ function Settings(){
 
     console.log("[Showcase_ST_Default:] = " + GM_getValue("Showcase_ST_Default_Value"));
 	
-
-	var linebreak = document.createElement("br");
-	document.appendChild(linebreak);
-	document.appendChild(linebreak);
-	document.appendChild(linebreak);
-	document.appendChild(linebreak);
-	
     var hr = document.createElement('hr');
     hr.innerHTML = ' ';
     document.body.appendChild(hr);
