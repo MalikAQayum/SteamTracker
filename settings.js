@@ -52,11 +52,11 @@ function Settings(){
 	var P_Showcase_ST_ROA2 = document.createElement("p");
     var Showcase_ST_ROA2_Text = document.createTextNode(" ");
     document.body.appendChild(Showcase_ST_ROA2_Text);
-	/*
+	
     var hr = document.createElement('hr');
     hr.innerHTML = ' ';
     document.body.appendChild(hr);
-    */
+    
 	
     //Showcase Recent Activity.
     var Showcase_RA_F = function() {
