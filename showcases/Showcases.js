@@ -419,12 +419,8 @@ function SL_Chart() {
         GM_deleteValue("G_SteamLicensesLabels");
     }
 }
-function SLData(){
 
-    var sp_html = document.documentElement.innerHTML;
-    var start_pos_id = sp_html.indexOf(',"steamid":"') + 19;
-    var end_pos_id = sp_html.indexOf('",',start_pos_id);
-    var acc_id_profilepage = sp_html.substring(start_pos_id,end_pos_id);
+function SLData(){
 
     GM_xmlhttpRequest({
         method: "GET",
@@ -432,58 +428,45 @@ function SLData(){
         onload: function(response_sl) {
             var sl_str = response_sl.responseText;
 
-            var start_pos_id = sl_str.indexOf('data-miniprofile="') + 18;
-            var end_pos_id = sl_str.indexOf('">',start_pos_id);
-            var acc_id_storepage = sl_str.substring(start_pos_id,end_pos_id);
-            var acc = acc_id_profilepage - 7960265728;
-            console.log(acc);
-            //alert(acc_id);
-            if (acc_id_storepage === acc_id_profilepage) {
-                console.log(acc_id_storepage + " is true " + acc_id_profilepage);
+            var arr = [];
+            sl_str.replace(/, 20(.*?)<\/td>/g, function(s, match) {
+                arr.push(match);
+            });
+            var arr2 = JSON.stringify(arr);
+            var count_arr = [];
 
-                var arr = [];
-                sl_str.replace(/, 20(.*?)<\/td>/g, function(s, match) {
-                    arr.push(match);
-                });
-                var arr2 = JSON.stringify(arr);
-                var count_arr = [];
+            if(arr.indexOf("17")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/17/g).length);}
+            if(arr.indexOf("16")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/16/g).length);}
+            if(arr.indexOf("15")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/15/g).length);}
+            if(arr.indexOf("14")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/14/g).length);}
+            if(arr.indexOf("13")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/13/g).length);}
+            if(arr.indexOf("12")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/12/g).length);}
+            if(arr.indexOf("11")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/11/g).length);}
+            if(arr.indexOf("10")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/10/g).length);}
+            if(arr.indexOf("09")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/09/g).length);}
+            if(arr.indexOf("08")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/08/g).length);}
+            if(arr.indexOf("07")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/07/g).length);}
+            if(arr.indexOf("06")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/06/g).length);}
+            if(arr.indexOf("05")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/05/g).length);}
+            if(arr.indexOf("04")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/04/g).length);}
+            if(arr.indexOf("03")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/03/g).length);}
 
-                if(arr.indexOf("17")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/17/g).length);}
-                if(arr.indexOf("16")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/16/g).length);}
-                if(arr.indexOf("15")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/15/g).length);}
-                if(arr.indexOf("14")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/14/g).length);}
-                if(arr.indexOf("13")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/13/g).length);}
-                if(arr.indexOf("12")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/12/g).length);}
-                if(arr.indexOf("11")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/11/g).length);}
-                if(arr.indexOf("10")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/10/g).length);}
-                if(arr.indexOf("09")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/09/g).length);}
-                if(arr.indexOf("08")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/08/g).length);}
-                if(arr.indexOf("07")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/07/g).length);}
-                if(arr.indexOf("06")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/06/g).length);}
-                if(arr.indexOf("05")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/05/g).length);}
-                if(arr.indexOf("04")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/04/g).length);}
-                if(arr.indexOf("03")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/03/g).length);}
+            console.log(count_arr);
 
-                console.log(count_arr);
-
-                var tmp = [];
-                for(var i = 0; i < arr.length; i++){
-                    if(tmp.indexOf(arr[i]) == -1){
-                        tmp.push(arr[i]);
-                    }
+            var tmp = [];
+            for(var i = 0; i < arr.length; i++){
+                if(tmp.indexOf(arr[i]) == -1){
+                    tmp.push(arr[i]);
                 }
-                var temp2 = tmp.reverse();
-                GM_setValue("G_SteamLicensesLabels", temp2);
-                GM_setValue("G_SteamLicensesData", count_arr);
-                GM_setValue("G_SteamLicensesChart", "1");
             }
-            else{
-                console.log(acc_id_storepage + " is false " + acc_id_profilepage);
-            }
+            var temp2 = tmp.reverse();
+            console.log(temp2);
+            GM_setValue("G_SteamLicensesLabels", temp2);
+            GM_setValue("G_SteamLicensesData", count_arr);
+            GM_setValue("G_SteamLicensesChart", "1");
         }
     });
 }
-
 
 function wait_sldata() {
     if(GM_getValue("G_SteamLicensesChart") === "1")
