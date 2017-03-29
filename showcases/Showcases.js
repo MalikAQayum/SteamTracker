@@ -431,21 +431,21 @@ function SLData(){
             });
             var arr2 = JSON.stringify(arr);
             var count_arr = [];
-            count_arr.unshift(arr2.match(/17/g).length);
-            count_arr.unshift(arr2.match(/16/g).length);
-            count_arr.unshift(arr2.match(/15/g).length);
-            count_arr.unshift(arr2.match(/14/g).length);
-            count_arr.unshift(arr2.match(/13/g).length);
-            count_arr.unshift(arr2.match(/12/g).length);
-            count_arr.unshift(arr2.match(/11/g).length);
-            count_arr.unshift(arr2.match(/10/g).length);
-            count_arr.unshift(arr2.match(/09/g).length);
-            count_arr.unshift(arr2.match(/08/g).length);
-            count_arr.unshift(arr2.match(/07/g).length);
-            count_arr.unshift(arr2.match(/06/g).length);
-            count_arr.unshift(arr2.match(/05/g).length);
-            count_arr.unshift(arr2.match(/04/g).length);
-            count_arr.unshift(arr2.match(/03/g).length);
+            if(arr.indexOf("17")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/17/g).length);}
+            if(arr.indexOf("16")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/16/g).length);}
+            if(arr.indexOf("15")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/15/g).length);}
+            if(arr.indexOf("14")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/14/g).length);}
+            if(arr.indexOf("13")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/13/g).length);}
+            if(arr.indexOf("12")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/12/g).length);}
+            if(arr.indexOf("11")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/11/g).length);}
+            if(arr.indexOf("10")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/10/g).length);}
+            if(arr.indexOf("09")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/09/g).length);}
+            if(arr.indexOf("08")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/08/g).length);}
+            if(arr.indexOf("07")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/07/g).length);}
+            if(arr.indexOf("06")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/06/g).length);}
+            if(arr.indexOf("05")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/05/g).length);}
+            if(arr.indexOf("04")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/04/g).length);}
+            if(arr.indexOf("03")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/03/g).length);}
 
             var tmp = [];
             for(var i = 0; i < arr.length; i++){
