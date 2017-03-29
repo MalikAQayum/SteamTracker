@@ -49,8 +49,9 @@ function Settings(){
 
     console.log("[Showcase_ST_Default:] = " + GM_getValue("Showcase_ST_Default_Value"));
 
+	//added
 	var P_Showcase_ST_ROA2 = document.createElement("p");
-    var Showcase_ST_ROA2_Text = document.createTextNode(" ");
+    var Showcase_ST_ROA2_Text = document.createTextNode(" .");
     document.body.appendChild(Showcase_ST_ROA2_Text);
 	
     var hr = document.createElement('hr');
