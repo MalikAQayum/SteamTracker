@@ -484,25 +484,6 @@ function SLData(){
     });
 }
 
-                console.log(count_arr);
-
-                var tmp = [];
-                for(var i = 0; i < arr.length; i++){
-                    if(tmp.indexOf(arr[i]) == -1){
-                        tmp.push(arr[i]);
-                    }
-                }
-                var temp2 = tmp.reverse();
-                GM_setValue("G_SteamLicensesLabels", temp2);
-                GM_setValue("G_SteamLicensesData", count_arr);
-                GM_setValue("G_SteamLicensesChart", "1");
-            }
-            else{
-                console.log(acc_id_storepage + " is false " + acc_id_profilepage);
-            }
-        }
-    });
-}
 
 function wait_sldata() {
     if(GM_getValue("G_SteamLicensesChart") === "1")
