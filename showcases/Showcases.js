@@ -447,6 +447,7 @@ function SLData(){
             if(arr.indexOf("04")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/04/g).length);}
             if(arr.indexOf("03")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/03/g).length);}
 
+            console.log(count_arr);
             var tmp = [];
             for(var i = 0; i < arr.length; i++){
                 if(tmp.indexOf(arr[i]) == -1){
@@ -454,6 +455,7 @@ function SLData(){
                 }
             }
             var temp2 = tmp.reverse();
+            console.log(temp2);
             GM_setValue("G_SteamLicensesLabels", temp2);
             GM_setValue("G_SteamLicensesData", count_arr);
             GM_setValue("G_SteamLicensesChart", "1");
