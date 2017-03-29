@@ -50,11 +50,11 @@ function Settings(){
     console.log("[Showcase_ST_Default:] = " + GM_getValue("Showcase_ST_Default_Value"));
 	
 
-	linebreak = document.createElement("br");
-	queryForm.appendChild(linebreak);
-	queryForm.appendChild(linebreak);
-	queryForm.appendChild(linebreak);
-	queryForm.appendChild(linebreak);
+	var linebreak = document.createElement("br");
+	document.body..appendChild(linebreak);
+	document.body..appendChild(linebreak);
+	document.body..appendChild(linebreak);
+	document.body..appendChild(linebreak);
 	
     var hr = document.createElement('hr');
     hr.innerHTML = ' ';
