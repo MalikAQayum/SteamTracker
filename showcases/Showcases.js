@@ -429,9 +429,8 @@ function SLData(){
             var sl_str = response_sl.responseText;
 
             var arr = [];
-            sl_str.replace(/, 20(.*?)<\/td>/g, function(s, match) {
-                arr.push(match);
-            });
+            sl_str.replace(/<td  class="license_date_col">(.*?)<\/td>/g, function(s, match) {
+                arr.push(match.slice(-2));
             var arr2 = JSON.stringify(arr);
             var count_arr = [];
 
@@ -539,9 +538,8 @@ function SLData_v2(){
             var sl_str = response_sl.responseText;
 
             var arr = [];
-            sl_str.replace(/, 20(.*?)<\/td>/g, function(s, match) {
-                arr.push(match);
-            });
+            sl_str.replace(/<td  class="license_date_col">(.*?)<\/td>/g, function(s, match) {
+                arr.push(match.slice(-2));
             var arr2 = JSON.stringify(arr);
             var count_arr = [];
 
@@ -570,10 +568,10 @@ function SLData_v2(){
                     tmp.push(arr[i]);
                 }
             }
-            var temp2 = tmp;
+            var temp2 = tmp.reverse();
             console.log(temp2);
             GM_setValue("G_SteamLicensesLabels_v2", temp2);
-            GM_setValue("G_SteamLicensesData_v2", count_arr);
+            GM_setValue("G_SteamLicensesData_v2", count_arr.reverse());
             GM_setValue("G_SteamLicensesChart_v2", "1");
         }
     });
