@@ -451,7 +451,7 @@ function SLData(){
             if(arr.indexOf("04")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/04/g).length);}
             if(arr.indexOf("03")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/03/g).length);}
 
-            console.log(count_arr);
+            console.log(count_arr.reverse());
 
             var tmp = [];
             for(var i = 0; i < arr.length; i++){
