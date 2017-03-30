@@ -429,8 +429,9 @@ function SLData(){
             var sl_str = response_sl.responseText;
 
             var arr = [];
-            sl_str.replace(/<td  class="license_date_col">(.*?)<\/td>/g, function(s, match) {
+             sl_str.replace(/<td  class="license_date_col">(.*?)<\/td>/g, function(s, match) {
                 arr.push(match.slice(-2));
+            });
             var arr2 = JSON.stringify(arr);
             var count_arr = [];
 
@@ -538,8 +539,9 @@ function SLData_v2(){
             var sl_str = response_sl.responseText;
 
             var arr = [];
-            sl_str.replace(/<td  class="license_date_col">(.*?)<\/td>/g, function(s, match) {
+             sl_str.replace(/<td  class="license_date_col">(.*?)<\/td>/g, function(s, match) {
                 arr.push(match.slice(-2));
+            });
             var arr2 = JSON.stringify(arr);
             var count_arr = [];
 
