@@ -791,7 +791,7 @@ function SLData_v3(){
     });
 }
 
-function wait_sldata3() {
+function wait_sldata_v3() {
     if(GM_getValue("G_SteamLicensesChart_v3") === "1")
     {
         GM_setValue("G_SteamLicensesChart_v3", "0");
@@ -801,6 +801,6 @@ function wait_sldata3() {
     {
         var date = new Date();
         console.log(date);
-        setTimeout(function(){ wait_sldata3(); }, 500);
+        setTimeout(function(){ wait_sldata_v3(); }, 500);
     }
 }
