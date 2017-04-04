@@ -692,10 +692,10 @@ function SL_Chart_v3() {
         }
     ];
 
-    var chart = document.getElementById('SLChart1_v3').getContext('2d');
-    var chart2 = document.getElementById('SLChart2_v3').getContext('2d');
-    var chart3 = document.getElementById('SLChart3_v3').getContext('2d');
-    var chart4 = document.getElementById('SLChart4_v3').getContext('2d');
+    var chart1_v3 = document.getElementById('SLChart1_v3').getContext('2d');
+    var chart2_v3 = document.getElementById('SLChart2_v3').getContext('2d');
+    var chart3_v3 = document.getElementById('SLChart3_v3').getContext('2d');
+    var chart4_v3 = document.getElementById('SLChart4_v3').getContext('2d');
 
     var options = {
         scaleShowLabels: false 
