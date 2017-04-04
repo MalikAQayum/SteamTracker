@@ -757,15 +757,15 @@ function SLData_v3(){
 
             console.log(count_arr);
 
-            var tmp = [];
+            var tmpx = [];
             for(var i = 0; i < arr.length; i++){
-                if(tmp.indexOf(arr[i]) == -1){
-                    tmp.push(arr[i]);
+                if(tmpx.indexOf(arr[i]) == -1){
+                    tmpx.push(arr[i]);
                 }
             }
-            var temp2 = tmp;
-            console.log(temp2);
-            GM_setValue("G_SteamLicensesLabels", temp2.reverse());
+            var temp3 = tmpx;
+            console.log(temp3);
+            GM_setValue("G_SteamLicensesLabels", temp3.reverse());
             GM_setValue("G_SteamLicensesData", count_arr.reverse());
             GM_setValue("G_SteamLicensesChart_v3", "1");
         }
