@@ -615,22 +615,22 @@ function SL_Chart_v3() {
 		<div class="myworkshop_showcase">
 				<div class="workshop_showcase_mutiitem_ctn">
 					<div class="workshop_showcase_multiitem showcase_slot ">
-													<canvas id="SLChart" height="87" width="166"></canvas>																
+													<canvas id="SLChart" height="87" width="160"></canvas>																
 					</div>
 				</div>
 				<div class="workshop_showcase_mutiitem_ctn">
 					<div class="workshop_showcase_multiitem showcase_slot ">
-													<canvas id="SLChart2" height="87" width="166"></canvas>																
+													<canvas id="SLChart2" height="87" width="160"></canvas>																
 					</div>
 				</div>
 				<div class="workshop_showcase_mutiitem_ctn">
 					<div class="workshop_showcase_multiitem showcase_slot ">
-													<canvas id="SLChart3" height="87" width="166"></canvas>																
+													<canvas id="SLChart3" height="87" width="160"></canvas>																
 					</div>
 				</div>
 				<div class="workshop_showcase_mutiitem_ctn">
 					<div class="workshop_showcase_multiitem showcase_slot ">
-													<canvas id="SLChart4" height="87" width="166"></canvas>																
+													<canvas id="SLChart4" height="87" width="160"></canvas>																
 					</div>
 				</div>
 
