@@ -612,10 +612,10 @@ function SL_Chart_v3() {
 <div class="profile_customization"><div class="profile_customization_header"> Steam Licenses Showcase	</div>
 	<div class="profile_customization_block">
 		<div class="myguide_showcase">
-			<div class="myguide_showcase_item_ctn showcase_slot left "><canvas id="SLChart1_v3" height="110" width="275"></canvas></div>
-			<div class="myguide_showcase_item_ctn showcase_slot  "><canvas id="SLChart2_v3" height="110" width="275"></canvas></div>
-			<div class="myguide_showcase_item_ctn showcase_slot left "><canvas id="SLChart3_v3" height="110" width="275"></canvas></div>
-			<div class="myguide_showcase_item_ctn showcase_slot  "><canvas id="SLChart4_v3" height="110" width="275"></canvas></div>
+			<div class="myguide_showcase_item_ctn showcase_slot left "><canvas id="SLChart" height="110" width="275"></canvas></div>
+			<div class="myguide_showcase_item_ctn showcase_slot  "><canvas id="SLChart2" height="110" width="275"></canvas></div>
+			<div class="myguide_showcase_item_ctn showcase_slot left "><canvas id="SLChart3" height="110" width="275"></canvas></div>
+			<div class="myguide_showcase_item_ctn showcase_slot  "><canvas id="SLChart4" height="110" width="275"></canvas></div>
 			<div style="clear: left;"></div>
 		</div>
 	</div>
@@ -692,19 +692,19 @@ function SL_Chart_v3() {
         }
     ];
 
-    var chart1_v3 = document.getElementById('SLChart1_v3').getContext('2d');
-    var chart2_v3 = document.getElementById('SLChart2_v3').getContext('2d');
-    var chart3_v3 = document.getElementById('SLChart3_v3').getContext('2d');
-    var chart4_v3 = document.getElementById('SLChart4_v3').getContext('2d');
+    var chart = document.getElementById('SLChart').getContext('2d');
+    var chart2 = document.getElementById('SLChart2').getContext('2d');
+    var chart3 = document.getElementById('SLChart3').getContext('2d');
+    var chart4 = document.getElementById('SLChart4').getContext('2d');
 
     var options = {
         scaleShowLabels: false 
     };
 
-    var myslchart1_v3 = new Chart(chart1_v3).Bar(data, options);
-    var myslchart2_v3 = new Chart(chart2_v3).Line(data2, options);
-    var myslchart3_v3 = new Chart(chart3_v3).Doughnut(data3);
-    var myslchart4_v3 = new Chart(chart4_v3).Doughnut(data4);
+    var myslchart = new Chart(chart).Bar(data, options);
+    var myslchart2 = new Chart(chart2).Line(data2, options);
+    var myslchart3 = new Chart(chart3).Doughnut(data3);
+    var myslchart4 = new Chart(chart4).Doughnut(data4);
 
     GM_deleteValue("G_SteamLicensesData");
     GM_deleteValue("G_SteamLicensesLabels");
@@ -757,15 +757,15 @@ function SLData_v3(){
 
             console.log(count_arr);
 
-            var tmpx = [];
+            var tmp = [];
             for(var i = 0; i < arr.length; i++){
-                if(tmpx.indexOf(arr[i]) == -1){
-                    tmpx.push(arr[i]);
+                if(tmp.indexOf(arr[i]) == -1){
+                    tmp.push(arr[i]);
                 }
             }
-            var temp3 = tmpx;
-            console.log(temp3);
-            GM_setValue("G_SteamLicensesLabels", temp3.reverse());
+            var temp2 = tmp;
+            console.log(temp2);
+            GM_setValue("G_SteamLicensesLabels", temp2.reverse());
             GM_setValue("G_SteamLicensesData", count_arr.reverse());
             GM_setValue("G_SteamLicensesChart_v3", "1");
         }
