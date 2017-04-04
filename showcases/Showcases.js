@@ -609,33 +609,14 @@ function SL_Chart_v3() {
         div_12.appendChild(x_div_12);
         x_div_12.innerHTML =
             `
-<div class="profile_customization">
-		<div class="profile_customization_header">	Steam Licenses Showcase	</div>
+<div class="profile_customization"><div class="profile_customization_header"> Steam Licenses Showcase	</div>
 	<div class="profile_customization_block">
-		<div class="myworkshop_showcase">
-				<div class="workshop_showcase_mutiitem_ctn">
-					<div class="workshop_showcase_multiitem showcase_slot ">
-													<canvas id="SLChart" height="87" width="150"></canvas>	
-					</div>
-				</div>
-				<div class="workshop_showcase_mutiitem_ctn">
-					<div class="workshop_showcase_multiitem showcase_slot ">
-													<canvas id="SLChart2" height="87" width="150"></canvas>																
-					</div>
-				</div>
-				<div class="workshop_showcase_mutiitem_ctn">
-					<div class="workshop_showcase_multiitem showcase_slot ">
-													<canvas id="SLChart3" height="87" width="150"></canvas>																
-					</div>
-				</div>
-				<div class="workshop_showcase_mutiitem_ctn">
-					<div class="workshop_showcase_multiitem showcase_slot ">
-													<canvas id="SLChart4" height="87" width="150"></canvas>																
-					</div>
-				</div>
-
-						<div style="clear: left;"></div>
-
+		<div class="myguide_showcase">
+			<div class="myguide_showcase_item_ctn showcase_slot left "><canvas id="SLChart" height="87" width="200"></canvas></div>
+			<div class="myguide_showcase_item_ctn showcase_slot  "><canvas id="SLChart2" height="87" width="200"></canvas></div>
+			<div class="myguide_showcase_item_ctn showcase_slot left "><canvas id="SLChart3" height="87" width="200"></canvas></div>
+			<div class="myguide_showcase_item_ctn showcase_slot  "><canvas id="SLChart4" height="87" width="200"></canvas></div>
+			<div style="clear: left;"></div>
 		</div>
 	</div>
 </div>
