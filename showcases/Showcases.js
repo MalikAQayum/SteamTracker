@@ -612,10 +612,10 @@ function SL_Chart_v3() {
 <div class="profile_customization"><div class="profile_customization_header"> Steam Licenses Showcase	</div>
 	<div class="profile_customization_block">
 		<div class="myguide_showcase">
-			<div class="myguide_showcase_item_ctn showcase_slot left "><canvas id="SLChart" height="110" width="100%"></canvas></div>
-			<div class="myguide_showcase_item_ctn showcase_slot  "><canvas id="SLChart2" height="110" width="100%"></canvas></div>
-			<div class="myguide_showcase_item_ctn showcase_slot left "><canvas id="SLChart3" height="110" width="100%"></canvas></div>
-			<div class="myguide_showcase_item_ctn showcase_slot  "><canvas id="SLChart4" height="110" width="100%"></canvas></div>
+			<div class="myguide_showcase_item_ctn showcase_slot left "><canvas id="SLChart" height="110" width="275"></canvas></div>
+			<div class="myguide_showcase_item_ctn showcase_slot  "><canvas id="SLChart2" height="110" width="275"></canvas></div>
+			<div class="myguide_showcase_item_ctn showcase_slot left "><canvas id="SLChart3" height="110" width="275"></canvas></div>
+			<div class="myguide_showcase_item_ctn showcase_slot  "><canvas id="SLChart4" height="110" width="275"></canvas></div>
 			<div style="clear: left;"></div>
 		</div>
 	</div>
