@@ -706,7 +706,7 @@ function SL_Chart_v3() {
         },
         {
             value: GM_getValue("G_SteamLicensesC_DeveloperComp"),
-            label: "Developer Comp",
+            label: "Dev Comp",
             color : "#DC143C"
         }
     ];
