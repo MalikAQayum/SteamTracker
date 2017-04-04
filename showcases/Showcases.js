@@ -728,6 +728,7 @@ function SL_Chart_v3() {
     GM_deleteValue("G_SteamLicensesData");
     GM_deleteValue("G_SteamLicensesLabels");
 }
+}
 
 
 function SLData_v3(){
