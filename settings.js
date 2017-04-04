@@ -449,6 +449,42 @@ function Settings(){
     hr.innerHTML = ' ';
     document.body.appendChild(hr);
     console.log("[SLChart_v2:] = " + GM_getValue("SLChart_v2_Value"));
+	//Steam Licenses Chart button _v3.
+    var SLChart_v3_F = function() {
+        var SLChart_v3_V = document.getElementById('SLChartid_v3').value;
+        GM_setValue("SLChart_v3_Value", SLChart_v3_V);
+        console.log("[SLChart_v3:] = " + GM_getValue("SLChart_v3_Value"));
+    };
+
+    var SLChart_v3_B = document.createElement("input");
+    SLChart_v3_B.type="button";
+    SLChart_v3_B.value="SLChart_v3";
+    SLChart_v3_B.className="btnv6_blue_hoverfade";
+    SLChart_v3_B.style.width = "150px";
+    SLChart_v3_B.style.height = "30px";
+    SLChart_v3_B.onclick = SLChart_v3_F;
+    document.body.appendChild(SLChart_v3_B);
+
+    var SLChart_v3_I = document.createElement("input");
+    SLChart_v3_I.type="number";
+    SLChart_v3_I.id="SLChartid_v3";
+    SLChart_v3_I.name="SLChartid_v3";
+    SLChart_v3_I.value=GM_getValue("SLChart_v3_Value");
+    SLChart_v3_I.min="0";
+    SLChart_v3_I.max="1";
+    SLChart_v3_I.style.width = "33px";
+    SLChart_v3_I.style.height = "25px";
+    SLChart_v3_I.onclick = SLChart_v3_F;
+    document.body.appendChild(SLChart_v3_I);
+
+    var P_SLChart_v3 = document.createElement("p");
+    var SLChart_Text_v3 = document.createTextNode(" : 0 = off / 1 = on  - adds a Steam Licenses showcase _v3 to the profile page.");
+    document.body.appendChild(SLChart_Text_v3);
+
+    var hr = document.createElement('hr');
+    hr.innerHTML = ' ';
+    document.body.appendChild(hr);
+    console.log("[SLChart_v3:] = " + GM_getValue("SLChart_v3_Value"));
 
 	/*	SAVE VALUES + BUTTON.	*/
     var Save_F = function() {
@@ -460,10 +496,11 @@ function Settings(){
         RemGCTracker_F();
         C7KTracker_F();
         Showcase_ROA_F();
-	Showcase_ST_ROA_F();
-	SLChart_F();
-	SLChart_v2_F();
-
+		Showcase_ST_ROA_F();
+		SLChart_F();
+		SLChart_v2_F();
+		SLChart_v3_F();
+		
         location.href="http://steamcommunity.com/my";
     };
     var Save_Button = document.createElement("input");

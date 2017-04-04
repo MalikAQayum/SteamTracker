@@ -592,3 +592,214 @@ function wait_sldata_v2() {
         setTimeout(function(){ wait_sldata_v2(); }, 500);
     }
 }
+
+//Steam licenses Chart v3
+function SL_Chart_v3() {
+    if ((GM_getValue("SLChart_v3_Value") == 0) || (GM_getValue("SLChart_v3_Value") == "undefined") || (GM_getValue("SLChart_v3_Value") == null) ) {
+        console.log("Showcase Steam Licenses Chart_v3 is set to : " + GM_getValue("SLChart_v3_Value") + " and will not add Showcase Steam Licenses Chart_v3 to the Steam Profile.");
+    }
+    else if ((GM_getValue("SLChart_v3_Value") == 1)) {
+        console.log("Showcase Steam Licenses Chart_v3 is set to : " + GM_getValue("SLChart_v3_Value") + " and will add Showcase Steam Licenses Chart_v3 to the Steam Profile.");
+
+        document.getElementsByClassName("profile_customization_area")[0].setAttribute("id", "MalikQayum_Showcase_12");
+        var div_12 = document.getElementById("MalikQayum_Showcase_12");
+
+        var x_div_12 = document.createElement('div');
+        x_div_12.id = 'MalikQayum_Showcase_12';
+        div_12.appendChild(x_div_12);
+        x_div_12.innerHTML =
+            `
+<div class="profile_customization">
+		<div class="profile_customization_header">	Steam Licenses Showcase	</div>
+	<div class="profile_customization_block">
+		<div class="myworkshop_showcase">
+				<div class="workshop_showcase_mutiitem_ctn">
+					<div class="workshop_showcase_multiitem showcase_slot ">
+													<canvas id="SLChart" height="87" width="231"></canvas>																
+					</div>
+				</div>
+				<div class="workshop_showcase_mutiitem_ctn">
+					<div class="workshop_showcase_multiitem showcase_slot ">
+													<canvas id="SLChart2" height="87" width="231"></canvas>																
+					</div>
+				</div>
+				<div class="workshop_showcase_mutiitem_ctn">
+					<div class="workshop_showcase_multiitem showcase_slot ">
+													<canvas id="SLChart3" height="87" width="231"></canvas>																
+					</div>
+				</div>
+				<div class="workshop_showcase_mutiitem_ctn">
+					<div class="workshop_showcase_multiitem showcase_slot ">
+													<canvas id="SLChart4" height="87" width="231"></canvas>																
+					</div>
+				</div>
+
+						<div style="clear: left;"></div>
+
+		</div>
+	</div>
+</div>
+
+`;
+
+    var gdata =  GM_getValue("G_SteamLicensesData");
+    var glabels = GM_getValue("G_SteamLicensesLabels");
+    var data = {
+        labels: glabels,
+        datasets: [
+            {
+                label: "Steam Licenses Chart",
+                fillColor: "rgba(220,220,220,0.2)",
+                strokeColor: "rgba(220,220,220,1)",
+                pointColor: "rgba(220,220,220,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(220,220,220,1)",
+                data: gdata
+            }
+        ]
+    };
+    var data2 = {
+        labels: glabels,
+        datasets: [
+            {
+                label: "Steam Licenses Chart",
+                fillColor: "rgba(220,220,220,0.2)",
+                strokeColor: "rgba(220,220,220,1)",
+                pointColor: "rgba(220,220,220,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(220,220,220,1)",
+                data: gdata
+            }
+        ]
+    };
+
+    var data3 = [
+        {
+            value: GM_getValue("G_SteamLicensesC_Retail"),
+            label: "Retail",
+            color:"#003366"
+        },
+        {
+            value: GM_getValue("G_SteamLicensesC_SteamStore"),
+            label: "Steam Store",
+            color : "#FFFFFF"
+        },
+        {
+            value: GM_getValue("G_SteamLicensesC_GiftGuest_Pass"),
+            label: "Gift/Guest Pass",
+            color : "#000000"
+        },
+        {
+            value: GM_getValue("G_SteamLicensesC_Complimentary"),
+            label: "Complimentary",
+            color : "#606060"
+        }
+    ];
+
+    var data4 = [
+        {
+            value: GM_getValue("G_SteamLicensesC_BetaTesting"),
+            label: "Beta Testing",
+            color:"#FFD700"
+        },
+        {
+            value: GM_getValue("G_SteamLicensesC_DeveloperComp"),
+            label: "Developer Comp",
+            color : "#DC143C"
+        }
+    ];
+
+    var chart = document.getElementById('SLChart').getContext('2d');
+    var chart2 = document.getElementById('SLChart2').getContext('2d');
+    var chart3 = document.getElementById('SLChart3').getContext('2d');
+    var chart4 = document.getElementById('SLChart4').getContext('2d');
+
+    var options = {
+        scaleShowLabels: false 
+    };
+
+    var myslchart = new Chart(chart).Bar(data, options);
+    var myslchart2 = new Chart(chart2).Line(data2, options);
+    var myslchart3 = new Chart(chart3).Doughnut(data3);
+    var myslchart4 = new Chart(chart4).Doughnut(data4);
+
+    GM_deleteValue("G_SteamLicensesData");
+    GM_deleteValue("G_SteamLicensesLabels");
+}
+
+
+function SLData_v3(){
+
+    GM_xmlhttpRequest({
+        method: "GET",
+        url: "https://store.steampowered.com/account/licenses/",
+        onload: function(response_sl) {
+            var sl_str = response_sl.responseText;
+
+
+            if(sl_str.indexOf("Retail")==-1){/*donothing*/}else{var C_Retail = (sl_str.match(/	Retail/ig) || []).length; GM_setValue("G_SteamLicensesC_Retail", C_Retail);}
+            if(sl_str.indexOf("	Gift/Guest Pass")==-1){/*donothing*/}else{var C_GiftGuest_Pass = (sl_str.match(/	Gift\/Guest Pass/ig) || []).length; GM_setValue("G_SteamLicensesC_GiftGuest_Pass", C_GiftGuest_Pass);}
+            if(sl_str.indexOf("Complimentary")==-1){/*donothing*/}else{var C_Complimentary = (sl_str.match(/	Complimentary/ig) || []).length; GM_setValue("G_SteamLicensesC_Complimentary", C_Complimentary);}
+            if(sl_str.indexOf("Steam Store")==-1){/*donothing*/}else{var C_SteamStore = (sl_str.match(/	Steam Store/ig) || []).length; GM_setValue("G_SteamLicensesC_SteamStore", C_SteamStore);}
+
+
+            if(sl_str.indexOf("Beta Testing")==-1){/*donothing*/}else{var C_BetaTesting = (sl_str.match(/Beta Testing								<\/td>/ig) || []).length; GM_setValue("G_SteamLicensesC_BetaTesting", C_BetaTesting);}
+            if(sl_str.indexOf("Developer Comp")==-1){/*donothing*/}else{var C_DeveloperComp = (sl_str.match(/Developer Comp								<\/td>/ig) || []).length; GM_setValue("G_SteamLicensesC_DeveloperComp", C_DeveloperComp);}
+
+
+            var arr = [];
+            sl_str.replace(/<td  class="license_date_col">(.*?)<\/td>/g, function(s, match) {
+                arr.push(match.slice(-2));
+            });
+            var arr2 = JSON.stringify(arr);
+            var count_arr = [];
+
+            if(arr.indexOf("03")==-1){/*donothing*/}else{var newcount3 = arr2.match(/03/g).length; if(isNaN(parseInt(count_arr[0]))){count_arr.unshift(newcount3);}else{ var countadded3 = count_arr[0] + newcount3; count_arr.unshift(countadded3);}}  
+            if(arr.indexOf("04")==-1){/*donothing*/}else{var newcount4 = arr2.match(/04/g).length; if(isNaN(parseInt(count_arr[0]))){count_arr.unshift(newcount4);}else{ var countadded4 = count_arr[0] + newcount4; count_arr.unshift(countadded4);}}  
+            if(arr.indexOf("05")==-1){/*donothing*/}else{var newcount5 = arr2.match(/05/g).length; if(isNaN(parseInt(count_arr[0]))){count_arr.unshift(newcount5);}else{ var countadded5 = count_arr[0] + newcount5; count_arr.unshift(countadded5);}}  
+            if(arr.indexOf("06")==-1){/*donothing*/}else{var newcount6 = arr2.match(/06/g).length; if(isNaN(parseInt(count_arr[0]))){count_arr.unshift(newcount6);}else{ var countadded6 = count_arr[0] + newcount6; count_arr.unshift(countadded6);}}  
+            if(arr.indexOf("07")==-1){/*donothing*/}else{var newcount7 = arr2.match(/07/g).length; if(isNaN(parseInt(count_arr[0]))){count_arr.unshift(newcount7);}else{ var countadded7 = count_arr[0] + newcount7; count_arr.unshift(countadded7);}}  
+            if(arr.indexOf("08")==-1){/*donothing*/}else{var newcount8 = arr2.match(/08/g).length; if(isNaN(parseInt(count_arr[0]))){count_arr.unshift(newcount8);}else{ var countadded8 = count_arr[0] + newcount8; count_arr.unshift(countadded8);}}  
+            if(arr.indexOf("09")==-1){/*donothing*/}else{var newcount9 = arr2.match(/09/g).length; if(isNaN(parseInt(count_arr[0]))){count_arr.unshift(newcount9);}else{ var countadded9 = count_arr[0] + newcount9; count_arr.unshift(countadded9);}}  
+            if(arr.indexOf("10")==-1){/*donothing*/}else{var newcount10 = arr2.match(/10/g).length; if(isNaN(parseInt(count_arr[0]))){count_arr.unshift(newcount10);}else{ var countadded10 = count_arr[0] + newcount10; count_arr.unshift(countadded10);}}  
+            if(arr.indexOf("11")==-1){/*donothing*/}else{var newcount11 = arr2.match(/11/g).length; if(isNaN(parseInt(count_arr[0]))){count_arr.unshift(newcount11);}else{ var countadded11 = count_arr[0] + newcount11; count_arr.unshift(countadded11);}}  
+            if(arr.indexOf("12")==-1){/*donothing*/}else{var newcount12 = arr2.match(/12/g).length; if(isNaN(parseInt(count_arr[0]))){count_arr.unshift(newcount12);}else{ var countadded12 = count_arr[0] + newcount12; count_arr.unshift(countadded12);}}  
+            if(arr.indexOf("13")==-1){/*donothing*/}else{var newcount13 = arr2.match(/13/g).length; if(isNaN(parseInt(count_arr[0]))){count_arr.unshift(newcount13);}else{ var countadded13 = count_arr[0] + newcount13; count_arr.unshift(countadded13);}}  
+            if(arr.indexOf("14")==-1){/*donothing*/}else{var newcount14 = arr2.match(/14/g).length; if(isNaN(parseInt(count_arr[0]))){count_arr.unshift(newcount14);}else{ var countadded14 = count_arr[0] + newcount14; count_arr.unshift(countadded14);}}  
+            if(arr.indexOf("15")==-1){/*donothing*/}else{var newcount15 = arr2.match(/15/g).length; if(isNaN(parseInt(count_arr[0]))){count_arr.unshift(newcount15);}else{ var countadded15 = count_arr[0] + newcount15; count_arr.unshift(countadded15);}}  
+            if(arr.indexOf("16")==-1){/*donothing*/}else{var newcount16 = arr2.match(/16/g).length; if(isNaN(parseInt(count_arr[0]))){count_arr.unshift(newcount16);}else{ var countadded16 = count_arr[0] + newcount16; count_arr.unshift(countadded16);}}  
+            if(arr.indexOf("17")==-1){/*donothing*/}else{var newcount17 = arr2.match(/17/g).length; if(isNaN(parseInt(count_arr[0]))){count_arr.unshift(newcount17);}else{ var countadded17 = count_arr[0] + newcount17; count_arr.unshift(countadded17);}}  
+            if(arr.indexOf("18")==-1){/*donothing*/}else{var newcount18 = arr2.match(/18/g).length; if(isNaN(parseInt(count_arr[0]))){count_arr.unshift(newcount18);}else{ var countadded18 = count_arr[0] + newcount18; count_arr.unshift(countadded18);}}  
+
+            console.log(count_arr);
+
+            var tmp = [];
+            for(var i = 0; i < arr.length; i++){
+                if(tmp.indexOf(arr[i]) == -1){
+                    tmp.push(arr[i]);
+                }
+            }
+            var temp2 = tmp;
+            console.log(temp2);
+            GM_setValue("G_SteamLicensesLabels", temp2.reverse());
+            GM_setValue("G_SteamLicensesData", count_arr.reverse());
+            GM_setValue("G_SteamLicensesChart_v3", "1");
+        }
+    });
+}
+
+function wait_sldata3() {
+    if(GM_getValue("G_SteamLicensesChart_v3") === "1")
+    {
+        GM_setValue("G_SteamLicensesChart_v3", "0");
+        SL_Chart_v3();
+    }
+    else
+    {
+        var date = new Date();
+        console.log(date);
+        setTimeout(function(){ wait_sldata3(); }, 500);
+    }
+}
