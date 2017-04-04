@@ -623,10 +623,12 @@ function SL_Chart_v3() {
 
 `;
 
-    var gdata =  GM_getValue("G_SteamLicensesData");
-    var glabels = GM_getValue("G_SteamLicensesLabels");
+    var gdata1 =  GM_getValue("G_SteamLicensesData1");
+    var glabels1 = GM_getValue("G_SteamLicensesLabels1");
+    var gdata2 =  GM_getValue("G_SteamLicensesData2");
+    var glabels2 = GM_getValue("G_SteamLicensesLabels2");
     var data = {
-        labels: glabels,
+        labels: glabels1,
         datasets: [
             {
                 label: "Steam Licenses Chart",
@@ -636,12 +638,12 @@ function SL_Chart_v3() {
                 pointStrokeColor: "#fff",
                 pointHighlightFill: "#fff",
                 pointHighlightStroke: "rgba(220,220,220,1)",
-                data: gdata
+                data: gdata1
             }
         ]
     };
     var data2 = {
-        labels: glabels,
+        labels: glabels2,
         datasets: [
             {
                 label: "Steam Licenses Chart",
@@ -651,7 +653,7 @@ function SL_Chart_v3() {
                 pointStrokeColor: "#fff",
                 pointHighlightFill: "#fff",
                 pointHighlightStroke: "rgba(220,220,220,1)",
-                data: gdata
+                data: gdata2
             }
         ]
     };
@@ -765,8 +767,44 @@ function SLData_v3(){
             }
             var temp2 = tmp;
             console.log(temp2);
-            GM_setValue("G_SteamLicensesLabels", temp2.reverse());
-            GM_setValue("G_SteamLicensesData", count_arr.reverse());
+		var arrx = [];
+             sl_str.replace(/<td  class="license_date_col">(.*?)<\/td>/g, function(s, match) {
+                arrx.push(match.slice(-2));
+            });
+            var arr2x = JSON.stringify(arrx);
+            var count_arrx = [];
+
+            if(arrx.indexOf("17")==-1){/*donothing*/}else{count_arrx.unshift(arr2x.match(/17/g).length);}
+            if(arrx.indexOf("16")==-1){/*donothing*/}else{count_arrx.unshift(arr2x.match(/16/g).length);}
+            if(arrx.indexOf("15")==-1){/*donothing*/}else{count_arrx.unshift(arr2x.match(/15/g).length);}
+            if(arrx.indexOf("14")==-1){/*donothing*/}else{count_arrx.unshift(arr2x.match(/14/g).length);}
+            if(arrx.indexOf("13")==-1){/*donothing*/}else{count_arrx.unshift(arr2x.match(/13/g).length);}
+            if(arrx.indexOf("12")==-1){/*donothing*/}else{count_arrx.unshift(arr2x.match(/12/g).length);}
+            if(arrx.indexOf("11")==-1){/*donothing*/}else{count_arrx.unshift(arr2x.match(/11/g).length);}
+            if(arrx.indexOf("10")==-1){/*donothing*/}else{count_arrx.unshift(arr2x.match(/10/g).length);}
+            if(arrx.indexOf("09")==-1){/*donothing*/}else{count_arrx.unshift(arr2x.match(/09/g).length);}
+            if(arrx.indexOf("08")==-1){/*donothing*/}else{count_arrx.unshift(arr2x.match(/08/g).length);}
+            if(arrx.indexOf("07")==-1){/*donothing*/}else{count_arrx.unshift(arr2x.match(/07/g).length);}
+            if(arrx.indexOf("06")==-1){/*donothing*/}else{count_arrx.unshift(arr2x.match(/06/g).length);}
+            if(arrx.indexOf("05")==-1){/*donothing*/}else{count_arrx.unshift(arr2x.match(/05/g).length);}
+            if(arrx.indexOf("04")==-1){/*donothing*/}else{count_arrx.unshift(arr2x.match(/04/g).length);}
+            if(arrx.indexOf("03")==-1){/*donothing*/}else{count_arrx.unshift(arr2x.match(/03/g).length);}
+
+            console.log(count_arrx);
+
+            var tmpx = [];
+            for(var j = 0; j < arrx.length; j++){
+                if(tmpx.indexOf(arrx[j]) == -1){
+                    tmpx.push(arrx[j]);
+                }
+            }
+            var temp2x = tmpx.reverse();
+            console.log(temp2x);
+            GM_setValue("G_SteamLicensesLabels1", temp2x);
+            GM_setValue("G_SteamLicensesData1", count_arrx);
+		
+            GM_setValue("G_SteamLicensesLabels2", temp2.reverse());
+            GM_setValue("G_SteamLicensesData2", count_arr.reverse());
             GM_setValue("G_SteamLicensesChart_v3", "1");
         }
     });
