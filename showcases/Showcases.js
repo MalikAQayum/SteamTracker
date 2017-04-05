@@ -424,7 +424,7 @@ function SLData(){
 
     GM_xmlhttpRequest({
         method: "GET",
-        url: "https://store.steampowered.com/account/licenses/",
+        url: "https://store.steampowered.com/account/licenses/?l=english",
         onload: function(response_sl) {
             var sl_str = response_sl.responseText;
 
@@ -534,7 +534,7 @@ function SLData_v2(){
 
     GM_xmlhttpRequest({
         method: "GET",
-        url: "https://store.steampowered.com/account/licenses/",
+        url: "https://store.steampowered.com/account/licenses/?l=english",
         onload: function(response_sl) {
             var sl_str = response_sl.responseText;
 
@@ -718,7 +718,7 @@ function SLData_v3(){
 
     GM_xmlhttpRequest({
         method: "GET",
-        url: "https://store.steampowered.com/account/licenses/",
+        url: "https://store.steampowered.com/account/licenses/?l=english",
         onload: function(response_sl) {
             var sl_str = response_sl.responseText;
 
