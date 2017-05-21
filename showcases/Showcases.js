@@ -371,52 +371,56 @@ function st_rarest_owned_appids_(){
 `;
 
 }
-
 //Steam licenses Chart
 function SL_Chart() {
-    if ((GM_getValue("SLChart_Value") == 0) || (GM_getValue("SLChart_Value") == "undefined") || (GM_getValue("SLChart_Value") == null) ) {
-        console.log("Showcase Steam Licenses Chart is set to : " + GM_getValue("SLChart_Value") + " and will not add Showcase Steam Licenses Chart to the Steam Profile.");
-    }
-    else if ((GM_getValue("SLChart_Value") == 1)) {
-        console.log("Showcase Steam Licenses Chart is set to : " + GM_getValue("SLChart_Value") + " and will add Showcase Steam Licenses Chart to the Steam Profile.");
+    var html = document.documentElement.innerHTML;
+    var steamid = html.match('steamid":"(.*?)"');
+    steamid = JSON.stringify(steamid[1]).replace("\"","").slice(0,-1);
+    if (g_steamID === steamid) {
+        if ((GM_getValue("SLChart_Value") == 0) || (GM_getValue("SLChart_Value") == "undefined") || (GM_getValue("SLChart_Value") == null) ) {
+            console.log("Showcase Steam Licenses Chart is set to : " + GM_getValue("SLChart_Value") + " and will not add Showcase Steam Licenses Chart to the Steam Profile.");
+        }
+        else if ((GM_getValue("SLChart_Value") == 1)) {
+            console.log("Showcase Steam Licenses Chart is set to : " + GM_getValue("SLChart_Value") + " and will add Showcase Steam Licenses Chart to the Steam Profile.");
 
-        document.getElementsByClassName("profile_customization_area")[0].setAttribute("id", "MalikQayum_Showcase_10");
-        var div_10 = document.getElementById("MalikQayum_Showcase_10");
+            document.getElementsByClassName("profile_customization_area")[0].setAttribute("id", "MalikQayum_Showcase_10");
+            var div_10 = document.getElementById("MalikQayum_Showcase_10");
 
-        var x_div_10 = document.createElement('div');
-        x_div_10.id = 'MalikQayum_Showcase_10';
-        div_10.appendChild(x_div_10);
-        x_div_10.innerHTML =
-            `
+            var x_div_10 = document.createElement('div');
+            x_div_10.id = 'MalikQayum_Showcase_10';
+            div_10.appendChild(x_div_10);
+            x_div_10.innerHTML =
+                `
 <div class="profile_customization"><div class="profile_customization_header ellipsis">Steam Licenses Chart</div>
 <div class="profile_customization_block"><div class="customtext_showcase">
 <div class="showcase_content_bg showcase_notes"><canvas id="SLChart" height="300" width="600"></canvas>
 </div></div></div></div>
 `;
 
-        var gdata =  GM_getValue("G_SteamLicensesData");
-        var glabels = GM_getValue("G_SteamLicensesLabels");
-        var data = {
-            labels: glabels,
-            datasets: [
-                {
-                    label: "Steam Licenses Chart",
-                    fillColor: "rgba(220,220,220,0.2)",
-                    strokeColor: "rgba(220,220,220,1)",
-                    pointColor: "rgba(220,220,220,1)",
-                    pointStrokeColor: "#fff",
-                    pointHighlightFill: "#fff",
-                    pointHighlightStroke: "rgba(220,220,220,1)",
-                    data: gdata
-                }
-            ]
-        };
+            var gdata =  GM_getValue("G_SteamLicensesData");
+            var glabels = GM_getValue("G_SteamLicensesLabels");
+            var data = {
+                labels: glabels,
+                datasets: [
+                    {
+                        label: "Steam Licenses Chart",
+                        fillColor: "rgba(220,220,220,0.2)",
+                        strokeColor: "rgba(220,220,220,1)",
+                        pointColor: "rgba(220,220,220,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(220,220,220,1)",
+                        data: gdata
+                    }
+                ]
+            };
 
-        var chart = document.getElementById('SLChart').getContext('2d');
-        var myslchart = new Chart(chart).Line(data);
+            var chart = document.getElementById('SLChart').getContext('2d');
+            var myslchart = new Chart(chart).Line(data);
 
-        GM_deleteValue("G_SteamLicensesData");
-        GM_deleteValue("G_SteamLicensesLabels");
+            GM_deleteValue("G_SteamLicensesData");
+            GM_deleteValue("G_SteamLicensesLabels");
+        }
     }
 }
 
@@ -429,7 +433,7 @@ function SLData(){
             var sl_str = response_sl.responseText;
 
             var arr = [];
-             sl_str.replace(/<td  class="license_date_col">(.*?)<\/td>/g, function(s, match) {
+            sl_str.replace(/<td  class="license_date_col">(.*?)<\/td>/g, function(s, match) {
                 arr.push(match.slice(-2));
             });
             var arr2 = JSON.stringify(arr);
@@ -481,52 +485,56 @@ function wait_sldata() {
         setTimeout(function(){ wait_sldata(); }, 500);
     }
 }
-
 //Steam licenses Chart v2
 function SL_Chart_v2() {
-    if ((GM_getValue("SLChart_v2_Value") == 0) || (GM_getValue("SLChart_v2_Value") == "undefined") || (GM_getValue("SLChart_v2_Value") == null) ) {
-        console.log("Showcase Steam Licenses Chart_v2 is set to : " + GM_getValue("SLChart_v2_Value") + " and will not add Showcase Steam Licenses Chart_v2 to the Steam Profile.");
-    }
-    else if ((GM_getValue("SLChart_v2_Value") == 1)) {
-        console.log("Showcase Steam Licenses Chart_v2 is set to : " + GM_getValue("SLChart_v2_Value") + " and will add Showcase Steam Licenses Chart_v2 to the Steam Profile.");
+    var html = document.documentElement.innerHTML;
+    var steamid = html.match('steamid":"(.*?)"');
+    steamid = JSON.stringify(steamid[1]).replace("\"","").slice(0,-1);
+    if (g_steamID === steamid) {
+        if ((GM_getValue("SLChart_v2_Value") == 0) || (GM_getValue("SLChart_v2_Value") == "undefined") || (GM_getValue("SLChart_v2_Value") == null) ) {
+            console.log("Showcase Steam Licenses Chart_v2 is set to : " + GM_getValue("SLChart_v2_Value") + " and will not add Showcase Steam Licenses Chart_v2 to the Steam Profile.");
+        }
+        else if ((GM_getValue("SLChart_v2_Value") == 1)) {
+            console.log("Showcase Steam Licenses Chart_v2 is set to : " + GM_getValue("SLChart_v2_Value") + " and will add Showcase Steam Licenses Chart_v2 to the Steam Profile.");
 
-        document.getElementsByClassName("profile_customization_area")[0].setAttribute("id", "MalikQayum_Showcase_11");
-        var div_11 = document.getElementById("MalikQayum_Showcase_11");
+            document.getElementsByClassName("profile_customization_area")[0].setAttribute("id", "MalikQayum_Showcase_11");
+            var div_11 = document.getElementById("MalikQayum_Showcase_11");
 
-        var x_div_11 = document.createElement('div');
-        x_div_11.id = 'MalikQayum_Showcase_11';
-        div_11.appendChild(x_div_11);
-        x_div_11.innerHTML =
-            `
+            var x_div_11 = document.createElement('div');
+            x_div_11.id = 'MalikQayum_Showcase_11';
+            div_11.appendChild(x_div_11);
+            x_div_11.innerHTML =
+                `
 <div class="profile_customization"><div class="profile_customization_header ellipsis">Steam Licenses Chart v2</div>
 <div class="profile_customization_block"><div class="customtext_showcase">
 <div class="showcase_content_bg showcase_notes"><canvas id="SLChart_v2" height="300" width="600"></canvas>
 </div></div></div></div>
 `;
 
-        var gdata =  GM_getValue("G_SteamLicensesData_v2");
-        var glabels = GM_getValue("G_SteamLicensesLabels_v2");
-        var data = {
-            labels: glabels,
-            datasets: [
-                {
-                    label: "Steam Licenses Chart_v2",
-                    fillColor: "rgba(220,220,220,0.2)",
-                    strokeColor: "rgba(220,220,220,1)",
-                    pointColor: "rgba(220,220,220,1)",
-                    pointStrokeColor: "#fff",
-                    pointHighlightFill: "#fff",
-                    pointHighlightStroke: "rgba(220,220,220,1)",
-                    data: gdata
-                }
-            ]
-        };
+            var gdata =  GM_getValue("G_SteamLicensesData_v2");
+            var glabels = GM_getValue("G_SteamLicensesLabels_v2");
+            var data = {
+                labels: glabels,
+                datasets: [
+                    {
+                        label: "Steam Licenses Chart_v2",
+                        fillColor: "rgba(220,220,220,0.2)",
+                        strokeColor: "rgba(220,220,220,1)",
+                        pointColor: "rgba(220,220,220,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(220,220,220,1)",
+                        data: gdata
+                    }
+                ]
+            };
 
-        var chart = document.getElementById('SLChart_v2').getContext('2d');
-        var myslchart = new Chart(chart).Line(data);
+            var chart = document.getElementById('SLChart_v2').getContext('2d');
+            var myslchart = new Chart(chart).Line(data);
 
-        GM_deleteValue("G_SteamLicensesData_v2");
-        GM_deleteValue("G_SteamLicensesLabels_v2");
+            GM_deleteValue("G_SteamLicensesData_v2");
+            GM_deleteValue("G_SteamLicensesLabels_v2");
+        }
     }
 }
 
@@ -539,7 +547,7 @@ function SLData_v2(){
             var sl_str = response_sl.responseText;
 
             var arr = [];
-             sl_str.replace(/<td  class="license_date_col">(.*?)<\/td>/g, function(s, match) {
+            sl_str.replace(/<td  class="license_date_col">(.*?)<\/td>/g, function(s, match) {
                 arr.push(match.slice(-2));
             });
             var arr2 = JSON.stringify(arr);
@@ -561,7 +569,7 @@ function SLData_v2(){
             if(arr.indexOf("16")==-1){/*donothing*/}else{var newcount16 = arr2.match(/16/g).length; if(isNaN(parseInt(count_arr[0]))){count_arr.unshift(newcount16);}else{ var countadded16 = count_arr[0] + newcount16; count_arr.unshift(countadded16);}}  
             if(arr.indexOf("17")==-1){/*donothing*/}else{var newcount17 = arr2.match(/17/g).length; if(isNaN(parseInt(count_arr[0]))){count_arr.unshift(newcount17);}else{ var countadded17 = count_arr[0] + newcount17; count_arr.unshift(countadded17);}}  
             if(arr.indexOf("18")==-1){/*donothing*/}else{var newcount18 = arr2.match(/18/g).length; if(isNaN(parseInt(count_arr[0]))){count_arr.unshift(newcount18);}else{ var countadded18 = count_arr[0] + newcount18; count_arr.unshift(countadded18);}}  
-  
+
             console.log(count_arr);
 
             var tmp = [];
@@ -595,122 +603,126 @@ function wait_sldata_v2() {
 
 //Steam licenses Chart v3
 function SL_Chart_v3() {
-    if ((GM_getValue("SLChart_v3_Value") == 0) || (GM_getValue("SLChart_v3_Value") == "undefined") || (GM_getValue("SLChart_v3_Value") == null) ) {
-        console.log("Showcase Steam Licenses Chart_v3 is set to : " + GM_getValue("SLChart_v3_Value") + " and will not add Showcase Steam Licenses Chart_v3 to the Steam Profile.");
-    }
-    else if ((GM_getValue("SLChart_v3_Value") == 1)) {
-        console.log("Showcase Steam Licenses Chart_v3 is set to : " + GM_getValue("SLChart_v3_Value") + " and will add Showcase Steam Licenses Chart_v3 to the Steam Profile.");
+    var html = document.documentElement.innerHTML;
+    var steamid = html.match('steamid":"(.*?)"');
+    steamid = JSON.stringify(steamid[1]).replace("\"","").slice(0,-1);
+    if (g_steamID === steamid) {
+        if ((GM_getValue("SLChart_v3_Value") == 0) || (GM_getValue("SLChart_v3_Value") == "undefined") || (GM_getValue("SLChart_v3_Value") == null) ) {
+            console.log("Showcase Steam Licenses Chart_v3 is set to : " + GM_getValue("SLChart_v3_Value") + " and will not add Showcase Steam Licenses Chart_v3 to the Steam Profile.");
+        }
+        else if ((GM_getValue("SLChart_v3_Value") == 1)) {
+            console.log("Showcase Steam Licenses Chart_v3 is set to : " + GM_getValue("SLChart_v3_Value") + " and will add Showcase Steam Licenses Chart_v3 to the Steam Profile.");
 
-        document.getElementsByClassName("profile_customization_area")[0].setAttribute("id", "MalikQayum_Showcase_12");
-        var div_12 = document.getElementById("MalikQayum_Showcase_12");
+            document.getElementsByClassName("profile_customization_area")[0].setAttribute("id", "MalikQayum_Showcase_12");
+            var div_12 = document.getElementById("MalikQayum_Showcase_12");
 
-        var x_div_12 = document.createElement('div');
-        x_div_12.id = 'MalikQayum_Showcase_12';
-        div_12.appendChild(x_div_12);
-        x_div_12.innerHTML =
-            `
+            var x_div_12 = document.createElement('div');
+            x_div_12.id = 'MalikQayum_Showcase_12';
+            div_12.appendChild(x_div_12);
+            x_div_12.innerHTML =
+                `
 <div class="profile_customization"><div class="profile_customization_header"> Steam Licenses Showcase	</div>
-	<div class="profile_customization_block">
-		<div class="myguide_showcase">
-			<div class="myguide_showcase_item_ctn showcase_slot left "><canvas id="SLChart" height="110" width="275"></canvas></div>
-			<div class="myguide_showcase_item_ctn showcase_slot  "><canvas id="SLChart2" height="110" width="275"></canvas></div>
-			<div class="myguide_showcase_item_ctn showcase_slot left "><canvas id="SLChart3" height="110" width="275"></canvas></div>
-			<div class="myguide_showcase_item_ctn showcase_slot  "><canvas id="SLChart4" height="110" width="275"></canvas></div>
-			<div style="clear: left;"></div>
-		</div>
-	</div>
+<div class="profile_customization_block">
+<div class="myguide_showcase">
+<div class="myguide_showcase_item_ctn showcase_slot left "><canvas id="SLChart" height="110" width="275"></canvas></div>
+<div class="myguide_showcase_item_ctn showcase_slot  "><canvas id="SLChart2" height="110" width="275"></canvas></div>
+<div class="myguide_showcase_item_ctn showcase_slot left "><canvas id="SLChart3" height="110" width="275"></canvas></div>
+<div class="myguide_showcase_item_ctn showcase_slot  "><canvas id="SLChart4" height="110" width="275"></canvas></div>
+<div style="clear: left;"></div>
 </div>
-
+</div>
+</div>
 `;
 
-    var gdata1 =  GM_getValue("G_SteamLicensesData1");
-    var glabels1 = GM_getValue("G_SteamLicensesLabels1");
-    var gdata2 =  GM_getValue("G_SteamLicensesData2");
-    var glabels2 = GM_getValue("G_SteamLicensesLabels2");
-    var data = {
-        labels: glabels1,
-        datasets: [
-            {
-                label: "Steam Licenses Chart",
-                fillColor: "rgba(220,220,220,0.2)",
-                strokeColor: "rgba(220,220,220,1)",
-                pointColor: "rgba(220,220,220,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(220,220,220,1)",
-                data: gdata1
-            }
-        ]
-    };
-    var data2 = {
-        labels: glabels2,
-        datasets: [
-            {
-                label: "Steam Licenses Chart",
-                fillColor: "rgba(220,220,220,0.2)",
-                strokeColor: "rgba(220,220,220,1)",
-                pointColor: "rgba(220,220,220,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(220,220,220,1)",
-                data: gdata2
-            }
-        ]
-    };
+            var gdata1 =  GM_getValue("G_SteamLicensesData1");
+            var glabels1 = GM_getValue("G_SteamLicensesLabels1");
+            var gdata2 =  GM_getValue("G_SteamLicensesData2");
+            var glabels2 = GM_getValue("G_SteamLicensesLabels2");
+            var data = {
+                labels: glabels1,
+                datasets: [
+                    {
+                        label: "Steam Licenses Chart",
+                        fillColor: "rgba(220,220,220,0.2)",
+                        strokeColor: "rgba(220,220,220,1)",
+                        pointColor: "rgba(220,220,220,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(220,220,220,1)",
+                        data: gdata1
+                    }
+                ]
+            };
+            var data2 = {
+                labels: glabels2,
+                datasets: [
+                    {
+                        label: "Steam Licenses Chart",
+                        fillColor: "rgba(220,220,220,0.2)",
+                        strokeColor: "rgba(220,220,220,1)",
+                        pointColor: "rgba(220,220,220,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(220,220,220,1)",
+                        data: gdata2
+                    }
+                ]
+            };
 
-    var data3 = [
-        {
-            value: GM_getValue("G_SteamLicensesC_Retail"),
-            label: "Retail",
-            color:"#003366"
-        },
-        {
-            value: GM_getValue("G_SteamLicensesC_SteamStore"),
-            label: "Steam Store",
-            color : "#FFFFFF"
-        },
-        {
-            value: GM_getValue("G_SteamLicensesC_GiftGuest_Pass"),
-            label: "Gift/Guest Pass",
-            color : "#000000"
-        },
-        {
-            value: GM_getValue("G_SteamLicensesC_Complimentary"),
-            label: "Complimentary",
-            color : "#606060"
+            var data3 = [
+                {
+                    value: GM_getValue("G_SteamLicensesC_Retail"),
+                    label: "Retail",
+                    color:"#003366"
+                },
+                {
+                    value: GM_getValue("G_SteamLicensesC_SteamStore"),
+                    label: "Steam Store",
+                    color : "#FFFFFF"
+                },
+                {
+                    value: GM_getValue("G_SteamLicensesC_GiftGuest_Pass"),
+                    label: "Gift/Guest Pass",
+                    color : "#000000"
+                },
+                {
+                    value: GM_getValue("G_SteamLicensesC_Complimentary"),
+                    label: "Complimentary",
+                    color : "#606060"
+                }
+            ];
+
+            var data4 = [
+                {
+                    value: GM_getValue("G_SteamLicensesC_BetaTesting"),
+                    label: "Beta Testing",
+                    color:"#FFD700"
+                },
+                {
+                    value: GM_getValue("G_SteamLicensesC_DeveloperComp"),
+                    label: "Dev Comp",
+                    color : "#DC143C"
+                }
+            ];
+
+            var chart = document.getElementById('SLChart').getContext('2d');
+            var chart2 = document.getElementById('SLChart2').getContext('2d');
+            var chart3 = document.getElementById('SLChart3').getContext('2d');
+            var chart4 = document.getElementById('SLChart4').getContext('2d');
+
+            var options = {
+                scaleShowLabels: false 
+            };
+
+            var myslchart = new Chart(chart).Bar(data, options);
+            var myslchart2 = new Chart(chart2).Line(data2, options);
+            var myslchart3 = new Chart(chart3).Doughnut(data3);
+            var myslchart4 = new Chart(chart4).Doughnut(data4);
+
+            GM_deleteValue("G_SteamLicensesData");
+            GM_deleteValue("G_SteamLicensesLabels");
         }
-    ];
-
-    var data4 = [
-        {
-            value: GM_getValue("G_SteamLicensesC_BetaTesting"),
-            label: "Beta Testing",
-            color:"#FFD700"
-        },
-        {
-            value: GM_getValue("G_SteamLicensesC_DeveloperComp"),
-            label: "Dev Comp",
-            color : "#DC143C"
-        }
-    ];
-
-    var chart = document.getElementById('SLChart').getContext('2d');
-    var chart2 = document.getElementById('SLChart2').getContext('2d');
-    var chart3 = document.getElementById('SLChart3').getContext('2d');
-    var chart4 = document.getElementById('SLChart4').getContext('2d');
-
-    var options = {
-        scaleShowLabels: false 
-    };
-
-    var myslchart = new Chart(chart).Bar(data, options);
-    var myslchart2 = new Chart(chart2).Line(data2, options);
-    var myslchart3 = new Chart(chart3).Doughnut(data3);
-    var myslchart4 = new Chart(chart4).Doughnut(data4);
-
-    GM_deleteValue("G_SteamLicensesData");
-    GM_deleteValue("G_SteamLicensesLabels");
-}
+    }
 }
 
 
@@ -767,8 +779,8 @@ function SLData_v3(){
             }
             var temp2 = tmp;
             console.log(temp2);
-		var arrx = [];
-             sl_str.replace(/<td  class="license_date_col">(.*?)<\/td>/g, function(s, match) {
+            var arrx = [];
+            sl_str.replace(/<td  class="license_date_col">(.*?)<\/td>/g, function(s, match) {
                 arrx.push(match.slice(-2));
             });
             var arr2x = JSON.stringify(arrx);
@@ -802,7 +814,7 @@ function SLData_v3(){
             console.log(temp2x);
             GM_setValue("G_SteamLicensesLabels1", temp2x);
             GM_setValue("G_SteamLicensesData1", count_arrx);
-		
+
             GM_setValue("G_SteamLicensesLabels2", temp2.reverse());
             GM_setValue("G_SteamLicensesData2", count_arr.reverse());
             GM_setValue("G_SteamLicensesChart_v3", "1");
@@ -823,3 +835,4 @@ function wait_sldata_v3() {
         setTimeout(function(){ wait_sldata_v3(); }, 500);
     }
 }
+
