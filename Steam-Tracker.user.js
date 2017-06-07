@@ -51,7 +51,7 @@
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/GMDelete.js
 // @downloadURL https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.user.js
 // @updateURL   https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.user.js
-// @version      4.3.2.0
+// @version      4.3.2.1
 // @grant        GM_xmlhttpRequest
 // @grant        GM_getValue
 // @grant        GM_setValue
@@ -117,8 +117,11 @@ if(document.URL.match(re_apphub))
     }
     else if ((GM_getValue("HubTracker_Value") == 1)) {
         console.log("HubTracker is set to : " + GM_getValue("HubTracker_Value") + " and will add a Steam-Tracker Button to the Hub.");
-        var appid = document.URL;
-        appid = appid.split("app/").pop().replace(/\D+$/g, '');
+        var appid = window.location.href;
+	    appid = appid.split("/");
+	    appid = appid[4];
+	//var appid = document.URL;
+        //appid = appid.split("app/").pop().replace(/\D+$/g, '');
         var steamtracker = document.getElementsByClassName("apphub_OtherSiteInfo responsive_hidden")[0];
         var steamtracker_button = document.createElement('a');
         steamtracker_button.className = "btnv6_blue_hoverfade btn_medium";
