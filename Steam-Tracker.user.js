@@ -80,7 +80,6 @@ if(document.URL.match(re_appstore))
 }
 
 //community app hub stuff (should respect the exclude rules)
-
 var re_apphub_0 = new RegExp(/^https?:\/\/steamcommunity\.com\/app\/\d+/);
 var re_apphub_1 = new RegExp(/^https?:\/\/steamcommunity\.com\/app\/\d+\/(discussions|screenshots|images|broadcasts|videos|workshop|allnews|guides|reviews)\//);
 if (document.URL.match(re_apphub_0) || document.URL.match(re_apphub_1)) 
