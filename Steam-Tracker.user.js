@@ -10,35 +10,6 @@
 // @include      /^https?://steamcommunity\.com/(id|profiles)/*/
 // @include      /^https?://steamcommunity\.com/app/*/
 // @include      /^https?://store.steampowered.com/app/*/
-// @exclude      *://steamcommunity.com/*/*/badge*
-// @exclude      *://steamcommunity.com/*/*/gamecards*
-// @exclude      *://steamcommunity.com/*/*/games*
-// @exclude      *://steamcommunity.com/*/*/wishlist*
-// @exclude      *://steamcommunity.com/*/*/inventory*
-// @exclude      *://steamcommunity.com/*/*/myworkshopfiles*
-// @exclude      *://steamcommunity.com/*/*/recommended*
-// @exclude      *://steamcommunity.com/*/*/videos*
-// @exclude      *://steamcommunity.com/*/*/screenshots*
-// @exclude      *://steamcommunity.com/*/*/friends*
-// @exclude      *://steamcommunity.com/*/*/groups*
-// @exclude      *://steamcommunity.com/*/*/home*
-// @exclude      *://steamcommunity.com/*/*/tradeoffers*
-// @exclude      *://steamcommunity.com/*/*/edit
-// @exclude      *://steamcommunity.com/*/*/edit/settings
-// @exclude      *://steamcommunity.com/*/*/commentnotifications*
-// @exclude      *://steamcommunity.com/*/*/posthistory*
-// @exclude      *://steamcommunity.com/*/*/commenthistory*
-// @exclude      *://steamcommunity.com/*/*/blotteredit*
-// @exclude      *://steamcommunity.com/*/*/myactivity*
-// @exclude      *://steamcommunity.com/*/*/inventoryhistory
-// @exclude      *://steamcommunity.com/app/*/discussions*
-// @exclude      *://steamcommunity.com/app/*/screenshots*
-// @exclude      *://steamcommunity.com/app/*/images*
-// @exclude      *://steamcommunity.com/app/*/broadcasts*
-// @exclude      *://steamcommunity.com/app/*/videos*
-// @exclude      *://steamcommunity.com/app/*/allnews*
-// @exclude      *://steamcommunity.com/app/*/guides*
-// @exclude      *://steamcommunity.com/app/*/reviews*
 // @require     https://code.jquery.com/jquery-2.1.4.min.js
 // @require     https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.1.1/Chart.min.js
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/api/api.js
@@ -51,7 +22,7 @@
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/GMDelete.js
 // @downloadURL https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.user.js
 // @updateURL   https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.user.js
-// @version      4.3.2.1
+// @version      4.3.3.0
 // @grant        GM_xmlhttpRequest
 // @grant        GM_getValue
 // @grant        GM_setValue
@@ -109,8 +80,10 @@ if(document.URL.match(re_appstore))
 }
 
 //community app hub stuff (should respect the exclude rules)
-var re_apphub = new RegExp(/^https?:\/\/steamcommunity\.com\/app\/*/);
-if(document.URL.match(re_apphub))
+
+var re_apphub_0 = new RegExp(/^https?:\/\/steamcommunity\.com\/app\/\d+/);
+var re_apphub_1 = new RegExp(/^https?:\/\/steamcommunity\.com\/app\/\d+\/(discussions|screenshots|images|broadcasts|videos|workshop|allnews|guides|reviews)\//);
+if (document.URL.match(re_apphub_0) || document.URL.match(re_apphub_1)) 
 {
     if ((GM_getValue("HubTracker_Value") === 0) || (GM_getValue("HubTracker_Value") === "undefined") || (GM_getValue("HubTracker_Value") === null) ) {
         console.log("HubTracker is set to : " + GM_getValue("HubTracker_Value") + " and will not add a Steam-Tracker Button to the Hub.");
@@ -120,8 +93,6 @@ if(document.URL.match(re_apphub))
         var appid = window.location.href;
 	    appid = appid.split("/");
 	    appid = appid[4];
-	//var appid = document.URL;
-        //appid = appid.split("app/").pop().replace(/\D+$/g, '');
         var steamtracker = document.getElementsByClassName("apphub_OtherSiteInfo responsive_hidden")[0];
         var steamtracker_button = document.createElement('a');
         steamtracker_button.className = "btnv6_blue_hoverfade btn_medium";
@@ -138,7 +109,6 @@ if(document.URL.match(re_apphub))
 var re_steam_profile = new RegExp(/^https?:\/\/steamcommunity\.com\/(id|profiles)\/*/);
 if(document.URL.match(re_steam_profile))
 {
-
     var html_str = document.documentElement.innerHTML;
     var start_pos_id = html_str.indexOf(',"steamid":"') + 12;
     var end_pos_id = html_str.indexOf('",',start_pos_id);
