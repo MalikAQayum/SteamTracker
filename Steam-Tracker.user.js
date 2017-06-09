@@ -89,9 +89,7 @@ if (document.URL.match(re_apphub_0) || document.URL.match(re_apphub_1))
     }
     else if ((GM_getValue("HubTracker_Value") == 1)) {
         console.log("HubTracker is set to : " + GM_getValue("HubTracker_Value") + " and will add a Steam-Tracker Button to the Hub.");
-        var appid = window.location.href;
-	    appid = appid.split("/");
-	    appid = appid[4];
+	var appid = location.href.split("/")[4];
         var steamtracker = document.getElementsByClassName("apphub_OtherSiteInfo responsive_hidden")[0];
         var steamtracker_button = document.createElement('a');
         steamtracker_button.className = "btnv6_blue_hoverfade btn_medium";
@@ -105,7 +103,7 @@ if (document.URL.match(re_apphub_0) || document.URL.match(re_apphub_1))
 }
 
 
-var re_steam_profile = new RegExp(/^https?:\/\/steamcommunity\.com\/(id|profiles)\//);
+var re_steam_profile = new RegExp(/^https?:\/\/steamcommunity\.com\/(id|profiles)\/[^\/]+\/?$/);
 if(document.URL.match(re_steam_profile))
 {
     var html_str = document.documentElement.innerHTML;
