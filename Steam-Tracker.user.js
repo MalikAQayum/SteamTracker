@@ -7,7 +7,7 @@
 // @connect      steam-tracker.com
 // @connect      store.steampowered.com
 // @include      /^https?://steamcommunity\.com/(id|profiles)/edit/settings/steamtracker/
-// @include      /^https?://steamcommunity\.com/(id|profiles)/*/
+// @include      /^https?://steamcommunity\.com/(id|profiles)//
 // @include      /^https?://steamcommunity\.com/app/*/
 // @include      /^https?://store.steampowered.com/app/*/
 // @require     https://code.jquery.com/jquery-2.1.4.min.js
@@ -22,7 +22,7 @@
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/GMDelete.js
 // @downloadURL https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.user.js
 // @updateURL   https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.user.js
-// @version      4.3.3.0
+// @version      4.3.3.1
 // @grant        GM_xmlhttpRequest
 // @grant        GM_getValue
 // @grant        GM_setValue
@@ -105,7 +105,7 @@ if (document.URL.match(re_apphub_0) || document.URL.match(re_apphub_1))
 }
 
 
-var re_steam_profile = new RegExp(/^https?:\/\/steamcommunity\.com\/(id|profiles)\/*/);
+var re_steam_profile = new RegExp(/^https?:\/\/steamcommunity\.com\/(id|profiles)\//);
 if(document.URL.match(re_steam_profile))
 {
     var html_str = document.documentElement.innerHTML;
