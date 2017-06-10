@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Steam-Tracker
-// @namespace    https://github.com/MalikAQayum/SteamTrackerTest
+// @namespace    https://github.com/MalikAQayum/SteamTracker
 // @description  adds stats/showcases to the steam profile page from steam-tracker.com api + adds a button to steam-tracker <appid> to the app hub page and store page.
 // @author       MalikQayum
 // @connect      steam-tracker.com
