@@ -17,7 +17,7 @@ Optional Settings:
 - Showcase Recent Activity = adds a Recent Activity Showcase.<br />
 (if user is a registret user on Steam-Tracker and has NOT set their recent activity private, then it only showcases the recent activity.)
 - Showcase Rarest Owned Appids  = adds the Rarest Owned Appids showcase. 
-- Steam Licenses Chart = adds licneses stats in charts as an showcase. 
+- Steam Licenses Chart = adds activation license charts as a showcase. 
 
 ## Installation  
 
