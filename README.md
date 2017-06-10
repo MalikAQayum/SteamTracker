@@ -1,4 +1,5 @@
-# SteamTracker
+# SteamTracker v5.0.0.0+
+## From here on after, SteamTracker, will solely rely on Steam-Tracker api and Steam web api.
 
 SteamTracker Userscript, adds features to the steam profile / community app hub / steam store page;<br />
 (it honors all privacy settings)

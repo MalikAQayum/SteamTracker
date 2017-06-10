@@ -1,39 +1,3 @@
-//--------------TK + ST
-function timekillerz_data_both(){
-    GM_xmlhttpRequest({
-        method: "GET",
-        url: "http://removed.timekillerz.eu/content/steamext.php?steamid=" + GM_getValue("G_steam_id"),
-        onload: function(response_timekillerz) {
-            var jsontimekillerz_str = response_timekillerz.responseText;
-            var json_tk = JSON.parse(jsontimekillerz_str);
-            GM_setValue("G_timekillerz_rcount", json_tk.response.removed_count);
-            GM_setValue("G_timekillerz_trcount", json_tk.response.total_removed_count);
-            GM_setValue("G_c7k_rcount", json_tk.response.removed_count_3m);
-            GM_setValue("G_c7k_trcount", json_tk.response.total_removed_count_3m);
-            console.log("1/5");
-            tk_ownedapps_both();
-        }
-    });
-}
-
-function tk_ownedapps_both(){
-    GM_xmlhttpRequest({
-        method: "GET",
-        url: "http://removed.timekillerz.eu/content/generatejson.php?steamid="+ GM_getValue("G_steam_id"),
-        onload: function(response_tk) {
-            var tk_str = response_tk.responseText;
-            var json_tk_data = JSON.parse(tk_str);
-            var tk_keys=[];
-            for(var i = 0; i < json_tk_data.response.games.length; i++) {
-                tk_keys += json_tk_data.response.games[i].appid + ",";
-            }
-            GM_setValue("G_tk_keys", tk_keys.substring(0, tk_keys.length - 1));
-            console.log("2/5");
-            steam_tracker_data_both();
-        }
-    });
-}
-
 function steam_tracker_data_both(){
     GM_xmlhttpRequest({
         method: "GET",
@@ -44,6 +8,8 @@ function steam_tracker_data_both(){
             if (/false/i.test(json_st_data.success))
             {
                 console.log("User does not exist in the steam-tracker db: " +json_st_data.success);
+		//GM_setValue("G_ST_DB", "1"); so we can test around with so we can stop the script from looping on users that does not exist in the steam-tracker db.
+		GM_setValue("G_ST_DB", "1");
                 var c7k = "<a href=\"https://c7k.jfietkau.me/\">C7K : " + GM_getValue("G_c7k_rcount")+ " / " +GM_getValue("G_c7k_trcount")+ "</a>";
                 var tk ="<a href=" + "http://removed.timekillerz.eu/tools.php?steamprofile="+GM_getValue("G_steam_id") + ">TimeKillerz : " + GM_getValue("G_timekillerz_rcount")+ " / " +GM_getValue("G_timekillerz_trcount")+ "</a>";
                 document.getElementById("tk").innerHTML ="<p><span id=\"tk\" class=\"count_link_label\">"+tk+"</span></p>";
@@ -102,7 +68,7 @@ function steam_tracker_data_both(){
                     GM_setValue("G_steamtracker_recentactivity_status_3", json_st_data.recent_activity[3].status);
 
                 }
-				console.log("3/5");
+				console.log("1/3");
                 st_GetAppList_both();
             }
         }
@@ -121,7 +87,7 @@ function st_GetAppList_both(){
                 st_keys += json_ownedappids_data.removed_apps[i].appid + ",";
             }
             GM_setValue("G_st_keys", st_keys.substring(0, st_keys.length - 1));
-			console.log("4/5");
+			console.log("2/3");
             steamtracker_changelog_data_both();
         }
     });
@@ -149,52 +115,12 @@ function steamtracker_changelog_data_both(){
             GM_setValue("G_steamtracker_changelog_appid_4", json_stc.changelog[4].appid);
             GM_setValue("G_steamtracker_changelog_title_4", json_stc.changelog[4].Name);
             GM_setValue("G_steamtracker_changelog_change_4", json_stc.changelog[4].new_category);
-			console.log("5/5 Timekillerz & Steam-Tracker API Stuff Done.");
-            GM_setValue("G_API", "1");
-		
-        }
-    });
-}
-
-//--------------TK
-function timekillerz_data_only(){
-    GM_xmlhttpRequest({
-        method: "GET",
-        url: "http://removed.timekillerz.eu/content/steamext.php?steamid=" + GM_getValue("G_steam_id"),
-        onload: function(response_timekillerz) {
-            var jsontimekillerz_str = response_timekillerz.responseText;
-            var json_tk = JSON.parse(jsontimekillerz_str);
-            GM_setValue("G_timekillerz_rcount", json_tk.response.removed_count);
-            GM_setValue("G_timekillerz_trcount", json_tk.response.total_removed_count);
-            GM_setValue("G_c7k_rcount", json_tk.response.removed_count_3m);
-            GM_setValue("G_c7k_trcount", json_tk.response.total_removed_count_3m);
-			var c7k = "<a href=\"https://c7k.jfietkau.me/\">C7K : " + GM_getValue("G_c7k_rcount")+ " / " +GM_getValue("G_c7k_trcount")+ "</a>";
-            var tk ="<a href=" + "http://removed.timekillerz.eu/tools.php?steamprofile="+GM_getValue("G_steam_id") + ">TimeKillerz : " + GM_getValue("G_timekillerz_rcount")+ " / " +GM_getValue("G_timekillerz_trcount")+ "</a>";
-            document.getElementById("tk").innerHTML ="<p><span id=\"tk\" class=\"count_link_label\">"+tk+"</span></p>";
-            document.getElementById("c7k").innerHTML ="<p><span id=\"c7k\" class=\"count_link_label\">"+c7k+"</span></p>";			
-            console.log("1/2");
-            tk_ownedapps_only();
-        }
-    });
-}
-
-function tk_ownedapps_only(){
-    GM_xmlhttpRequest({
-        method: "GET",
-        url: "http://removed.timekillerz.eu/content/generatejson.php?steamid="+ GM_getValue("G_steam_id"),
-        onload: function(response_tk) {
-            var tk_str = response_tk.responseText;
-            var json_tk_data = JSON.parse(tk_str);
-            var tk_keys=[];
-            for(var i = 0; i < json_tk_data.response.games.length; i++) {
-                tk_keys += json_tk_data.response.games[i].appid + ",";
-            }
-            GM_setValue("G_tk_keys", tk_keys.substring(0, tk_keys.length - 1));
-            console.log("2/2 Timekillerz API Stuff Done.");
+			console.log("3/3 Steam-Tracker API Stuff Done.");
             GM_setValue("G_API", "1");
         }
     });
 }
+
 
 //--------------ST
 function steam_tracker_data_only(){

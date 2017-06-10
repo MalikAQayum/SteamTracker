@@ -1,9 +1,8 @@
 // ==UserScript==
 // @name         Steam-Tracker
-// @namespace    https://github.com/MalikAQayum/SteamTracker
-// @description  add stats/showcases to the steam profile page from http://removed.timekillerz.eu/ and https://steam-tracker.com/user/*/ + adds a button to steam-tracker <appid> to the app hub page and store page.
+// @namespace    https://github.com/MalikAQayum/SteamTrackerTest
+// @description  adds stats/showcases to the steam profile page from steam-tracker.com api + adds a button to steam-tracker <appid> to the app hub page and store page.
 // @author       MalikQayum
-// @connect      removed.timekillerz.eu
 // @connect      steam-tracker.com
 // @connect      store.steampowered.com
 // @include      /^https?://steamcommunity\.com/(id|profiles)/edit/settings/steamtracker/
@@ -15,14 +14,12 @@
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/api/api.js
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/settings.js
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/showcases/Showcases.js
-// @require     https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/showcases/default_private.js
-// @require     https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/showcases/default_public.js
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/showcases/default_st_public.js
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/showcases/default_st_private.js
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/GMDelete.js
 // @downloadURL https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.user.js
 // @updateURL   https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.user.js
-// @version      4.3.3.2
+// @version      5.0.0.9
 // @grant        GM_xmlhttpRequest
 // @grant        GM_getValue
 // @grant        GM_setValue
@@ -89,7 +86,7 @@ if (document.URL.match(re_apphub_0) || document.URL.match(re_apphub_1))
     }
     else if ((GM_getValue("HubTracker_Value") == 1)) {
         console.log("HubTracker is set to : " + GM_getValue("HubTracker_Value") + " and will add a Steam-Tracker Button to the Hub.");
-	var appid = location.href.split("/")[4];
+        var appid = location.href.split("/")[4];
         var steamtracker = document.getElementsByClassName("apphub_OtherSiteInfo responsive_hidden")[0];
         var steamtracker_button = document.createElement('a');
         steamtracker_button.className = "btnv6_blue_hoverfade btn_medium";
@@ -137,32 +134,13 @@ if(document.URL.match(re_steam_profile))
         div_pil.prepend(pil_Div);
         pil_Div.innerHTML ="<p><span id=\"st\" class=\"count_link_label\">"+st+"</span>" + " " + "<span id=\"st\" class=\"btn_profile_action btn_medium\">"+st2+"</span></p>"+"<p><span id=\"tk\" class=\"count_link_label\">"+tk+"</span></p>"+"<p><span id=\"c7k\" class=\"count_link_label\">"+c7k+"</span></p>";
 
-        if ((GM_getValue("Showcase_Default_Value") == 1) || (GM_getValue("Showcase_ROA_Value") == 1))  {
-		if(GM_getValue("SLChart_Value") === "1"){ SLData(); wait_sldata();}
-		if(GM_getValue("SLChart_v2_Value") === "1"){SLData_v2();wait_sldata_v2();}
-		if(GM_getValue("SLChart_v3_Value") === "1"){SLData_v3();wait_sldata_v3();}
-            timekillerz_data_both();
-            wait_api();
-        }
-		
-        else if ((GM_getValue("RemGCTracker_Value") == 1) || (GM_getValue("C7KTracker_Value") == 1))  {
-		if(GM_getValue("SLChart_Value") === "1"){ SLData(); wait_sldata();}
-		if(GM_getValue("SLChart_v2_Value") === "1"){SLData_v2();wait_sldata_v2();}
-		if(GM_getValue("SLChart_v3_Value") === "1"){SLData_v3();wait_sldata_v3();}
-            timekillerz_data_only();
-            wait_api();
-        }
-        else if ((GM_getValue("Showcase_RA_Value") == 1) || (GM_getValue("Showcase_ST_Default_Value") == 1) || (GM_getValue("Showcase_ST_ROA_Value") == 1))  {
-		if(GM_getValue("SLChart_Value") === "1"){ SLData(); wait_sldata();}
-		if(GM_getValue("SLChart_v2_Value") === "1"){SLData_v2();wait_sldata_v2();}
-		if(GM_getValue("SLChart_v3_Value") === "1"){SLData_v3();wait_sldata_v3();}
-		steam_tracker_data_only();
+        if ((GM_getValue("Showcase_RA_Value") == 1) || (GM_getValue("Showcase_ST_Default_Value") == 1) || (GM_getValue("Showcase_ST_ROA_Value") == 1))  {
+            if(GM_getValue("SLChart_v3_Value") === "1"){SLData_v3();wait_sldata_v3();}
+            steam_tracker_data_only();
             wait_api();
         }
         else {
-		if(GM_getValue("SLChart_Value") === "1"){ SLData(); wait_sldata();}
-		if(GM_getValue("SLChart_v2_Value") === "1"){SLData_v2();wait_sldata_v2();}
-		if(GM_getValue("SLChart_v3_Value") === "1"){SLData_v3();wait_sldata_v3();}
+            if(GM_getValue("SLChart_v3_Value") === "1"){SLData_v3();wait_sldata_v3();}
             console.log("no settings have been set.");
         }
     }
@@ -180,31 +158,24 @@ function wait_api() {
         {
             console.log("Recent Activity Setting: is set to private and is being honored. #2");
             //showcase
-            default_private();
             default_st_private();
-            RemGC_Showcase();
-            C7K_Showcase();
-            Rarest_Owned_Appids();
-			ST_ROA();
-		
+            ST_ROA();
+            console.log("END: "+new Date());
+
         }
         else
         {
             //showcase
-            default_public();
             default_st_public();
             Recent_Activity_Showcase();
-            RemGC_Showcase();
-            C7K_Showcase();
-            Rarest_Owned_Appids();
-			ST_ROA();
+            ST_ROA();
+            console.log("END: "+new Date());
         }
         GMDelete();
     }
     else
     {
-        var date = new Date();
-        console.log(date);
-        setTimeout(function(){ wait_api(); }, 750);
+        console.log("START: "+new Date());
+        setTimeout(function(){ wait_api(); }, 250);
     }
 }
