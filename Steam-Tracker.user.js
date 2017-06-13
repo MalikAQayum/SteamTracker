@@ -4,13 +4,18 @@
 // @description  adds stats/showcases to the steam profile page from steam-tracker.com api + adds a button to steam-tracker <appid> to the app hub page and store page.
 // @author       MalikQayum
 // @connect      steam-tracker.com
+// @connect      api.steampowered.com
 // @connect      store.steampowered.com
+// @connect      steamcommunity.com
+// @include      /^https?://steamcommunity\.com/(id|profiles)/
+// @include      /^https?://steamcommunity\.com/(id|profiles)/(games/?tab=removedappids*|games?tab=removedappids*)/
 // @include      /^https?://steamcommunity\.com/(id|profiles)/edit/settings/steamtracker/
 // @include      /^https?://steamcommunity\.com/(id|profiles)//
 // @include      /^https?://steamcommunity\.com/app/*/
 // @include      /^https?://store.steampowered.com/app/*/
 // @require     https://code.jquery.com/jquery-2.1.4.min.js
 // @require     https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.1.1/Chart.min.js
+// @require  https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/api/api.js
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/settings.js
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/showcases/Showcases.js
@@ -19,7 +24,7 @@
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/GMDelete.js
 // @downloadURL https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.user.js
 // @updateURL   https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.user.js
-// @version      5.0.0.11
+// @version      5.0.0.12
 // @grant        GM_xmlhttpRequest
 // @grant        GM_getValue
 // @grant        GM_setValue
