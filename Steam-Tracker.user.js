@@ -179,3 +179,59 @@ function wait_api() {
         setTimeout(function(){ wait_api(); }, 250);
     }
 }
+
+//START---- NEED TO ADD A SETTING FOR THIS AT ONE POINT SO IT BECOMES OPTIONAL:
+var re_tabMQ = new RegExp(/tab=removedappids/g);
+if(document.URL.match(re_tabMQ))
+{
+    $("#games_list_rows").remove();
+    var vanityurl = location.href.split("/")[3];
+    if (/id/i.test(vanityurl))
+    {
+        vanityurl = location.href.split("/")[4];
+        getsteamid();
+    }
+    else
+    {
+        vanityurl = location.href.split("/")[4];
+        DelistedApps();
+    }
+}
+
+function getsteamid(){
+    GM_xmlhttpRequest({
+        method: "GET",
+        url: "http://steamcommunity.com/id/"+vanityurl+"/?xml=1",
+        onload: function(response_xml) {
+            var xmlDoc = response_xml.responseXML;
+            var x = xmlDoc.getElementsByTagName('steamID64')[0];
+            var y = x.childNodes[0];
+            vanityurl = y.nodeValue;
+            DelistedApps();
+        }
+    });
+}
+
+function DelistedApps(){
+    GM_xmlhttpRequest({
+        method: "GET",
+        url: "https://steam-tracker.com/api?action=GetUserAppList&steamid="+vanityurl,
+        onload: function(response_st) {
+            var st_str = response_st.responseText;
+            var json = JSON.parse(st_str);
+            $('#games_list_row_container').append('<table border=\"0\" cellspacing=\"0\" cellpadding=\"0\" style=\"width:100%;\"></table>');
+
+            $(document).ready(function () {
+                var tr;
+                for (var i = 0; i < json.apps.length; i++) {
+                    tr = $('<tr/ class="gameListRow">');
+                    tr.append("<td>" + "<img src=\"http://steamcdn-a.akamaihd.net/steam/apps/"+json.apps[i].appid+"/capsule_184x69.jpg\"onerror='this.src=\"https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/noimageavailable.gif\"'; alt=\""+json.apps[i].appid+"\" style=\"width:184px;height:69px;\">" + "</td>");
+                    tr.append("<td>" + json.apps[i].appid + "</td>");
+                    tr.append("<td>" + '<a href="https://steam-tracker.com/app/'+json.apps[i].appid+'">'+json.apps[i].name +'</a></td>' + '\r\n' + '<a class="pullup_item" href="http://store.steampowered.com/recommended/recommendgame/605470"><div class="menu_ico"><img src="http://steamcommunity-a.akamaihd.net/public/images/skin_1/icon_rate.png" width="16" height="16" border="0"></div>Review...	</a>');
+                    $('table').append(tr);
+                }
+            });
+        }
+    });
+}
+//END---- NEED TO ADD A SETTING FOR THIS AT ONE POINT SO IT BECOMES OPTIONAL:
