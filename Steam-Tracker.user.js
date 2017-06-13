@@ -24,7 +24,7 @@
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/GMDelete.js
 // @downloadURL https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.user.js
 // @updateURL   https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.user.js
-// @version      5.0.0.12
+// @version      5.0.0.13
 // @grant        GM_xmlhttpRequest
 // @grant        GM_getValue
 // @grant        GM_setValue
@@ -108,6 +108,11 @@ if (document.URL.match(re_apphub_0) || document.URL.match(re_apphub_1))
 var re_steam_profile = new RegExp(/^https?:\/\/steamcommunity\.com\/(id|profiles)\/[^\/]+\/?$/);
 if(document.URL.match(re_steam_profile))
 {
+    var anchors = document.querySelectorAll('a[href$="tab=all"]');
+    Array.prototype.forEach.call(anchors, function (element, index) {
+        element.href = window.location.href+"/games/?tab=removedappids";
+    });
+
     var html_str = document.documentElement.innerHTML;
     var start_pos_id = html_str.indexOf(',"steamid":"') + 12;
     var end_pos_id = html_str.indexOf('",',start_pos_id);
