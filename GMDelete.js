@@ -1,5 +1,9 @@
 function GMDelete(){
     GM_deleteValue("G_steam_id");
+    GM_deleteValue("G_timekillerz_rcount");
+    GM_deleteValue("G_timekillerz_trcount");
+    GM_deleteValue("G_c7k_rcount");
+    GM_deleteValue("G_c7k_trcount");
     GM_deleteValue("G_steamtracker_privacy");
     GM_deleteValue("G_steamtracker_total_1");
     GM_deleteValue("G_steamtracker_total_2");
