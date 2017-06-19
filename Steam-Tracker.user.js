@@ -24,7 +24,7 @@
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/GMDelete.js
 // @downloadURL https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.user.js
 // @updateURL   https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.user.js
-// @version      5.0.0.13
+// @version      5.0.0.14
 // @grant        GM_xmlhttpRequest
 // @grant        GM_getValue
 // @grant        GM_setValue
@@ -35,6 +35,7 @@
 var st_Version = GM_info.script.version, st_Name = GM_info.script.name, st_Author = GM_info.script.author, st_Namespace = GM_info.script.namespace;
 console.log ('%c '+st_Name + ': v'+st_Version + ' by '+st_Author, 'background: grey; color: white; display: block;', st_Namespace);
 
+GMDelete();
 GM_addStyle(`
 #Available {-webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */ filter: grayscale(0%);}
 #Opensub {-webkit-filter: grayscale(0.5) sepia(0.75); /* Safari 6.0 - 9.0 */ filter: grayscale(0.5) sepia(0.75);}
@@ -191,9 +192,24 @@ function wait_api() {
 }
 
 //START---- NEED TO ADD A SETTING FOR THIS AT ONE POINT SO IT BECOMES OPTIONAL:
+//function to change the class in the "?tab=" from active to non active.
+(function ($) {
+    $.fn.replaceActiveClass = function (RemoveFromClass, AddToClass) {
+        return this.removeClass(RemoveFromClass).addClass(AddToClass);
+    };
+}(jQuery));
+//$('.sectionTab').replaceActiveClass('active','');
+
 var re_tabMQ = new RegExp(/tab=removedappids/g);
 if(document.URL.match(re_tabMQ))
 {
+    $('.sectionTab').replaceActiveClass('active','');
+    $( '<a href="http://steamcommunity.com/id/MalikQayum/games/?tab=removedappids" class="sectionTab active"><span>removed appids</span></a>' ).appendTo( ".sectionTabs" );
+
+    $('.sectionTabs').click(function() {
+        $(this).toggleClass('sectionTabs active');
+    });
+
     $("#games_list_rows").remove();
     var vanityurl = location.href.split("/")[3];
     if (/id/i.test(vanityurl))
