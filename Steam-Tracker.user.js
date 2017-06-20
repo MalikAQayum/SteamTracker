@@ -24,7 +24,7 @@
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/GMDelete.js
 // @downloadURL https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.user.js
 // @updateURL   https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.user.js
-// @version      5.0.0.15
+// @version      5.0.0.16
 // @grant        GM_xmlhttpRequest
 // @grant        GM_getValue
 // @grant        GM_setValue
@@ -199,10 +199,7 @@ function wait_api() {
 }(jQuery));
 //$('.sectionTab').replaceActiveClass('active','');
 
-var re_tabMQ = new RegExp(/tab=removedappids/g);
-if(document.URL.match(re_tabMQ))
-{
-    var re_removedappids = new RegExp(/tab=removedappids/g);
+var re_removedappids = new RegExp(/tab=removedappids/g);
 if(document.URL.match(re_removedappids))
 {
     $('.sectionTab').replaceActiveClass('active','');
