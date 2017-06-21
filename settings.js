@@ -337,8 +337,10 @@ function Settings(){
         StoreTracker_F();
         HubTracker_F();
         Showcase_RA_F();
-		Showcase_ST_ROA_F();
-		SLChart_v3_F();
+	Showcase_ST_ROA_F();
+	SLChart_v1_F();
+	SLChart_v2_F();
+	SLChart_v3_F();
 		
         location.href="http://steamcommunity.com/my";
     };
