@@ -51,7 +51,18 @@ SteamTracker Userscript, adds features to the steam profile / community app hub 
 ![chart 3](https://user-images.githubusercontent.com/25183649/27390301-3ba37b24-56a1-11e7-9f64-3d129ab72591.png)
 
 - StoreTracker = adds a Steam-Tracker button on the store page that directs to the app page on Steam-Tracker. 
+
+![storepage](https://user-images.githubusercontent.com/25183649/27391416-36ebc85e-56a4-11e7-8ddf-293ab24ad8ce.png)
+
 - HubTracker = adds a Steam-Tracker button on the app hub page that directs to the app page on Steam-Tracker. 
+
+![apphub](https://user-images.githubusercontent.com/25183649/27391415-36e934f4-56a4-11e7-90fe-2a06df6db4ff.png)
+
+
+## Preview of how it looks with all Settings On the Steam Profile and the ?tab=removedappids tab.
+
+![steamtracker](https://user-images.githubusercontent.com/25183649/27390304-3ba5b70e-56a1-11e7-95f8-7e2e14e98571.png)
+![removedappids](https://user-images.githubusercontent.com/25183649/27390303-3ba5377a-56a1-11e7-9907-045805978f16.png)
 
 
 
