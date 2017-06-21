@@ -159,6 +159,235 @@ function st_rarest_owned_appids_(){
 
 }
 
+//Steam licenses Chart v1
+function SL_Chart_v1() {
+    var html = document.documentElement.innerHTML;
+    var steamid = html.match('steamid":"(.*?)"');
+    steamid = JSON.stringify(steamid[1]).replace("\"","").slice(0,-1);
+    if (g_steamID === steamid) {
+        if ((GM_getValue("SLChart_v1_Value") == 0) || (GM_getValue("SLChart_v1_Value") == "undefined") || (GM_getValue("SLChart_v1_Value") == null) ) {
+            console.log("Showcase Steam Licenses Chart is set to : " + GM_getValue("SLChart_v1_Value") + " and will not add Showcase Steam Licenses Chart to the Steam Profile.");
+        }
+        else if ((GM_getValue("SLChart_v1_Value") == 1)) {
+            console.log("Showcase Steam Licenses Chart is set to : " + GM_getValue("SLChart_v1_Value") + " and will add Showcase Steam Licenses Chart to the Steam Profile.");
+
+            document.getElementsByClassName("profile_customization_area")[0].setAttribute("id", "MalikQayum_Showcase_10");
+            var div_10 = document.getElementById("MalikQayum_Showcase_10");
+
+            var x_div_10 = document.createElement('div');
+            x_div_10.id = 'MalikQayum_Showcase_10';
+            div_10.appendChild(x_div_10);
+            x_div_10.innerHTML =
+                `
+<div class="profile_customization"><div class="profile_customization_header ellipsis">Steam Licenses Chart</div>
+<div class="profile_customization_block"><div class="customtext_showcase">
+<div class="showcase_content_bg showcase_notes"><canvas id="SLChart" height="300" width="600"></canvas>
+</div></div></div></div>
+`;
+
+            var gdata =  GM_getValue("G_SteamLicensesData_v1");
+            var glabels = GM_getValue("G_SteamLicensesLabels_v1");
+            var data = {
+                labels: glabels,
+                datasets: [
+                    {
+                        label: "Steam Licenses Chart",
+                        fillColor: "rgba(220,220,220,0.2)",
+                        strokeColor: "rgba(220,220,220,1)",
+                        pointColor: "rgba(220,220,220,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(220,220,220,1)",
+                        data: gdata
+                    }
+                ]
+            };
+
+            var chart = document.getElementById('SLChart_v1').getContext('2d');
+            var myslchart = new Chart(chart).Line(data);
+
+            GM_deleteValue("G_SteamLicensesData_v1");
+            GM_deleteValue("G_SteamLicensesLabels_v1");
+        }
+    }
+}
+
+function SLData_v1(){
+
+    GM_xmlhttpRequest({
+        method: "GET",
+        url: "https://store.steampowered.com/account/licenses/?l=english",
+        onload: function(response_sl) {
+            var sl_str = response_sl.responseText;
+
+            var arr = [];
+            sl_str.replace(/<td  class="license_date_col">(.*?)<\/td>/g, function(s, match) {
+                arr.push(match.slice(-2));
+            });
+            var arr2 = JSON.stringify(arr);
+            var count_arr = [];
+
+            if(arr.indexOf("17")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/17/g).length);}
+            if(arr.indexOf("16")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/16/g).length);}
+            if(arr.indexOf("15")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/15/g).length);}
+            if(arr.indexOf("14")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/14/g).length);}
+            if(arr.indexOf("13")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/13/g).length);}
+            if(arr.indexOf("12")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/12/g).length);}
+            if(arr.indexOf("11")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/11/g).length);}
+            if(arr.indexOf("10")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/10/g).length);}
+            if(arr.indexOf("09")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/09/g).length);}
+            if(arr.indexOf("08")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/08/g).length);}
+            if(arr.indexOf("07")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/07/g).length);}
+            if(arr.indexOf("06")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/06/g).length);}
+            if(arr.indexOf("05")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/05/g).length);}
+            if(arr.indexOf("04")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/04/g).length);}
+            if(arr.indexOf("03")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/03/g).length);}
+
+            console.log(count_arr);
+
+            var tmp = [];
+            for(var i = 0; i < arr.length; i++){
+                if(tmp.indexOf(arr[i]) == -1){
+                    tmp.push(arr[i]);
+                }
+            }
+            var temp2 = tmp.reverse();
+            console.log(temp2);
+            GM_setValue("G_SteamLicensesLabels_v1", temp2);
+            GM_setValue("G_SteamLicensesData_v1", count_arr);
+            GM_setValue("G_SteamLicensesChart_v1", "1");
+        }
+    });
+}
+
+function wait_sldata_v1() {
+    if(GM_getValue("G_SteamLicensesChart_v1") === "1")
+    {
+        GM_setValue("G_SteamLicensesChart_v1", "0");
+        SL_Chart_v1();
+    }
+    else
+    {
+        var date = new Date();
+        console.log(date);
+        setTimeout(function(){ wait_sldata_v1(); }, 500);
+    }
+}
+//Steam licenses Chart v2
+function SL_Chart_v2() {
+    var html = document.documentElement.innerHTML;
+    var steamid = html.match('steamid":"(.*?)"');
+    steamid = JSON.stringify(steamid[1]).replace("\"","").slice(0,-1);
+    if (g_steamID === steamid) {
+        if ((GM_getValue("SLChart_v2_Value") == 0) || (GM_getValue("SLChart_v2_Value") == "undefined") || (GM_getValue("SLChart_v2_Value") == null) ) {
+            console.log("Showcase Steam Licenses Chart_v2 is set to : " + GM_getValue("SLChart_v2_Value") + " and will not add Showcase Steam Licenses Chart_v2 to the Steam Profile.");
+        }
+        else if ((GM_getValue("SLChart_v2_Value") == 1)) {
+            console.log("Showcase Steam Licenses Chart_v2 is set to : " + GM_getValue("SLChart_v2_Value") + " and will add Showcase Steam Licenses Chart_v2 to the Steam Profile.");
+
+            document.getElementsByClassName("profile_customization_area")[0].setAttribute("id", "MalikQayum_Showcase_11");
+            var div_11 = document.getElementById("MalikQayum_Showcase_11");
+
+            var x_div_11 = document.createElement('div');
+            x_div_11.id = 'MalikQayum_Showcase_11';
+            div_11.appendChild(x_div_11);
+            x_div_11.innerHTML =
+                `
+<div class="profile_customization"><div class="profile_customization_header ellipsis">Steam Licenses Chart v2</div>
+<div class="profile_customization_block"><div class="customtext_showcase">
+<div class="showcase_content_bg showcase_notes"><canvas id="SLChart_v2" height="300" width="600"></canvas>
+</div></div></div></div>
+`;
+
+            var gdata =  GM_getValue("G_SteamLicensesData_v2");
+            var glabels = GM_getValue("G_SteamLicensesLabels_v2");
+            var data = {
+                labels: glabels,
+                datasets: [
+                    {
+                        label: "Steam Licenses Chart_v2",
+                        fillColor: "rgba(220,220,220,0.2)",
+                        strokeColor: "rgba(220,220,220,1)",
+                        pointColor: "rgba(220,220,220,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(220,220,220,1)",
+                        data: gdata
+                    }
+                ]
+            };
+
+            var chart = document.getElementById('SLChart_v2').getContext('2d');
+            var myslchart = new Chart(chart).Line(data);
+
+            GM_deleteValue("G_SteamLicensesData_v2");
+            GM_deleteValue("G_SteamLicensesLabels_v2");
+        }
+    }
+}
+
+function SLData_v2(){
+
+    GM_xmlhttpRequest({
+        method: "GET",
+        url: "https://store.steampowered.com/account/licenses/?l=english",
+        onload: function(response_sl) {
+            var sl_str = response_sl.responseText;
+
+            var arr = [];
+            sl_str.replace(/<td  class="license_date_col">(.*?)<\/td>/g, function(s, match) {
+                arr.push(match.slice(-2));
+            });
+            var arr2 = JSON.stringify(arr);
+            var count_arr = [];
+
+            if(arr.indexOf("03")==-1){/*donothing*/}else{var newcount3 = arr2.match(/03/g).length; if(isNaN(parseInt(count_arr[0]))){count_arr.unshift(newcount3);}else{ var countadded3 = count_arr[0] + newcount3; count_arr.unshift(countadded3);}}  
+            if(arr.indexOf("04")==-1){/*donothing*/}else{var newcount4 = arr2.match(/04/g).length; if(isNaN(parseInt(count_arr[0]))){count_arr.unshift(newcount4);}else{ var countadded4 = count_arr[0] + newcount4; count_arr.unshift(countadded4);}}  
+            if(arr.indexOf("05")==-1){/*donothing*/}else{var newcount5 = arr2.match(/05/g).length; if(isNaN(parseInt(count_arr[0]))){count_arr.unshift(newcount5);}else{ var countadded5 = count_arr[0] + newcount5; count_arr.unshift(countadded5);}}  
+            if(arr.indexOf("06")==-1){/*donothing*/}else{var newcount6 = arr2.match(/06/g).length; if(isNaN(parseInt(count_arr[0]))){count_arr.unshift(newcount6);}else{ var countadded6 = count_arr[0] + newcount6; count_arr.unshift(countadded6);}}  
+            if(arr.indexOf("07")==-1){/*donothing*/}else{var newcount7 = arr2.match(/07/g).length; if(isNaN(parseInt(count_arr[0]))){count_arr.unshift(newcount7);}else{ var countadded7 = count_arr[0] + newcount7; count_arr.unshift(countadded7);}}  
+            if(arr.indexOf("08")==-1){/*donothing*/}else{var newcount8 = arr2.match(/08/g).length; if(isNaN(parseInt(count_arr[0]))){count_arr.unshift(newcount8);}else{ var countadded8 = count_arr[0] + newcount8; count_arr.unshift(countadded8);}}  
+            if(arr.indexOf("09")==-1){/*donothing*/}else{var newcount9 = arr2.match(/09/g).length; if(isNaN(parseInt(count_arr[0]))){count_arr.unshift(newcount9);}else{ var countadded9 = count_arr[0] + newcount9; count_arr.unshift(countadded9);}}  
+            if(arr.indexOf("10")==-1){/*donothing*/}else{var newcount10 = arr2.match(/10/g).length; if(isNaN(parseInt(count_arr[0]))){count_arr.unshift(newcount10);}else{ var countadded10 = count_arr[0] + newcount10; count_arr.unshift(countadded10);}}  
+            if(arr.indexOf("11")==-1){/*donothing*/}else{var newcount11 = arr2.match(/11/g).length; if(isNaN(parseInt(count_arr[0]))){count_arr.unshift(newcount11);}else{ var countadded11 = count_arr[0] + newcount11; count_arr.unshift(countadded11);}}  
+            if(arr.indexOf("12")==-1){/*donothing*/}else{var newcount12 = arr2.match(/12/g).length; if(isNaN(parseInt(count_arr[0]))){count_arr.unshift(newcount12);}else{ var countadded12 = count_arr[0] + newcount12; count_arr.unshift(countadded12);}}  
+            if(arr.indexOf("13")==-1){/*donothing*/}else{var newcount13 = arr2.match(/13/g).length; if(isNaN(parseInt(count_arr[0]))){count_arr.unshift(newcount13);}else{ var countadded13 = count_arr[0] + newcount13; count_arr.unshift(countadded13);}}  
+            if(arr.indexOf("14")==-1){/*donothing*/}else{var newcount14 = arr2.match(/14/g).length; if(isNaN(parseInt(count_arr[0]))){count_arr.unshift(newcount14);}else{ var countadded14 = count_arr[0] + newcount14; count_arr.unshift(countadded14);}}  
+            if(arr.indexOf("15")==-1){/*donothing*/}else{var newcount15 = arr2.match(/15/g).length; if(isNaN(parseInt(count_arr[0]))){count_arr.unshift(newcount15);}else{ var countadded15 = count_arr[0] + newcount15; count_arr.unshift(countadded15);}}  
+            if(arr.indexOf("16")==-1){/*donothing*/}else{var newcount16 = arr2.match(/16/g).length; if(isNaN(parseInt(count_arr[0]))){count_arr.unshift(newcount16);}else{ var countadded16 = count_arr[0] + newcount16; count_arr.unshift(countadded16);}}  
+            if(arr.indexOf("17")==-1){/*donothing*/}else{var newcount17 = arr2.match(/17/g).length; if(isNaN(parseInt(count_arr[0]))){count_arr.unshift(newcount17);}else{ var countadded17 = count_arr[0] + newcount17; count_arr.unshift(countadded17);}}  
+            if(arr.indexOf("18")==-1){/*donothing*/}else{var newcount18 = arr2.match(/18/g).length; if(isNaN(parseInt(count_arr[0]))){count_arr.unshift(newcount18);}else{ var countadded18 = count_arr[0] + newcount18; count_arr.unshift(countadded18);}}  
+
+            console.log(count_arr);
+
+            var tmp = [];
+            for(var i = 0; i < arr.length; i++){
+                if(tmp.indexOf(arr[i]) == -1){
+                    tmp.push(arr[i]);
+                }
+            }
+            var temp2 = tmp.reverse();
+            console.log(temp2);
+            GM_setValue("G_SteamLicensesLabels_v2", temp2);
+            GM_setValue("G_SteamLicensesData_v2", count_arr.reverse());
+            GM_setValue("G_SteamLicensesChart_v2", "1");
+        }
+    });
+}
+
+function wait_sldata_v2() {
+    if(GM_getValue("G_SteamLicensesChart_v2") === "1")
+    {
+        GM_setValue("G_SteamLicensesChart_v2", "0");
+        SL_Chart_v2();
+    }
+    else
+    {
+        var date = new Date();
+        console.log(date);
+        setTimeout(function(){ wait_sldata_v2(); }, 500);
+    }
+}
 //Steam licenses Chart v3
 function SL_Chart_v3() {
     var html = document.documentElement.innerHTML;
@@ -192,10 +421,10 @@ function SL_Chart_v3() {
 </div>
 `;
 
-            var gdata1 =  GM_getValue("G_SteamLicensesData1");
-            var glabels1 = GM_getValue("G_SteamLicensesLabels1");
-            var gdata2 =  GM_getValue("G_SteamLicensesData2");
-            var glabels2 = GM_getValue("G_SteamLicensesLabels2");
+            var gdata1 =  GM_getValue("G_SteamLicensesData_v3_1");
+            var glabels1 = GM_getValue("G_SteamLicensesLabels_v3_1");
+            var gdata2 =  GM_getValue("G_SteamLicensesData_v3_2");
+            var glabels2 = GM_getValue("G_SteamLicensesLabels_v3_2");
             var data = {
                 labels: glabels1,
                 datasets: [
@@ -263,22 +492,24 @@ function SL_Chart_v3() {
                 }
             ];
 
-            var chart = document.getElementById('SLChart').getContext('2d');
-            var chart2 = document.getElementById('SLChart2').getContext('2d');
-            var chart3 = document.getElementById('SLChart3').getContext('2d');
-            var chart4 = document.getElementById('SLChart4').getContext('2d');
+            var chart_v3_1 = document.getElementById('SLChart_v3_1').getContext('2d');
+            var chart_v3_2 = document.getElementById('SLChart_v3_2').getContext('2d');
+            var chart_v3_3 = document.getElementById('SLChart_v3_3').getContext('2d');
+            var chart_v3_4 = document.getElementById('SLChart_v3_4').getContext('2d');
 
             var options = {
                 scaleShowLabels: false 
             };
 
-            var myslchart = new Chart(chart).Bar(data, options);
-            var myslchart2 = new Chart(chart2).Line(data2, options);
-            var myslchart3 = new Chart(chart3).Doughnut(data3);
-            var myslchart4 = new Chart(chart4).Doughnut(data4);
+            var myslchart_v3_1 = new Chart(chart_v3_1).Bar(data, options);
+            var myslchart_v3_2 = new Chart(chart_v3_2).Line(data2, options);
+            var myslchart_v3_3 = new Chart(chart_v3_3).Doughnut(data3);
+            var myslchart_v3_4 = new Chart(chart_v3_4).Doughnut(data4);
 
-            GM_deleteValue("G_SteamLicensesData");
-            GM_deleteValue("G_SteamLicensesLabels");
+            GM_deleteValue("G_SteamLicensesData_v3_1");
+            GM_deleteValue("G_SteamLicensesLabels_v3_1");
+			GM_deleteValue("G_SteamLicensesData_v3_2");
+            GM_deleteValue("G_SteamLicensesLabels_v3_2");
         }
     }
 }
@@ -370,11 +601,11 @@ function SLData_v3(){
             }
             var temp2x = tmpx.reverse();
             console.log(temp2x);
-            GM_setValue("G_SteamLicensesLabels1", temp2x);
-            GM_setValue("G_SteamLicensesData1", count_arrx);
-
-            GM_setValue("G_SteamLicensesLabels2", temp2.reverse());
-            GM_setValue("G_SteamLicensesData2", count_arr.reverse());
+            GM_setValue("G_SteamLicensesLabels_v3_1", temp2x);
+            GM_setValue("G_SteamLicensesData_v3_1", count_arrx);
+            GM_setValue("G_SteamLicensesLabels_v3_2", temp2.reverse());
+            GM_setValue("G_SteamLicensesData_v3_2", count_arr.reverse());
+			
             GM_setValue("G_SteamLicensesChart_v3", "1");
         }
     });
@@ -393,4 +624,3 @@ function wait_sldata_v3() {
         setTimeout(function(){ wait_sldata_v3(); }, 500);
     }
 }
-
