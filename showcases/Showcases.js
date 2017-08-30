@@ -80,7 +80,7 @@ function st_oa(){
 function st_GetAppListAPI(){
     GM_xmlhttpRequest({
         method: "GET",
-        url: "https://steam-tracker.com/api?action=GetAppListV3",
+        url: "https://steam-tracker.com/api?action=GetAppList",
         onload: function(response_GetAppList) {
             var GetAppList_str = response_GetAppList.responseText;
             var json_ownedappids_data = JSON.parse(GetAppList_str);
