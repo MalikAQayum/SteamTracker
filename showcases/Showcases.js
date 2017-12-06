@@ -226,7 +226,8 @@ function SLData_v1(){
             });
             var arr2 = JSON.stringify(arr);
             var count_arr = [];
-
+		
+            if(arr.indexOf("18")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/18/g).length);}
             if(arr.indexOf("17")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/17/g).length);}
             if(arr.indexOf("16")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/16/g).length);}
             if(arr.indexOf("15")==-1){/*donothing*/}else{count_arr.unshift(arr2.match(/15/g).length);}
@@ -575,6 +576,7 @@ function SLData_v3(){
             var arr2x = JSON.stringify(arrx);
             var count_arrx = [];
 
+            if(arrx.indexOf("18")==-1){/*donothing*/}else{count_arrx.unshift(arr2x.match(/18/g).length);}
             if(arrx.indexOf("17")==-1){/*donothing*/}else{count_arrx.unshift(arr2x.match(/17/g).length);}
             if(arrx.indexOf("16")==-1){/*donothing*/}else{count_arrx.unshift(arr2x.match(/16/g).length);}
             if(arrx.indexOf("15")==-1){/*donothing*/}else{count_arrx.unshift(arr2x.match(/15/g).length);}
