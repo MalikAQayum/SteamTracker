@@ -24,7 +24,7 @@
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/GMDelete.js
 // @downloadURL https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.user.js
 // @updateURL   https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.user.js
-// @version      5.0.1.7
+// @version      5.0.1.8
 // @grant        GM_xmlhttpRequest
 // @grant        GM_getValue
 // @grant        GM_setValue
@@ -36,20 +36,21 @@ var st_Version = GM_info.script.version, st_Name = GM_info.script.name, st_Autho
 console.log ('%c '+st_Name + ': v'+st_Version + ' by '+st_Author, 'background: grey; color: white; display: block;', st_Namespace);
 
 GM_addStyle(`
-#Available {-webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */ filter: grayscale(0%);}
-#Opensub {-webkit-filter: grayscale(0.5) sepia(0.75); /* Safari 6.0 - 9.0 */ filter: grayscale(0.5) sepia(0.75);}
-#Purchasedisabled {-webkit-filter: grayscale(0.75); /* Safari 6.0 - 9.0 */ filter: grayscale(0.75);}
-#Delistedsoftware {-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */ filter: grayscale(100%);}
-#Delistedvideo {-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */ filter: grayscale(100%);}
-#Delisted {-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */ filter: grayscale(100%);}
-#Freesoftware {-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */ filter: grayscale(100%);}
-#F2P\\(unavailable\\) {-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */ filter: grayscale(100%);}
-#Software {-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */ filter: grayscale(100%);}
-#Video {-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */ filter: grayscale(100%);}
-#Limited {-webkit-filter: sepia(0.75); /* Safari 6.0 - 9.0 */ filter: sepia(0.75);}
-#Unreleasedsoftware {-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */ filter: grayscale(100%);}
-#deleted {-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */ filter: grayscale(100%);}
+#Available { border-right: 5px solid; color: blue;}
+#Opensub { border-right: 5px solid; color: yellow;}
+#Purchasedisabled { border-right: 5px solid; color: orange;}
+#Delistedsoftware { border-right: 5px solid; color: gray;}
+#Delistedvideo { border-right: 5px solid; color: gray;}
+#Delisted { border-right: 5px solid; color: gray;}
+#Freesoftware { border-right: 5px solid; color: gray;}
+#F2P\\(unavailable\\) { border-right: 5px solid; color: gray;}
+#Software { border-right: 5px solid; color: gray;}
+#Video { border-right: 5px solid; color: gray;}
+#Limited { border-right: 5px solid; color: yellow;}
+#Unreleasedsoftware { border-right: 5px solid; color: black;}
+#deleted { border-right: 5px solid; color: gray;}
 #Banned { border-right: 5px solid; color: red;}
+#new { border-right: 5px solid; color: green;}
 `);
 
 //settings page stuff
