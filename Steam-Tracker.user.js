@@ -24,7 +24,7 @@
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/GMDelete.js
 // @downloadURL https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.user.js
 // @updateURL   https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.user.js
-// @version      5.0.1.9
+// @version      5.0.1.10
 // @grant        GM_xmlhttpRequest
 // @grant        GM_getValue
 // @grant        GM_setValue
@@ -48,6 +48,7 @@ GM_addStyle(`
 #Video { border-right: 5px solid; color: #666666;}
 #Limited { border-right: 5px solid; color: #00ced1;}
 #Unreleasedsoftware { border-right: 5px solid; color: #c0c0c0;}
+#Unreleased { border-right: 5px solid; color: #c0c0c0;}
 #deleted { border-right: 5px solid; color: #666666;}
 #Banned { border-right: 5px solid; color: #ff7373;}
 #new { border-right: 5px solid; color: #d3ffce;}
