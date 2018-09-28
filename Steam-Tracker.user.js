@@ -24,7 +24,7 @@
 // @require     https://raw.githubusercontent.com/MalikAQayum/SteamTracker/master/GMDelete.js
 // @downloadURL https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.user.js
 // @updateURL   https://github.com/MalikAQayum/SteamTracker/raw/master/Steam-Tracker.user.js
-// @version      5.0.1.8
+// @version      5.0.1.9
 // @grant        GM_xmlhttpRequest
 // @grant        GM_getValue
 // @grant        GM_setValue
@@ -36,21 +36,21 @@ var st_Version = GM_info.script.version, st_Name = GM_info.script.name, st_Autho
 console.log ('%c '+st_Name + ': v'+st_Version + ' by '+st_Author, 'background: grey; color: white; display: block;', st_Namespace);
 
 GM_addStyle(`
-#Available { border-right: 5px solid; color: blue;}
-#Opensub { border-right: 5px solid; color: yellow;}
-#Purchasedisabled { border-right: 5px solid; color: orange;}
-#Delistedsoftware { border-right: 5px solid; color: gray;}
-#Delistedvideo { border-right: 5px solid; color: gray;}
-#Delisted { border-right: 5px solid; color: gray;}
-#Freesoftware { border-right: 5px solid; color: gray;}
-#F2P\\(unavailable\\) { border-right: 5px solid; color: gray;}
-#Software { border-right: 5px solid; color: gray;}
-#Video { border-right: 5px solid; color: gray;}
-#Limited { border-right: 5px solid; color: yellow;}
-#Unreleasedsoftware { border-right: 5px solid; color: black;}
-#deleted { border-right: 5px solid; color: gray;}
-#Banned { border-right: 5px solid; color: red;}
-#new { border-right: 5px solid; color: green;}
+#Available { border-right: 5px solid; color: #088da5;}
+#Opensub { border-right: 5px solid; color: #00ced1;}
+#Purchasedisabled { border-right: 5px solid; color: #ffb6c1;}
+#Delistedsoftware { border-right: 5px solid; color: #666666;}
+#Delistedvideo { border-right: 5px solid; color: #666666;}
+#Delisted { border-right: 5px solid; color: #666666;}
+#Freesoftware { border-right: 5px solid; color: #666666;}
+#F2P\\(unavailable\\) { border-right: 5px solid; color: #666666;}
+#Software { border-right: 5px solid; color: #666666;}
+#Video { border-right: 5px solid; color: #666666;}
+#Limited { border-right: 5px solid; color: #00ced1;}
+#Unreleasedsoftware { border-right: 5px solid; color: #c0c0c0;}
+#deleted { border-right: 5px solid; color: #666666;}
+#Banned { border-right: 5px solid; color: #ff7373;}
+#new { border-right: 5px solid; color: #d3ffce;}
 `);
 
 //settings page stuff
