@@ -572,6 +572,13 @@ function SLData_v3(){
             if(arr.indexOf("16")==-1){/*donothing*/}else{var newcount16 = arr2.match(/16/g).length; if(isNaN(parseInt(count_arr[0]))){count_arr.unshift(newcount16);}else{ var countadded16 = count_arr[0] + newcount16; count_arr.unshift(countadded16);}}  
             if(arr.indexOf("17")==-1){/*donothing*/}else{var newcount17 = arr2.match(/17/g).length; if(isNaN(parseInt(count_arr[0]))){count_arr.unshift(newcount17);}else{ var countadded17 = count_arr[0] + newcount17; count_arr.unshift(countadded17);}}  
             if(arr.indexOf("18")==-1){/*donothing*/}else{var newcount18 = arr2.match(/18/g).length; if(isNaN(parseInt(count_arr[0]))){count_arr.unshift(newcount18);}else{ var countadded18 = count_arr[0] + newcount18; count_arr.unshift(countadded18);}}  
+	    if(arr.indexOf("19")==-1){/*donothing*/}else{var newcount12 = arr2.match(/19/g).length; if(isNaN(parseInt(count_arr[0]))){count_arr.unshift(newcount19);}else{ var countadded19 = count_arr[0] + newcount19; count_arr.unshift(countadded19);}}  
+            if(arr.indexOf("20")==-1){/*donothing*/}else{var newcount13 = arr2.match(/20/g).length; if(isNaN(parseInt(count_arr[0]))){count_arr.unshift(newcount20);}else{ var countadded20 = count_arr[0] + newcount20; count_arr.unshift(countadded20);}}  
+            if(arr.indexOf("21")==-1){/*donothing*/}else{var newcount14 = arr2.match(/21/g).length; if(isNaN(parseInt(count_arr[0]))){count_arr.unshift(newcount21);}else{ var countadded21 = count_arr[0] + newcount21; count_arr.unshift(countadded21);}}  
+            if(arr.indexOf("22")==-1){/*donothing*/}else{var newcount15 = arr2.match(/22/g).length; if(isNaN(parseInt(count_arr[0]))){count_arr.unshift(newcount22);}else{ var countadded22 = count_arr[0] + newcount22; count_arr.unshift(countadded22);}}  
+            if(arr.indexOf("23")==-1){/*donothing*/}else{var newcount16 = arr2.match(/23/g).length; if(isNaN(parseInt(count_arr[0]))){count_arr.unshift(newcount23);}else{ var countadded23 = count_arr[0] + newcount23; count_arr.unshift(countadded23);}}  
+            if(arr.indexOf("24")==-1){/*donothing*/}else{var newcount17 = arr2.match(/24/g).length; if(isNaN(parseInt(count_arr[0]))){count_arr.unshift(newcount24);}else{ var countadded24 = count_arr[0] + newcount24; count_arr.unshift(countadded24);}}  
+            if(arr.indexOf("25")==-1){/*donothing*/}else{var newcount18 = arr2.match(/25/g).length; if(isNaN(parseInt(count_arr[0]))){count_arr.unshift(newcount25);}else{ var countadded25 = count_arr[0] + newcount25; count_arr.unshift(countadded25);}}  
 
             console.log(count_arr);
 
@@ -590,6 +597,13 @@ function SLData_v3(){
             var arr2x = JSON.stringify(arrx);
             var count_arrx = [];
 
+	    if(arrx.indexOf("25")==-1){/*donothing*/}else{count_arrx.unshift(arr2x.match(/25/g).length);}
+            if(arrx.indexOf("24")==-1){/*donothing*/}else{count_arrx.unshift(arr2x.match(/24/g).length);}
+            if(arrx.indexOf("23")==-1){/*donothing*/}else{count_arrx.unshift(arr2x.match(/23/g).length);}
+            if(arrx.indexOf("22")==-1){/*donothing*/}else{count_arrx.unshift(arr2x.match(/22/g).length);}
+            if(arrx.indexOf("21")==-1){/*donothing*/}else{count_arrx.unshift(arr2x.match(/21/g).length);}
+            if(arrx.indexOf("20")==-1){/*donothing*/}else{count_arrx.unshift(arr2x.match(/20/g).length);}
+            if(arrx.indexOf("19")==-1){/*donothing*/}else{count_arrx.unshift(arr2x.match(/19/g).length);}
             if(arrx.indexOf("18")==-1){/*donothing*/}else{count_arrx.unshift(arr2x.match(/18/g).length);}
             if(arrx.indexOf("17")==-1){/*donothing*/}else{count_arrx.unshift(arr2x.match(/17/g).length);}
             if(arrx.indexOf("16")==-1){/*donothing*/}else{count_arrx.unshift(arr2x.match(/16/g).length);}
