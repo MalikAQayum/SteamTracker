@@ -52,6 +52,7 @@ GM_addStyle(`
 #deleted { border-right: 5px solid; color: #666666;}
 #Banned { border-right: 5px solid; color: #ff7373;}
 #new { border-right: 5px solid; color: #36FF33;}
+.screenshot_showcase_primary.showcase_slot.mq { height: 338px;}
 `);
 
 //settings page stuff
